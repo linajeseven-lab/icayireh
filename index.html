@@ -648,9 +648,9 @@
                             <form onsubmit="event.preventDefault(); agregarVideo('inicio');">
                                 <div class="form-grid">
                                     <input type="text" id="vid-titulo-inicio" class="campo-input" placeholder="Título del video" required>
-                                    <input type="file" id="vid-archivo-inicio" accept="video/mp4" class="campo-input" required>
+                                    <input type="file" id="vid-archivo-inicio" accept="video/*" class="campo-input" required>
                                 </div>
-                                <button type="submit" class="btn-toggle-form" style="background:#2563eb;">Publicar Video</button>
+                                <button type="submit" id="btn-pub-vid-inicio" class="btn-toggle-form" style="background:#2563eb;">Publicar Video</button>
                             </form>
                         </div>
                         <div id="lista-videos-inicio" class="videos-grid"></div>
@@ -736,9 +736,9 @@
                         <form onsubmit="event.preventDefault(); agregarVideo('jovenes');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-jovenes" class="campo-input" placeholder="Título del video" required>
-                                <input type="file" id="vid-archivo-jovenes" accept="video/mp4" class="campo-input" required>
+                                <input type="file" id="vid-archivo-jovenes" accept="video/*" class="campo-input" required>
                             </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#db2777;">Publicar Video</button>
+                            <button type="submit" id="btn-pub-vid-jovenes" class="btn-toggle-form" style="background:#db2777;">Publicar Video</button>
                         </form>
                     </div>
                     <div id="lista-videos-jovenes" class="videos-grid"></div>
@@ -798,9 +798,9 @@
                         <form onsubmit="event.preventDefault(); agregarVideo('ninos');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-ninos" class="campo-input" placeholder="Título del video infantil" required>
-                                <input type="file" id="vid-archivo-ninos" accept="video/mp4" class="campo-input" required>
+                                <input type="file" id="vid-archivo-ninos" accept="video/*" class="campo-input" required>
                             </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#0284c7;">Publicar Video</button>
+                            <button type="submit" id="btn-pub-vid-ninos" class="btn-toggle-form" style="background:#0284c7;">Publicar Video</button>
                         </form>
                     </div>
                     <div id="lista-videos-ninos" class="videos-grid"></div>
@@ -950,9 +950,9 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     <form onsubmit="event.preventDefault(); agregarVideo('casas');">
                         <div class="form-grid">
                             <input type="text" id="vid-titulo-casas" class="campo-input" placeholder="Título o Testimonio" required>
-                            <input type="file" id="vid-archivo-casas" accept="video/mp4" class="campo-input" required>
+                            <input type="file" id="vid-archivo-casas" accept="video/*" class="campo-input" required>
                         </div>
-                        <button type="submit" class="btn-toggle-form" style="background:#16a34a;">Publicar Video</button>
+                        <button type="submit" id="btn-pub-vid-casas" class="btn-toggle-form" style="background:#16a34a;">Publicar Video</button>
                     </form>
                 </div>
                 <div id="lista-videos-casas" class="videos-grid"></div>
@@ -1021,9 +1021,9 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         <form onsubmit="event.preventDefault(); agregarVideo('eventos');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-eventos" class="campo-input" placeholder="Título del video" required>
-                                <input type="file" id="vid-archivo-eventos" accept="video/mp4" class="campo-input" required>
+                                <input type="file" id="vid-archivo-eventos" accept="video/*" class="campo-input" required>
                             </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#7c3aed;">Publicar Video</button>
+                            <button type="submit" id="btn-pub-vid-eventos" class="btn-toggle-form" style="background:#7c3aed;">Publicar Video</button>
                         </form>
                     </div>
                     <div id="lista-videos-eventos" class="videos-grid"></div>
@@ -1396,6 +1396,136 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 img.src = event.target.result;
             };
             reader.readAsDataURL(file);
+        }
+
+        // ==========================================
+        // MOTOR DE ALTA CAPACIDAD PARA VIDEOS (INDEXEDDB)
+        // Permite subir videos pesados desde PC y Celular sin límite de 5MB
+        // ==========================================
+        let dbVideosYireh = null;
+
+        function iniciarBaseDatosVideos(callback) {
+            if (!window.indexedDB) {
+                if (callback) callback();
+                return;
+            }
+            const req = indexedDB.open('YirehVideosDB_v1', 1);
+            req.onupgradeneeded = function(e) {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains('videos')) {
+                    db.createObjectStore('videos', { keyPath: 'id', autoIncrement: true });
+                }
+            };
+            req.onsuccess = function(e) {
+                dbVideosYireh = e.target.result;
+                if (callback) callback();
+            };
+            req.onerror = function() {
+                if (callback) callback();
+            };
+        }
+
+        function cargarVideos(seccion) {
+            const cont = document.getElementById('lista-videos-' + seccion);
+            if (!cont) return;
+
+            if (!dbVideosYireh) {
+                iniciarBaseDatosVideos(() => renderizarVideosSeccion(seccion));
+            } else {
+                renderizarVideosSeccion(seccion);
+            }
+        }
+
+        function renderizarVideosSeccion(seccion) {
+            const cont = document.getElementById('lista-videos-' + seccion);
+            if (!cont) return;
+            cont.innerHTML = '';
+
+            // 1. Mostrar videos guardados en la nueva base de datos de alta capacidad
+            if (dbVideosYireh) {
+                const tx = dbVideosYireh.transaction(['videos'], 'readonly');
+                const store = tx.objectStore('videos');
+                const req = store.getAll();
+                req.onsuccess = function() {
+                    const todos = req.result || [];
+                    const filtrados = todos.filter(v => v.seccion === seccion).reverse();
+                    filtrados.forEach(v => {
+                        const videoSrc = v.archivoBlob ? URL.createObjectURL(v.archivoBlob) : v.url;
+                        const div = document.createElement('div');
+                        div.className = 'video-card';
+                        div.innerHTML = `
+                            <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10;" onclick="eliminarVideo('${seccion}', ${v.id})">✕</button>
+                            <video controls playsinline preload="metadata" class="video-player-item" src="${videoSrc}"></video>
+                            <div class="video-body">
+                                <h4>${v.titulo}</h4>
+                            </div>
+                        `;
+                        cont.appendChild(div);
+                    });
+                };
+            }
+        }
+
+        function agregarVideo(seccion) {
+            const inputTit = document.getElementById('vid-titulo-' + seccion);
+            const inputArch = document.getElementById('vid-archivo-' + seccion);
+            const btnPub = document.getElementById('btn-pub-vid-' + seccion);
+
+            const titulo = inputTit.value.trim();
+            if (!inputArch.files || !inputArch.files[0]) return;
+            const archivo = inputArch.files[0];
+
+            if (btnPub) {
+                btnPub.textContent = '⏳ Procesando y subiendo video...';
+                btnPub.disabled = true;
+            }
+
+            const guardarEnDB = () => {
+                if (dbVideosYireh) {
+                    const tx = dbVideosYireh.transaction(['videos'], 'readwrite');
+                    const store = tx.objectStore('videos');
+                    store.add({
+                        seccion: seccion,
+                        titulo: titulo,
+                        archivoBlob: archivo,
+                        fecha: Date.now()
+                    });
+                    tx.oncomplete = function() {
+                        inputTit.value = '';
+                        inputArch.value = '';
+                        if (btnPub) {
+                            btnPub.textContent = 'Publicar Video';
+                            btnPub.disabled = false;
+                        }
+                        document.getElementById('form-video-' + seccion).style.display = 'none';
+                        cargarVideos(seccion);
+                        alert('¡Video subido y publicado con éxito!');
+                    };
+                    tx.onerror = function() {
+                        if (btnPub) {
+                            btnPub.textContent = 'Publicar Video';
+                            btnPub.disabled = false;
+                        }
+                        alert('Error al guardar el video. Intenta con un video más corto.');
+                    };
+                }
+            };
+
+            if (!dbVideosYireh) {
+                iniciarBaseDatosVideos(guardarEnDB);
+            } else {
+                guardarEnDB();
+            }
+        }
+
+        function eliminarVideo(seccion, idVideo) {
+            if (!dbVideosYireh) return;
+            const tx = dbVideosYireh.transaction(['videos'], 'readwrite');
+            const store = tx.objectStore('videos');
+            store.delete(idVideo);
+            tx.oncomplete = function() {
+                cargarVideos(seccion);
+            };
         }
 
         // ==========================================
@@ -1985,49 +2115,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             }
         }
 
-        function cargarVideos(seccion) {
-            const lista = JSON.parse(localStorage.getItem('videos_' + seccion + '_yireh') || '[]');
-            const cont = document.getElementById('lista-videos-' + seccion);
-            if (!cont) return;
-            cont.innerHTML = '';
-            lista.forEach((v, idx) => {
-                cont.innerHTML += `
-                    <div class="video-card">
-                        <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10;" onclick="eliminarVideo('${seccion}', ${idx})">✕</button>
-                        <video controls class="video-player-item" src="${v.url}"></video>
-                        <div class="video-body">
-                            <h4>${v.titulo}</h4>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function agregarVideo(seccion) {
-            const titulo = document.getElementById('vid-titulo-' + seccion).value.trim();
-            const inputArch = document.getElementById('vid-archivo-' + seccion);
-            if (!inputArch.files || !inputArch.files[0]) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const lista = JSON.parse(localStorage.getItem('videos_' + seccion + '_yireh') || '[]');
-                lista.unshift({ titulo: titulo, url: e.target.result });
-                localStorage.setItem('videos_' + seccion + '_yireh', JSON.stringify(lista));
-                document.getElementById('vid-titulo-' + seccion).value = '';
-                inputArch.value = '';
-                document.getElementById('form-video-' + seccion).style.display = 'none';
-                cargarVideos(seccion);
-            };
-            reader.readAsDataURL(inputArch.files[0]);
-        }
-
-        function eliminarVideo(seccion, idx) {
-            const lista = JSON.parse(localStorage.getItem('videos_' + seccion + '_yireh') || '[]');
-            lista.splice(idx, 1);
-            localStorage.setItem('videos_' + seccion + '_yireh', JSON.stringify(lista));
-            cargarVideos(seccion);
-        }
-
         const nombresAlbumes = {
             jovenes: '🔥 Jóvenes (Generación Poderosa)',
             casas: '🏡 Casas Evangelísticas',
@@ -2139,11 +2226,13 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             cargarEventos();
             inicializarGaleriaAlbums();
             cargarPostsJuveniles();
-            cargarVideos('inicio');
-            cargarVideos('jovenes');
-            cargarVideos('ninos');
-            cargarVideos('casas');
-            cargarVideos('eventos');
+            iniciarBaseDatosVideos(function() {
+                cargarVideos('inicio');
+                cargarVideos('jovenes');
+                cargarVideos('ninos');
+                cargarVideos('casas');
+                cargarVideos('eventos');
+            });
             generarOndasAudio();
             inicializarEstadisticas();
             actualizarContadorRegistros();
