@@ -34,8 +34,8 @@
         body.modo-admin .solo-admin { display: inline-block !important; }
 
         .modal-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(6px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+            display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
         }
         .modal-box {
             background: #ffffff; border-radius: 28px; padding: 36px 30px; max-width: 400px; width: 100%;
@@ -283,144 +283,10 @@
         }
         .btn-volver-albumes:hover { background: #2563eb; }
         .galeria-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-        .foto-card { border-radius: 24px; overflow: hidden; position: relative; height: 290px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); background: #0f172a; }
+        .foto-card { border-radius: 24px; overflow: hidden; position: relative; height: 290px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); background: #0f172a; cursor: pointer; }
         .foto-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .foto-card:hover img { transform: scale(1.08); }
         .foto-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); color: #ffffff; padding: 28px 20px 18px 20px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; }
-
-        /* CAMPAMENTO */
-        .seccion-campamento {
-            min-height: 90vh;
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(15, 118, 110, 0.82) 100%),
-                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-            padding: 90px 24px; color: #ffffff; display: flex; align-items: center; justify-content: center;
-        }
-        .campamento-container { max-width: 1140px; margin: 0 auto; text-align: center; width: 100%; }
-        .camp-badge { display: inline-block; background: #fde047; color: #064e3b; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 9px 24px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
-        .camp-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; text-shadow: 0 8px 30px rgba(0,0,0,0.45); }
-        .camp-desc { font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 760px; margin: 0 auto 40px auto; color: #ecfdf5; line-height: 1.7; }
-        .camp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 50px; text-align: left; }
-        .camp-item { background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); padding: 30px; border-radius: 24px; }
-        .camp-item h3 { font-size: 20px; font-weight: 800; color: #fde047; margin-bottom: 10px; }
-        .camp-item p { font-size: 15px; color: #f0fdf4; line-height: 1.6; }
-
-        /* RADIO */
-        .seccion-radio {
-            min-height: 90vh;
-            background: linear-gradient(135deg, #090d16 0%, #17102e 50%, #290b3a 100%);
-            padding: 60px 24px 90px 24px;
-            color: #ffffff;
-        }
-        .radio-header { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
-        .logo-radio { height: 85px; width: auto; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 10px 25px rgba(168, 85, 247, 0.5)); }
-        .radio-header h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; background: linear-gradient(90deg, #38bdf8, #ec4899, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-        .radio-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 36px; align-items: stretch; }
-
-        .reproductor-card-pro {
-            background: radial-gradient(circle at top, rgba(49, 16, 82, 0.6) 0%, rgba(13, 17, 28, 0.95) 80%);
-            border: 1px solid rgba(236, 72, 153, 0.4); border-radius: 36px; padding: 40px 32px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(56, 189, 248, 0.15);
-            position: relative; overflow: hidden;
-        }
-        
-        .audio-gauge-container {
-            position: relative; width: 190px; height: 190px; background: #05070d; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(0,0,0,0.9);
-            border: 4px solid #1e293b; margin-bottom: 20px;
-        }
-        .gauge-ring {
-            position: absolute; inset: -8px; border-radius: 50%; border: 4px solid transparent;
-            border-top-color: #38bdf8; border-right-color: #ec4899; animation: spinGauge 6s linear infinite;
-        }
-        @keyframes spinGauge { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .gauge-center-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 26px; color: #ffffff; letter-spacing: -1px; text-shadow: 0 0 10px rgba(56,189,248,0.8); }
-        .gauge-subtext { font-size: 11px; font-weight: 700; color: #38bdf8; letter-spacing: 2px; text-transform: uppercase; }
-
-        .now-playing-panel {
-            background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 20px;
-            padding: 14px 18px; width: 100%; max-width: 340px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        .album-art-box { width: 52px; height: 52px; background: #1e293b; border-radius: 12px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2); }
-        .album-art-box img { width: 100%; height: 100%; object-fit: cover; }
-        .song-meta-wrap { overflow: hidden; text-align: left; flex: 1; min-width: 0; }
-        .song-label-on { font-size: 10px; font-weight: 800; color: #f472b6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; display: block; }
-        .song-title-marquee { font-size: 13px; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; width: 100%; display: block; }
-        .song-title-marquee span { display: inline-block; animation: marqueeAnim 14s linear infinite; }
-        @keyframes marqueeAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
-        .waveform-graph-box {
-            background: #030712; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 12px;
-            width: 100%; max-width: 340px; margin-bottom: 24px; height: 65px; display: flex; align-items: flex-end; justify-content: space-between; gap: 3px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-        }
-        .wave-bar { flex: 1; background: linear-gradient(to top, #0284c7, #38bdf8, #ec4899); border-radius: 2px; animation: waveAnim 0.8s infinite alternate ease-in-out; }
-        .wave-bar:nth-child(odd) { animation-duration: 0.5s; }
-        .wave-bar:nth-child(even) { animation-duration: 0.9s; }
-        @keyframes waveAnim { 0% { height: 15%; opacity: 0.4; } 100% { height: 95%; opacity: 1; } }
-
-        .live-badge-pro {
-            background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #f87171;
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; padding: 7px 18px;
-            border-radius: 999px; letter-spacing: 2.5px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
-        }
-
-        .audio-player-pro { width: 100%; max-width: 320px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); border-radius: 999px; }
-
-        /* CHAT CARD */
-        .chat-card { background: linear-gradient(160deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: 32px; display: flex; flex-direction: column; height: 540px; overflow: hidden; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); }
-        .chat-top { background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
-        .chat-top-info { display: flex; align-items: center; gap: 12px; }
-        .chat-badge-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .chat-top-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; color: #ffffff; }
-        .chat-top-sub { font-size: 12px; color: #e0e7ff; }
-        .btn-cambiar-user { background: rgba(0,0,0,0.25); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; cursor: pointer; display: none; }
-        .chat-registro-box { flex: 1; padding: 36px 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, rgba(124, 58, 237, 0.18), transparent 70%); }
-        .chat-registro-box h4 { font-size: 24px; font-weight: 900; margin-bottom: 10px; color: #ffffff; }
-        .chat-registro-box p { font-size: 14px; color: #cbd5e1; margin-bottom: 26px; max-width: 340px; line-height: 1.5; }
-        .form-registro { width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 14px; }
-        .input-moderno { width: 100%; padding: 15px 18px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.8); color: #ffffff; font-size: 14px; outline: none; }
-        .input-moderno::placeholder { color: #94a3b8; }
-        .btn-registrar { background: linear-gradient(90deg, #ec4899, #8b5cf6); color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; padding: 15px; border-radius: 16px; border: none; cursor: pointer; font-size: 15px; margin-top: 6px; box-shadow: 0 10px 25px rgba(236, 72, 153, 0.35); }
-        .contador-registros { margin-top: 18px; font-size: 12px; color: #a5b4fc; }
-        .chat-conversacion { flex: 1; display: none; flex-direction: column; height: 100%; overflow: hidden; }
-        .mensajes-lista { flex: 1; padding: 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
-        .msg-item { max-width: 82%; display: flex; flex-direction: column; }
-        .msg-mod { align-self: flex-start; }
-        .msg-user { align-self: flex-end; align-items: flex-end; }
-        .msg-autor { font-size: 11px; font-weight: 800; margin-bottom: 4px; padding: 0 6px; color: #f472b6; text-transform: uppercase; }
-        .msg-user .msg-autor { color: #38bdf8; }
-        .msg-burbuja { padding: 13px 18px; border-radius: 20px; font-size: 14px; line-height: 1.5; }
-        .msg-mod .msg-burbuja { background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.18); color: #f8fafc; border-top-left-radius: 4px; }
-        .msg-user .msg-burbuja { background: linear-gradient(135deg, #2563eb, #9333ea); color: #ffffff; border-top-right-radius: 4px; }
-        .chat-barra-inferior { padding: 16px; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; gap: 10px; }
-        .input-mensaje { flex: 1; padding: 13px 20px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(30, 41, 59, 0.9); color: #ffffff; font-size: 14px; outline: none; }
-        .btn-enviar { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #ffffff; border: none; padding: 0 24px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; cursor: pointer; }
-
-        .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px 30px 20px; font-size: 14px; }
-        .footer strong { color: #ffffff; font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 6px; font-size: 16px; }
-        
-        .community-stats-bar {
-            max-width: 600px; margin: 20px auto 25px auto; display: flex; justify-content: center; align-items: center;
-            gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            padding: 12px 24px; border-radius: 999px;
-        }
-        .stat-pill { font-size: 13px; color: #e2e8f0; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
-        .stat-pill strong { display: inline; margin: 0; color: #38bdf8; font-size: 14px; }
-        .btn-like-widget {
-            background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #ffffff; border: none; padding: 6px 18px;
-            border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px;
-            cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s ease, box-shadow: 0 2s;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35);
-        }
-        .btn-like-widget:hover { transform: scale(1.06); }
-        .btn-like-widget.liked { background: #10b981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
-
-        .btn-acceso-lideres { margin-top: 10px; background: rgba(255, 255, 255, 0.06); color: #64748b; border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 999px; font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.25s ease; }
-        .btn-acceso-lideres:hover { color: #ffffff; background: rgba(255, 255, 255, 0.15); }
     </style>
 </head>
 <body>
@@ -430,6 +296,15 @@
         <button class="btn-accion-admin" onclick="abrirModalOyentes()">📋 Ver Oyentes Registrados</button>
         <button class="btn-accion-admin" onclick="descargarCSVRegistrados()">📥 Descargar Excel (CSV)</button>
         <button class="btn-salir-admin" onclick="cerrarSesionAdmin()">Salir de Admin</button>
+    </div>
+
+    <!-- MODAL ZOOM FOTO GALERÍA -->
+    <div id="modal-zoom" class="modal-overlay" onclick="cerrarZoom()">
+        <div style="position: relative; max-width: 90%; max-height: 90vh; text-align: center;" onclick="event.stopPropagation()">
+            <button onclick="cerrarZoom()" style="position: absolute; top: -15px; right: -15px; background: #dc2626; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2100;">✕</button>
+            <img id="img-zoom-dest" src="" style="max-width: 100%; max-height: 80vh; border-radius: 16px; object-fit: contain; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
+            <p id="txt-zoom-caption" style="color: #fff; font-weight: 700; margin-top: 14px; font-size: 16px; font-family: 'Montserrat', sans-serif;"></p>
+        </div>
     </div>
 
     <div id="modal-admin" class="modal-overlay">
@@ -763,6 +638,7 @@
                     Un espacio mágico diseñado para que los niños conozcan el amor de Jesús a través de historias, canciones y diversión.
                 </p>
 
+                <!-- HERO CARD -->
                 <div class="ninos-hero-card">
                     <div>
                         <span style="display:inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px;">Aventura con Jesús</span>
@@ -776,6 +652,7 @@
                     </div>
                 </div>
 
+                <!-- VIDEOS INFANTILES -->
                 <div class="seccion-videos-multimedia">
                     <div class="videos-multimedia-header">
                         <h3>📺 Videos y Alabanzas Infantiles</h3>
@@ -794,6 +671,7 @@
                     <div id="lista-videos-ninos" class="videos-grid"></div>
                 </div>
 
+                <!-- TEMAS DEL MES PARA NIÑOS -->
                 <div class="temas-wrapper" style="margin-top: 40px; background: #ffffff; color: #0f172a;">
                     <div class="temas-header">
                         <div>
@@ -816,6 +694,7 @@
                     <div id="lista-temas-ninos" class="temas-grid"></div>
                 </div>
 
+                <!-- MI ÁRBOL DE LA VIDA -->
                 <div class="arbol-vida-box">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
                         <div>
@@ -1130,7 +1009,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     Cuatro días inolvidables desconectados de la rutina para conectarnos con la presencia de Dios, fortalecer la unión familiar y disfrutar de la naturaleza, fogatas y recreación.
                 </p>
 
-                <!-- CONTADOR REGRESIVO CORREGIDO -->
+                <!-- CONTADOR REGRESIVO (GRANDE) -->
                 <div style="margin: 20px 0 45px 0;">
                     <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px; color: #fde047; margin-bottom: 15px; font-weight: 800;">⏱️ Faltan exactamente:</h3>
                     <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
@@ -1240,7 +1119,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         <h4>¡Únete al Chat!</h4>
                         <p>Ingresa tus datos para enviar saludos y peticiones en vivo.</p>
                         
-                        <!-- FORMULARIO CON AUTOCOMPLETADO HABILITADO -->
                         <form onsubmit="event.preventDefault(); registrarUsuarioChat();" class="form-registro" autocomplete="on">
                             <input type="text" id="reg-nombre" name="name" autocomplete="name" class="input-moderno" placeholder="Tu Nombre o Apodo" required>
                             <input type="email" id="reg-correo" name="email" autocomplete="email" class="input-moderno" placeholder="Tu Correo Electrónico" required>
@@ -1340,6 +1218,49 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             } else {
                 el.style.display = 'none';
             }
+        }
+
+        // ==========================================
+        // FUNCIONES DE ZOOM / AMPLIAR FOTOS EN GALERÍA
+        // ==========================================
+        function abrirZoomFoto(url, caption) {
+            document.getElementById('img-zoom-dest').src = url;
+            document.getElementById('txt-zoom-caption').textContent = caption;
+            document.getElementById('modal-zoom').style.display = 'flex';
+        }
+        function cerrarZoom() {
+            document.getElementById('modal-zoom').style.display = 'none';
+        }
+
+        // ==========================================
+        // COMPRESOR AUTOMÁTICO DE IMÁGENES (EVITA FALLOS EN MÓVILES)
+        // ==========================================
+        function comprimirYSubirImagen(file, callback) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDim = 1200; // Limita el tamaño máximo para que no sature la memoria
+                    if (width > height && width > maxDim) {
+                        height *= maxDim / width;
+                        width = maxDim;
+                    } else if (height > maxDim) {
+                        width *= maxDim / height;
+                        height = maxDim;
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.75); // Calidad optimizada
+                    callback(dataUrl);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
         }
 
         // ==========================================
@@ -1646,7 +1567,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // CONTADOR REGRESIVO PARA EL CAMPAMENTO (15 OCTUBRE 2027)
+        // CONTADOR REGRESIVO PARA EL CAMPAMENTO
         // ==========================================
         function iniciarContadorCampamento() {
             const fechaCampamento = new Date('2027-10-15T00:00:00').getTime();
@@ -1861,8 +1782,8 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             } else {
                 fotos.forEach((f, idx) => {
                     contenedor.innerHTML += `
-                        <div class="foto-card">
-                            <button class="btn-borrar-item solo-admin" style="z-index:20;" onclick="eliminarFotoAlbum('${key}', ${idx})">✕</button>
+                        <div class="foto-card" onclick="abrirZoomFoto('${f.url}', '${f.titulo}')">
+                            <button class="btn-borrar-item solo-admin" style="z-index:20;" onclick="event.stopPropagation(); eliminarFotoAlbum('${key}', ${idx})">✕</button>
                             <img src="${f.url}" alt="${f.titulo}">
                             <div class="foto-caption">${f.titulo}</div>
                         </div>
@@ -1888,21 +1809,25 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const inputArch = document.getElementById('foto-archivo');
             if (!inputArch.files || !inputArch.files[0]) return;
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh') || JSON.stringify(fotosDefectoAlbumes));
-                if (!galeriaStorage[albumKey]) galeriaStorage[albumKey] = [];
-                galeriaStorage[albumKey].unshift({ titulo: titulo, url: e.target.result });
-                localStorage.setItem('galeria_albums_yireh', JSON.stringify(galeriaStorage));
+            // COMPRESIÓN AUTOMÁTICA PARA MÓVILES
+            comprimirYSubirImagen(inputArch.files[0], function(base64Optimizado) {
+                try {
+                    let galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh') || JSON.stringify(fotosDefectoAlbumes));
+                    if (!galeriaStorage[albumKey]) galeriaStorage[albumKey] = [];
+                    galeriaStorage[albumKey].unshift({ titulo: titulo, url: base64Optimizado });
+                    localStorage.setItem('galeria_albums_yireh', JSON.stringify(galeriaStorage));
 
-                document.getElementById('foto-titulo').value = '';
-                inputArch.value = '';
-                document.getElementById('form-nueva-foto').style.display = 'none';
-                inicializarGaleriaAlbums();
+                    document.getElementById('foto-titulo').value = '';
+                    inputArch.value = '';
+                    document.getElementById('form-nueva-foto').style.display = 'none';
+                    inicializarGaleriaAlbums();
 
-                if (albumActualKey === albumKey) abrirAlbum(albumKey);
-            };
-            reader.readAsDataURL(inputArch.files[0]);
+                    if (albumActualKey === albumKey) abrirAlbum(albumKey);
+                    alert('¡Foto subida con éxito!');
+                } catch (err) {
+                    alert('El almacenamiento local se ha llenado. Intenta con una imagen más ligera.');
+                }
+            });
         }
 
         function eliminarFotoAlbum(key, idx) {
@@ -1917,7 +1842,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         // ARRANQUE GLOBAL INMEDIATO
         window.onload = function() {
             cambiarVista('inicio');
-            iniciarContadorCampamento(); // ARRANCA EL CONTADOR CORRECTAMENTE
+            iniciarContadorCampamento();
             cargarTemasMes();
             cargarTemasNinos();
             cargarHistoriasBiblicas();
