@@ -6,6 +6,10 @@
     <title>Iglesia Casa Apostólica Yireh</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- CONEXIÓN A FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
@@ -53,7 +57,7 @@
         .tabla-contenedor { max-height: 340px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 16px; margin-bottom: 20px; }
         .tabla-oyentes { width: 100%; border-collapse: collapse; font-size: 13.5px; }
         .tabla-oyentes th { background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; text-align: left; padding: 12px 16px; position: sticky; top: 0; }
-        .tabla-oyentes td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #334155; }
+        .tabla-oyentes td { padding: 12px 16px; border: 1px solid #e2e8f0; color: #334155; }
         .tabla-oyentes tr:nth-child(even) { background: #f8fafc; }
 
         .planilla-card { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 24px; padding: 28px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); margin-top: 15px; }
@@ -173,7 +177,7 @@
         .seccion-ninos {
             min-height: 90vh;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.4) 100%),
-                        url('ninos-fondo.jpg') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop') center/cover no-repeat;
             padding: 80px 24px; color: #ffffff;
         }
         .ninos-container { max-width: 1140px; margin: 0 auto; text-align: center; }
@@ -638,19 +642,44 @@
                         <div class="pilar-item">Propósito</div>
                     </div>
 
+                    <!-- SECCIÓN DE SIEMBRA - INICIO -->
+                    <div style="margin-top: 60px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #16a34a; border-radius: 32px; padding: 40px 30px; text-align: center; box-shadow: 0 15px 35px rgba(22, 163, 74, 0.15);">
+                        <span style="display:inline-block; background: #16a34a; color: #fff; font-size: 11px; font-weight: 800; padding: 6px 16px; border-radius: 999px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px;">Semilla de Bendición</span>
+                        <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #064e3b; margin-bottom: 16px;">Apoya Nuestro Ministerio</h2>
+                        <p style="font-size: 16px; color: #166534; max-width: 600px; margin: 0 auto 24px auto; line-height: 1.6; font-style: italic;">
+                            "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." - 2 Corintios 9:7
+                        </p>
+                        
+                        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+                            <div style="background: #ffffff; padding: 16px 24px; border-radius: 16px; border: 1px solid #bbf7d0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 200px;">
+                                <strong style="display: block; color: #064e3b; font-size: 18px; margin-bottom: 4px;">🟣 Nequi / DaviPlata</strong>
+                                <span style="font-size: 22px; font-weight: 900; color: #16a34a;">300 639 6622</span>
+                            </div>
+                            <div style="background: #ffffff; padding: 16px 24px; border-radius: 16px; border: 1px solid #bbf7d0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 200px;">
+                                <strong style="display: block; color: #064e3b; font-size: 18px; margin-bottom: 4px;">🔵 PayPal</strong>
+                                <a href="https://wa.me/573006396622?text=Hola,%20quiero%20hacer%20una%20siembra%20por%20PayPal" target="_blank" style="font-size: 16px; font-weight: 800; color: #0284c7; text-decoration: none;">Solicitar Link por WhatsApp</a>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/573006396622?text=Hola,%20acabo%20de%20hacer%20una%20siembra%20para%20el%20ministerio%20Yireh" target="_blank" style="display: inline-block; background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; padding: 14px 32px; border-radius: 999px; text-decoration: none; transition: background 0.3s ease;">
+                            📲 Enviar comprobante por WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- SECCIÓN VIDEOS INICIO YOUTUBE -->
                     <div class="seccion-videos-multimedia" style="background:#f1f5f9; border:1px solid #cbd5e1; margin-top:60px; color:#0f172a;">
                         <div class="videos-multimedia-header" style="border-bottom-color:#cbd5e1;">
                             <h3 style="color:#0f172a;">🎥 Videos Destacados de la Iglesia</h3>
-                            <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-inicio')">➕ Subir Video</button>
+                            <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-inicio')">➕ Añadir Video</button>
                         </div>
                         <div id="form-video-inicio" class="form-panel">
-                            <h3>Subir Video para la página de Inicio</h3>
+                            <h3>Añadir Video desde YouTube para la página de Inicio</h3>
                             <form onsubmit="event.preventDefault(); agregarVideo('inicio');">
                                 <div class="form-grid">
                                     <input type="text" id="vid-titulo-inicio" class="campo-input" placeholder="Título del video" required>
-                                    <input type="file" id="vid-archivo-inicio" accept="video/*" class="campo-input" required>
+                                    <input type="text" id="vid-url-inicio" class="campo-input" placeholder="Pega el enlace de YouTube aquí..." required>
                                 </div>
-                                <button type="submit" id="btn-pub-vid-inicio" class="btn-toggle-form" style="background:#2563eb;">Publicar Video</button>
+                                <button type="submit" class="btn-toggle-form" style="background:#2563eb;">Publicar Video en Vivo</button>
                             </form>
                         </div>
                         <div id="lista-videos-inicio" class="videos-grid"></div>
@@ -729,16 +758,16 @@
                 <div class="seccion-videos-multimedia">
                     <div class="videos-multimedia-header">
                         <h3>🎬 Videos de Jóvenes (Prédicas y Alabanza)</h3>
-                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-jovenes')">➕ Subir Video</button>
+                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-jovenes')">➕ Añadir Video</button>
                     </div>
                     <div id="form-video-jovenes" class="form-panel" style="color:#0f172a; text-align:left;">
-                        <h3>Subir Video Juvenil</h3>
+                        <h3>Añadir Video Juvenil desde YouTube</h3>
                         <form onsubmit="event.preventDefault(); agregarVideo('jovenes');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-jovenes" class="campo-input" placeholder="Título del video" required>
-                                <input type="file" id="vid-archivo-jovenes" accept="video/*" class="campo-input" required>
+                                <input type="text" id="vid-url-jovenes" class="campo-input" placeholder="Pega el enlace de YouTube aquí..." required>
                             </div>
-                            <button type="submit" id="btn-pub-vid-jovenes" class="btn-toggle-form" style="background:#db2777;">Publicar Video</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#db2777;">Publicar Video en Vivo</button>
                         </form>
                     </div>
                     <div id="lista-videos-jovenes" class="videos-grid"></div>
@@ -756,7 +785,7 @@
                                 <input type="text" id="post-titulo" class="campo-input" placeholder="Título del Post" required>
                                 <input type="file" id="post-archivo" accept="image/*" class="campo-input" required>
                             </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#db2777;">Publicar Post</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#db2777;">Publicar Post en Vivo</button>
                         </form>
                     </div>
                     <div id="lista-posts-juveniles" class="posts-grid"></div>
@@ -773,7 +802,6 @@
                     Un espacio mágico diseñado para que los niños conozcan el amor de Jesús a través de historias, canciones y diversión.
                 </p>
 
-                <!-- HERO CARD -->
                 <div class="ninos-hero-card">
                     <div>
                         <span style="display:inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px;">Aventura con Jesús</span>
@@ -787,26 +815,24 @@
                     </div>
                 </div>
 
-                <!-- VIDEOS INFANTILES -->
                 <div class="seccion-videos-multimedia">
                     <div class="videos-multimedia-header">
                         <h3>📺 Videos y Alabanzas Infantiles</h3>
-                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-ninos')">➕ Subir Video Infantil</button>
+                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-ninos')">➕ Añadir Video Infantil</button>
                     </div>
                     <div id="form-video-ninos" class="form-panel" style="color:#0f172a; text-align:left;">
-                        <h3>Subir Video para Niños</h3>
+                        <h3>Añadir Video para Niños desde YouTube</h3>
                         <form onsubmit="event.preventDefault(); agregarVideo('ninos');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-ninos" class="campo-input" placeholder="Título del video infantil" required>
-                                <input type="file" id="vid-archivo-ninos" accept="video/*" class="campo-input" required>
+                                <input type="text" id="vid-url-ninos" class="campo-input" placeholder="Pega el enlace de YouTube aquí..." required>
                             </div>
-                            <button type="submit" id="btn-pub-vid-ninos" class="btn-toggle-form" style="background:#0284c7;">Publicar Video</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#0284c7;">Publicar Video en Vivo</button>
                         </form>
                     </div>
                     <div id="lista-videos-ninos" class="videos-grid"></div>
                 </div>
 
-                <!-- TEMAS DEL MES PARA NIÑOS -->
                 <div class="temas-wrapper" style="margin-top: 40px; background: #ffffff; color: #0f172a;">
                     <div class="temas-header">
                         <div>
@@ -823,13 +849,12 @@
                                 <input type="text" id="temas-ninos-versiculo" class="campo-input" placeholder="Versículo Clave" required>
                             </div>
                             <textarea id="temas-ninos-desc" rows="3" class="campo-input" style="margin-bottom:16px;" placeholder="Resumen de la enseñanza o manualidad..." required></textarea>
-                            <button type="submit" class="btn-toggle-form" style="background:#0284c7;">Guardar Lección</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#0284c7;">Guardar Lección en Vivo</button>
                         </form>
                     </div>
                     <div id="lista-temas-ninos" class="temas-grid"></div>
                 </div>
 
-                <!-- MI ÁRBOL DE LA VIDA -->
                 <div class="arbol-vida-box">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
                         <div>
@@ -896,7 +921,7 @@
                 </div>
 
                 <div id="form-asistencia-casa" class="form-panel" style="background: #ffffff;">
-                    <h3>Reporte Semanal de Asistencia (Se renueva cada semana)</h3>
+                    <h3>Reporte Semanal de Asistencia (Se guardará en la Nube)</h3>
                     <form onsubmit="event.preventDefault(); registrarAsistenciaCasa();">
                         <div class="form-grid">
                             <div>
@@ -943,16 +968,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         <span class="tag-dia" style="background:#dcfce7; color:#166534; margin-bottom:6px;">Multimedia</span>
                         <h2>📺 Videos y Testimonios de Casas</h2>
                     </div>
-                    <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-casas')">➕ Subir Video</button>
+                    <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-casas')">➕ Añadir Video</button>
                 </div>
                 <div id="form-video-casas" class="form-panel">
-                    <h3>Subir Video de Casas Evangelísticas</h3>
+                    <h3>Añadir Video de Casas desde YouTube</h3>
                     <form onsubmit="event.preventDefault(); agregarVideo('casas');">
                         <div class="form-grid">
                             <input type="text" id="vid-titulo-casas" class="campo-input" placeholder="Título o Testimonio" required>
-                            <input type="file" id="vid-archivo-casas" accept="video/*" class="campo-input" required>
+                            <input type="text" id="vid-url-casas" class="campo-input" placeholder="Pega el enlace de YouTube aquí..." required>
                         </div>
-                        <button type="submit" id="btn-pub-vid-casas" class="btn-toggle-form" style="background:#16a34a;">Publicar Video</button>
+                        <button type="submit" class="btn-toggle-form" style="background:#16a34a;">Publicar Video en Vivo</button>
                     </form>
                 </div>
                 <div id="lista-videos-casas" class="videos-grid"></div>
@@ -975,13 +1000,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                             <input type="text" id="tema-cita" class="campo-input" placeholder="Cita Bíblica" required>
                         </div>
                         <textarea id="tema-resumen" rows="3" class="campo-input" style="margin-bottom:16px;" placeholder="Resumen..." required></textarea>
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-                            <div>
-                                <label style="font-size:13px; font-weight:700; color:#475569; display:block; margin-bottom:6px;">Adjuntar Guía PDF:</label>
-                                <input type="file" id="tema-archivo" accept=".pdf,image/*" style="font-size:13px;">
-                            </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#16a34a;">Guardar Tema</button>
-                        </div>
+                        <button type="submit" class="btn-toggle-form" style="background:#16a34a;">Guardar Tema en Vivo</button>
                     </form>
                 </div>
                 <div id="lista-temas-mes" class="temas-grid"></div>
@@ -1007,23 +1026,23 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                             <input type="text" id="ev-hora" class="campo-input" placeholder="Hora y Lugar" required>
                         </div>
                         <textarea id="ev-desc" rows="2" class="campo-input" style="margin-bottom:14px;" placeholder="Descripción..." required></textarea>
-                        <button type="submit" class="btn-toggle-form" style="background:#7c3aed;">Publicar</button>
+                        <button type="submit" class="btn-toggle-form" style="background:#7c3aed;">Publicar Evento en Vivo</button>
                     </form>
                 </div>
 
                 <div class="seccion-videos-multimedia" style="margin-bottom:40px; background:rgba(255,255,255,0.08);">
                     <div class="videos-multimedia-header">
                         <h3>🎬 Videos Promocionales de Eventos</h3>
-                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-eventos')">➕ Subir Video</button>
+                        <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-video-eventos')">➕ Añadir Video</button>
                     </div>
                     <div id="form-video-eventos" class="form-panel" style="color:#0f172a; text-align:left;">
-                        <h3>Subir Promocional en Video</h3>
+                        <h3>Añadir Promocional desde YouTube</h3>
                         <form onsubmit="event.preventDefault(); agregarVideo('eventos');">
                             <div class="form-grid">
                                 <input type="text" id="vid-titulo-eventos" class="campo-input" placeholder="Título del video" required>
-                                <input type="file" id="vid-archivo-eventos" accept="video/*" class="campo-input" required>
+                                <input type="text" id="vid-url-eventos" class="campo-input" placeholder="Pega el enlace de YouTube aquí..." required>
                             </div>
-                            <button type="submit" id="btn-pub-vid-eventos" class="btn-toggle-form" style="background:#7c3aed;">Publicar Video</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#7c3aed;">Publicar Video en Vivo</button>
                         </form>
                     </div>
                     <div id="lista-videos-eventos" class="videos-grid"></div>
@@ -1059,7 +1078,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                                 </select>
                                 <input type="file" id="foto-archivo" accept="image/*" class="campo-input" required>
                             </div>
-                            <button type="submit" class="btn-toggle-form" style="background:#2563eb;">Guardar Foto en el Álbum</button>
+                            <button type="submit" class="btn-toggle-form" style="background:#2563eb;">Guardar Foto en Vivo</button>
                         </form>
                     </div>
 
@@ -1144,7 +1163,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     Cuatro días inolvidables desconectados de la rutina para conectarnos con la presencia de Dios, fortalecer la unión familiar y disfrutar de la naturaleza, fogatas y recreación.
                 </p>
 
-                <!-- CONTADOR REGRESIVO (GRANDE Y ACTIVO) -->
                 <div style="margin: 30px 0 45px 0;">
                     <h3 style="font-size: 17px; text-transform: uppercase; letter-spacing: 2px; color: #fde047; margin-bottom: 20px; font-weight: 900;">⏱️ Faltan exactamente:</h3>
                     <div style="display: inline-flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
@@ -1194,6 +1212,27 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 <img src="124031.png" alt="Logo Judá Radio" class="logo-radio">
                 <h1>Judá Radio Streaming</h1>
                 <p style="color:#cbd5e1;">Conectando tu fe las 24 horas del día con alabanza y palabra de vida.</p>
+            </div>
+
+            <!-- SECCIÓN DE SIEMBRA - RADIO -->
+            <div style="max-width: 600px; margin: 0 auto 40px auto; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(236, 72, 153, 0.4); padding: 24px 30px; border-radius: 24px; text-align: center; backdrop-filter: blur(10px);">
+                <h3 style="font-size: 20px; font-weight: 900; color: #fdf2f8; margin-bottom: 10px;">📻 Apoya a Judá Radio</h3>
+                <p style="font-size: 14px; color: #e2e8f0; margin-bottom: 20px; line-height: 1.5;">Tu ofrenda nos ayuda a mantener los servidores activos para transmitir alabanza y palabra de vida las 24 horas del día.</p>
+                
+                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; color: #f472b6; font-size: 11px; font-weight: 800; text-transform: uppercase;">Nequi / DaviPlata</span>
+                        <strong style="font-size: 18px; color: #fff;">300 639 6622</strong>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; color: #38bdf8; font-size: 11px; font-weight: 800; text-transform: uppercase;">PayPal</span>
+                        <strong style="font-size: 14px; color: #fff;">Donaciones Internacionales</strong>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/573006396622?text=Hola,%20quiero%20apoyar%20la%20señal%20de%20Judá%20Radio%20con%20una%20siembra" target="_blank" style="display: inline-block; background: #ec4899; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 10px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);">
+                    🤝 Sembrar en la Radio
+                </a>
             </div>
 
             <!-- BOTÓN DE DESCARGA DE LA APP DE LA RADIO -->
@@ -1302,7 +1341,32 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
     </footer>
 
     <script>
+        // CONFIGURACIÓN DE FIREBASE (Conectado a tu nube en vivo)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAsVcrtxuxqaB2V_5AaFEOa4MW9gn0kbY",
+            authDomain: "yirehweb-5e793.firebaseapp.com",
+            databaseURL: "https://yirehweb-5e793-default-rtdb.firebaseio.com",
+            projectId: "yirehweb-5e793",
+            storageBucket: "yirehweb-5e793.firebasestorage.app",
+            messagingSenderId: "703393817553",
+            appId: "1:703393817553:web:bd23e8728318311967b6f0"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
         const CLAVE_ADMIN_YIREH = 'yireh2026';
+
+        function checkAdminUI() {
+            if (sessionStorage.getItem('admin_activo_yireh') === 'true') {
+                document.body.classList.add('modo-admin');
+                document.getElementById('admin-bar').style.display = 'flex';
+                document.getElementById('btn-acceso-lideres').style.display = 'none';
+            } else {
+                document.body.classList.remove('modo-admin');
+                document.getElementById('admin-bar').style.display = 'none';
+                document.getElementById('btn-acceso-lideres').style.display = 'inline-block';
+            }
+        }
 
         function abrirModalAdmin() {
             document.getElementById('modal-admin').style.display = 'flex';
@@ -1311,48 +1375,28 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             document.getElementById('input-pass-admin').focus();
         }
         function cerrarModalAdmin() { document.getElementById('modal-admin').style.display = 'none'; }
+        
         function verificarPasswordAdmin() {
             const pass = document.getElementById('input-pass-admin').value.trim();
             if (pass === CLAVE_ADMIN_YIREH) {
                 sessionStorage.setItem('admin_activo_yireh', 'true');
-                activarModoAdmin();
+                checkAdminUI();
                 cerrarModalAdmin();
             } else {
                 document.getElementById('error-pass').style.display = 'block';
             }
         }
-        function activarModoAdmin() {
-            document.body.classList.add('modo-admin');
-            document.getElementById('admin-bar').style.display = 'flex';
-            document.getElementById('btn-acceso-lideres').style.display = 'none';
-        }
+        
         function cerrarSesionAdmin() {
             sessionStorage.removeItem('admin_activo_yireh');
-            document.body.classList.remove('modo-admin');
-            document.getElementById('admin-bar').style.display = 'none';
-            document.getElementById('btn-acceso-lideres').style.display = 'inline-block';
-            document.getElementById('form-nuevo-tema').style.display = 'none';
-            document.getElementById('form-nuevo-evento').style.display = 'none';
-            document.getElementById('form-nueva-foto').style.display = 'none';
-            document.getElementById('form-nuevo-post').style.display = 'none';
-            document.getElementById('form-video-inicio').style.display = 'none';
-            document.getElementById('form-video-jovenes').style.display = 'none';
-            document.getElementById('form-video-ninos').style.display = 'none';
-            document.getElementById('form-nuevo-tema-ninos').style.display = 'none';
-            document.getElementById('form-crear-historia').style.display = 'none';
-            document.getElementById('form-video-casas').style.display = 'none';
-            document.getElementById('form-video-eventos').style.display = 'none';
+            checkAdminUI();
+            document.querySelectorAll('.form-panel').forEach(f => f.style.display = 'none');
         }
 
         function toggleElement(id) {
             const el = document.getElementById(id);
             if (!el) return;
-            const computedStyle = window.getComputedStyle(el).display;
-            if (computedStyle === 'none') {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'none';
-            }
+            el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
         }
 
         // ==========================================
@@ -1363,35 +1407,22 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             document.getElementById('txt-zoom-caption').textContent = caption;
             document.getElementById('modal-zoom').style.display = 'flex';
         }
-        function cerrarZoom() {
-            document.getElementById('modal-zoom').style.display = 'none';
-        }
+        function cerrarZoom() { document.getElementById('modal-zoom').style.display = 'none'; }
 
-        // ==========================================
-        // COMPRESOR AUTOMÁTICO DE IMÁGENES PARA MÓVILES
-        // ==========================================
         function comprimirYSubirImagen(file, callback) {
             const reader = new FileReader();
             reader.onload = function (event) {
                 const img = new Image();
                 img.onload = function () {
                     const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
+                    let width = img.width, height = img.height;
                     const maxDim = 1200;
-                    if (width > height && width > maxDim) {
-                        height *= maxDim / width;
-                        width = maxDim;
-                    } else if (height > maxDim) {
-                        width *= maxDim / height;
-                        height = maxDim;
-                    }
-                    canvas.width = width;
-                    canvas.height = height;
+                    if (width > height && width > maxDim) { height *= maxDim / width; width = maxDim; } 
+                    else if (height > maxDim) { width *= maxDim / height; height = maxDim; }
+                    canvas.width = width; canvas.height = height;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
-                    callback(dataUrl);
+                    callback(canvas.toDataURL('image/jpeg', 0.75));
                 };
                 img.src = event.target.result;
             };
@@ -1399,161 +1430,86 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // MOTOR DE ALTA CAPACIDAD PARA VIDEOS (INDEXEDDB)
-        // Permite subir videos pesados desde PC y Celular sin límite de 5MB
+        // YOUTUBE VIDEOS (EN VIVO FIREBASE)
         // ==========================================
-        let dbVideosYireh = null;
-
-        function iniciarBaseDatosVideos(callback) {
-            if (!window.indexedDB) {
-                if (callback) callback();
-                return;
-            }
-            const req = indexedDB.open('YirehVideosDB_v1', 1);
-            req.onupgradeneeded = function(e) {
-                const db = e.target.result;
-                if (!db.objectStoreNames.contains('videos')) {
-                    db.createObjectStore('videos', { keyPath: 'id', autoIncrement: true });
-                }
-            };
-            req.onsuccess = function(e) {
-                dbVideosYireh = e.target.result;
-                if (callback) callback();
-            };
-            req.onerror = function() {
-                if (callback) callback();
-            };
+        function getYoutubeEmbed(url) {
+            let videoId = '';
+            if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
+            else if (url.includes('youtube.com/watch')) videoId = new URLSearchParams(url.split('?')[1]).get('v');
+            else if (url.includes('youtube.com/embed/')) videoId = url.split('youtube.com/embed/')[1].split('?')[0];
+            return videoId ? 'https://www.youtube.com/embed/' + videoId : null;
         }
 
-        function cargarVideos(seccion) {
-            const cont = document.getElementById('lista-videos-' + seccion);
-            if (!cont) return;
-
-            if (!dbVideosYireh) {
-                iniciarBaseDatosVideos(() => renderizarVideosSeccion(seccion));
-            } else {
-                renderizarVideosSeccion(seccion);
-            }
-        }
-
-        function renderizarVideosSeccion(seccion) {
-            const cont = document.getElementById('lista-videos-' + seccion);
-            if (!cont) return;
-            cont.innerHTML = '';
-
-            // 1. Mostrar videos guardados en la nueva base de datos de alta capacidad
-            if (dbVideosYireh) {
-                const tx = dbVideosYireh.transaction(['videos'], 'readonly');
-                const store = tx.objectStore('videos');
-                const req = store.getAll();
-                req.onsuccess = function() {
-                    const todos = req.result || [];
-                    const filtrados = todos.filter(v => v.seccion === seccion).reverse();
-                    filtrados.forEach(v => {
-                        const videoSrc = v.archivoBlob ? URL.createObjectURL(v.archivoBlob) : v.url;
-                        const div = document.createElement('div');
-                        div.className = 'video-card';
-                        div.innerHTML = `
-                            <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10;" onclick="eliminarVideo('${seccion}', ${v.id})">✕</button>
-                            <video controls playsinline preload="metadata" class="video-player-item" src="${videoSrc}"></video>
-                            <div class="video-body">
-                                <h4>${v.titulo}</h4>
-                            </div>
-                        `;
-                        cont.appendChild(div);
+        function cargarVideosInit() {
+            const secciones = ['inicio', 'jovenes', 'ninos', 'casas', 'eventos'];
+            secciones.forEach(sec => {
+                db.ref('videos/' + sec).on('value', snap => {
+                    const cont = document.getElementById('lista-videos-' + sec);
+                    if(!cont) return;
+                    cont.innerHTML = '';
+                    let datos = [];
+                    if(snap.exists()) {
+                        snap.forEach(child => { datos.push({id: child.key, ...child.val()}); });
+                    }
+                    datos.reverse().forEach(v => {
+                        cont.innerHTML += `
+                            <div class="video-card">
+                                <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarVideo('${sec}', '${v.id}')">✕</button>
+                                <iframe src="${v.url}" class="video-player-item" frameborder="0" allowfullscreen></iframe>
+                                <div class="video-body"><h4>${v.titulo}</h4></div>
+                            </div>`;
                     });
-                };
-            }
+                    checkAdminUI(); // Reactiva los botones de borrar si es admin
+                });
+            });
         }
 
         function agregarVideo(seccion) {
-            const inputTit = document.getElementById('vid-titulo-' + seccion);
-            const inputArch = document.getElementById('vid-archivo-' + seccion);
-            const btnPub = document.getElementById('btn-pub-vid-' + seccion);
+            const titulo = document.getElementById('vid-titulo-' + seccion).value.trim();
+            const urlInput = document.getElementById('vid-url-' + seccion).value.trim();
+            if(!titulo || !urlInput) return;
+            const embedUrl = getYoutubeEmbed(urlInput);
+            if(!embedUrl) { alert('Por favor pega un enlace válido de YouTube.'); return; }
 
-            const titulo = inputTit.value.trim();
-            if (!inputArch.files || !inputArch.files[0]) return;
-            const archivo = inputArch.files[0];
-
-            if (btnPub) {
-                btnPub.textContent = '⏳ Procesando y subiendo video...';
-                btnPub.disabled = true;
-            }
-
-            const guardarEnDB = () => {
-                if (dbVideosYireh) {
-                    const tx = dbVideosYireh.transaction(['videos'], 'readwrite');
-                    const store = tx.objectStore('videos');
-                    store.add({
-                        seccion: seccion,
-                        titulo: titulo,
-                        archivoBlob: archivo,
-                        fecha: Date.now()
-                    });
-                    tx.oncomplete = function() {
-                        inputTit.value = '';
-                        inputArch.value = '';
-                        if (btnPub) {
-                            btnPub.textContent = 'Publicar Video';
-                            btnPub.disabled = false;
-                        }
-                        document.getElementById('form-video-' + seccion).style.display = 'none';
-                        cargarVideos(seccion);
-                        alert('¡Video subido y publicado con éxito!');
-                    };
-                    tx.onerror = function() {
-                        if (btnPub) {
-                            btnPub.textContent = 'Publicar Video';
-                            btnPub.disabled = false;
-                        }
-                        alert('Error al guardar el video. Intenta con un video más corto.');
-                    };
-                }
-            };
-
-            if (!dbVideosYireh) {
-                iniciarBaseDatosVideos(guardarEnDB);
-            } else {
-                guardarEnDB();
-            }
+            db.ref('videos/' + seccion).push({ titulo: titulo, url: embedUrl, timestamp: firebase.database.ServerValue.TIMESTAMP })
+            .then(() => {
+                document.getElementById('vid-titulo-' + seccion).value = '';
+                document.getElementById('vid-url-' + seccion).value = '';
+                document.getElementById('form-video-' + seccion).style.display = 'none';
+                alert('¡Video de YouTube publicado en vivo!');
+            });
         }
 
-        function eliminarVideo(seccion, idVideo) {
-            if (!dbVideosYireh) return;
-            const tx = dbVideosYireh.transaction(['videos'], 'readwrite');
-            const store = tx.objectStore('videos');
-            store.delete(idVideo);
-            tx.oncomplete = function() {
-                cargarVideos(seccion);
-            };
+        function eliminarVideo(sec, id) {
+            if(confirm('¿Eliminar este video?')) db.ref('videos/' + sec).child(id).remove();
         }
 
         // ==========================================
-        // GESTIÓN DE ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS)
+        // ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS - FIREBASE)
         // ==========================================
-        const historiasDefecto = [
-            { titulo: 'El Arca de Noé', personaje: 'Noé y los animalitos', contenido: 'Dios le pidió a Noé construir un gran arca para salvar a su familia y a los animales de la gran lluvia. ¡Dios siempre cumple sus promesas de cuidado!' }
-        ];
-
         function cargarHistoriasBiblicas() {
-            let historias = JSON.parse(localStorage.getItem('historias_arbol_yireh'));
-            if (!historias) {
-                historias = historiasDefecto;
-                localStorage.setItem('historias_arbol_yireh', JSON.stringify(historias));
-            }
-            const cont = document.getElementById('lista-historias-biblicas');
-            if(!cont) return;
-            cont.innerHTML = '';
-            historias.forEach((h, idx) => {
-                cont.innerHTML += `
-                    <div style="background: rgba(255,255,255,0.95); color: #0f172a; border-radius: 20px; padding: 22px; text-align: left; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                        <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px;" onclick="eliminarHistoriaBiblica(${idx})">✕</button>
-                        <span style="font-size: 11px; font-weight: 800; color: #047857; text-transform: uppercase;">🌱 Historia Bíblica</span>
-                        <h4 style="font-size: 20px; font-weight: 900; margin: 6px 0 4px 0; color: #064e3b;">${h.titulo}</h4>
-                        <span style="font-size: 12.5px; font-weight: 700; color: #0284c7; display: block; margin-bottom: 10px;">👤 Personaje: ${h.personaje}</span>
-                        <p style="font-size: 14px; color: #334155; line-height: 1.6;">${h.contenido}</p>
-                    </div>
-                `;
+            db.ref('historias_arbol').on('value', snap => {
+                const cont = document.getElementById('lista-historias-biblicas');
+                if(!cont) return;
+                cont.innerHTML = '';
+                let historias = [];
+                if(snap.exists()){
+                    snap.forEach(child => { historias.push({id: child.key, ...child.val()}); });
+                } else {
+                    historias = [{ titulo: 'El Arca de Noé', personaje: 'Noé y los animalitos', contenido: 'Dios le pidió a Noé construir un gran arca para salvar a su familia y a los animales de la gran lluvia. ¡Dios siempre cumple sus promesas de cuidado!' }];
+                }
+                historias.reverse().forEach(h => {
+                    const btnDelete = h.id ? `<button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; display:none;" onclick="eliminarHistoriaBiblica('${h.id}')">✕</button>` : '';
+                    cont.innerHTML += `
+                        <div style="background: rgba(255,255,255,0.95); color: #0f172a; border-radius: 20px; padding: 22px; text-align: left; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                            ${btnDelete}
+                            <span style="font-size: 11px; font-weight: 800; color: #047857; text-transform: uppercase;">🌱 Historia Bíblica</span>
+                            <h4 style="font-size: 20px; font-weight: 900; margin: 6px 0 4px 0; color: #064e3b;">${h.titulo}</h4>
+                            <span style="font-size: 12.5px; font-weight: 700; color: #0284c7; display: block; margin-bottom: 10px;">👤 Personaje: ${h.personaje}</span>
+                            <p style="font-size: 14px; color: #334155; line-height: 1.6;">${h.contenido}</p>
+                        </div>`;
+                });
+                checkAdminUI();
             });
         }
 
@@ -1561,54 +1517,43 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const titulo = document.getElementById('hist-titulo').value.trim();
             const personaje = document.getElementById('hist-personaje').value.trim();
             const contenido = document.getElementById('hist-contenido').value.trim();
-
             if (!titulo || !personaje || !contenido) return;
 
-            let historias = JSON.parse(localStorage.getItem('historias_arbol_yireh') || '[]');
-            historias.unshift({ titulo, personaje, contenido });
-            localStorage.setItem('historias_arbol_yireh', JSON.stringify(historias));
-
-            document.getElementById('hist-titulo').value = '';
-            document.getElementById('hist-personaje').value = '';
-            document.getElementById('hist-contenido').value = '';
-            document.getElementById('form-crear-historia').style.display = 'none';
-            cargarHistoriasBiblicas();
-            alert('¡Historia bíblica publicada con éxito en el Árbol de la Vida!');
+            db.ref('historias_arbol').push({ titulo, personaje, contenido, timestamp: firebase.database.ServerValue.TIMESTAMP })
+            .then(() => {
+                document.getElementById('hist-titulo').value = '';
+                document.getElementById('hist-personaje').value = '';
+                document.getElementById('hist-contenido').value = '';
+                document.getElementById('form-crear-historia').style.display = 'none';
+                alert('¡Historia publicada en vivo en el Árbol de la Vida!');
+            });
         }
-
-        function eliminarHistoriaBiblica(idx) {
-            let historias = JSON.parse(localStorage.getItem('historias_arbol_yireh') || '[]');
-            historias.splice(idx, 1);
-            localStorage.setItem('historias_arbol_yireh', JSON.stringify(historias));
-            cargarHistoriasBiblicas();
-        }
+        function eliminarHistoriaBiblica(id) { if(confirm('¿Borrar historia?')) db.ref('historias_arbol').child(id).remove(); }
 
         // ==========================================
-        // TEMAS DEL MES PARA NIÑOS
+        // TEMAS DEL MES PARA NIÑOS (FIREBASE)
         // ==========================================
-        const temasNinosDefecto = [
-            { mes: 'Octubre - Héroes de la Fe', versiculo: 'Josué 1:9', desc: 'Aprendiendo que Dios es nuestro escudo y fortaleza en todo momento.' }
-        ];
-
         function cargarTemasNinos() {
-            let temas = JSON.parse(localStorage.getItem('temas_ninos_yireh'));
-            if (!temas) {
-                temas = temasNinosDefecto;
-                localStorage.setItem('temas_ninos_yireh', JSON.stringify(temas));
-            }
-            const cont = document.getElementById('lista-temas-ninos');
-            if(!cont) return;
-            cont.innerHTML = '';
-            temas.forEach((t, idx) => {
-                cont.innerHTML += `
-                    <div class="tema-card" style="border-left-color: #0284c7;">
-                        <button class="btn-borrar-item solo-admin" onclick="eliminarTemaNinos(${idx})">✕</button>
-                        <span class="tema-semana" style="color: #0284c7;">${t.mes}</span>
-                        <h4>Lección Infantil</h4>
-                        <span class="tema-versiculo">📖 ${t.versiculo}</span>
-                        <p>${t.desc}</p>
-                    </div>
-                `;
+            db.ref('temas_ninos').on('value', snap => {
+                const cont = document.getElementById('lista-temas-ninos');
+                if(!cont) return;
+                cont.innerHTML = '';
+                let temas = [];
+                if(snap.exists()) snap.forEach(child => { temas.push({id: child.key, ...child.val()}); });
+                else temas = [{ mes: 'Octubre - Héroes de la Fe', versiculo: 'Josué 1:9', desc: 'Aprendiendo que Dios es nuestro escudo y fortaleza en todo momento.' }];
+                
+                temas.reverse().forEach(t => {
+                    const btnDelete = t.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarTemaNinos('${t.id}')">✕</button>` : '';
+                    cont.innerHTML += `
+                        <div class="tema-card" style="border-left-color: #0284c7;">
+                            ${btnDelete}
+                            <span class="tema-semana" style="color: #0284c7;">${t.mes}</span>
+                            <h4>Lección Infantil</h4>
+                            <span class="tema-versiculo">📖 ${t.versiculo}</span>
+                            <p>${t.desc}</p>
+                        </div>`;
+                });
+                checkAdminUI();
             });
         }
 
@@ -1616,29 +1561,20 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const mes = document.getElementById('temas-ninos-mes').value.trim();
             const versiculo = document.getElementById('temas-ninos-versiculo').value.trim();
             const desc = document.getElementById('temas-ninos-desc').value.trim();
-
             if (!mes || !versiculo || !desc) return;
 
-            let temas = JSON.parse(localStorage.getItem('temas_ninos_yireh') || '[]');
-            temas.unshift({ mes, versiculo, desc });
-            localStorage.setItem('temas_ninos_yireh', JSON.stringify(temas));
-
-            document.getElementById('temas-ninos-mes').value = '';
-            document.getElementById('temas-ninos-versiculo').value = '';
-            document.getElementById('temas-ninos-desc').value = '';
-            document.getElementById('form-nuevo-tema-ninos').style.display = 'none';
-            cargarTemasNinos();
+            db.ref('temas_ninos').push({ mes, versiculo, desc, timestamp: firebase.database.ServerValue.TIMESTAMP })
+            .then(() => {
+                document.getElementById('temas-ninos-mes').value = '';
+                document.getElementById('temas-ninos-versiculo').value = '';
+                document.getElementById('temas-ninos-desc').value = '';
+                document.getElementById('form-nuevo-tema-ninos').style.display = 'none';
+            });
         }
-
-        function eliminarTemaNinos(idx) {
-            let temas = JSON.parse(localStorage.getItem('temas_ninos_yireh') || '[]');
-            temas.splice(idx, 1);
-            localStorage.setItem('temas_ninos_yireh', JSON.stringify(temas));
-            cargarTemasNinos();
-        }
+        function eliminarTemaNinos(id) { if(confirm('¿Borrar tema?')) db.ref('temas_ninos').child(id).remove(); }
 
         // ==========================================
-        // GESTIÓN DE ASISTENCIA SEMANAL DE CASAS (PLANILLA)
+        // GESTIÓN DE ASISTENCIA SEMANAL CASAS (FIREBASE)
         // ==========================================
         function registrarAsistenciaCasa() {
             const nombreCasa = document.getElementById('asist-casa-nombre').value.trim();
@@ -1650,175 +1586,94 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
 
             if (!nombreCasa || !claveCasa || !servidor || !semana || !nombresAsistentes) {
-                alert('Por favor completa todos los campos obligatorios.');
-                return;
+                alert('Por favor completa todos los campos obligatorios.'); return;
             }
 
-            const lineas = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-            let asistentesArray = [];
-
-            lineas.forEach(linea => {
+            const asistentesArray = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0).map(linea => {
                 let partes = linea.split('-');
-                let nombre = partes[0] ? partes[0].trim() : linea;
-                let telefono = partes[1] ? partes[1].trim() : 'Sin teléfono';
-                asistentesArray.push({ nombre: nombre, telefono: telefono });
+                return { nombre: partes[0] ? partes[0].trim() : linea, telefono: partes[1] ? partes[1].trim() : 'Sin teléfono' };
             });
 
-            let registros = JSON.parse(localStorage.getItem('asistencias_casas_yireh') || '[]');
-            
-            registros.unshift({
-                casa: nombreCasa,
-                clave: claveCasa,
-                direccion: direccion,
-                servidor: servidor,
-                anfitrion: anfitrion,
-                semana: semana,
-                asistentes: asistentesArray,
-                fechaRegistro: new Date().toLocaleDateString()
+            db.ref('asistencias_casas').push({
+                casa: nombreCasa, clave: claveCasa, direccion: direccion, servidor: servidor,
+                anfitrion: anfitrion, semana: semana, asistentes: asistentesArray,
+                fechaRegistro: new Date().toLocaleDateString(), timestamp: Date.now()
+            }).then(() => {
+                alert('¡Planilla registrada con éxito en la NUBE!');
+                document.getElementById('form-asistencia-casa').style.display = 'none';
+                document.getElementById('asist-casa-nombre').value = ''; document.getElementById('asist-casa-clave').value = '';
+                document.getElementById('asist-direccion').value = ''; document.getElementById('asist-servidor').value = '';
+                document.getElementById('asist-anfitrion').value = ''; document.getElementById('asist-semana').value = '';
+                document.getElementById('asist-nombres').value = '';
             });
-
-            localStorage.setItem('asistencias_casas_yireh', JSON.stringify(registros));
-            alert('¡Planilla de asistencia registrada con éxito!');
-            
-            document.getElementById('form-asistencia-casa').style.display = 'none';
-            document.getElementById('asist-casa-nombre').value = '';
-            document.getElementById('asist-casa-clave').value = '';
-            document.getElementById('asist-direccion').value = '';
-            document.getElementById('asist-servidor').value = '';
-            document.getElementById('asist-anfitrion').value = '';
-            document.getElementById('asist-semana').value = '';
-            document.getElementById('asist-nombres').value = '';
         }
 
         function abrirModalReporteCasa() {
             document.getElementById('modal-reporte-casa').style.display = 'flex';
             document.getElementById('resultado-reporte-casa').style.display = 'none';
-            document.getElementById('input-clave-casa').value = '';
-            document.getElementById('input-clave-casa').focus();
+            document.getElementById('input-clave-casa').value = ''; document.getElementById('input-clave-casa').focus();
         }
-        function cerrarModalReporteCasa() {
-            document.getElementById('modal-reporte-casa').style.display = 'none';
-        }
+        function cerrarModalReporteCasa() { document.getElementById('modal-reporte-casa').style.display = 'none'; }
 
         let datosReporteActual = null;
-
         function cargarReportePorClave() {
             const claveIngresada = document.getElementById('input-clave-casa').value.trim();
-            if (!claveIngresada) {
-                alert('Por favor ingresa tu clave.');
-                return;
-            }
+            if (!claveIngresada) return;
 
-            const registros = JSON.parse(localStorage.getItem('asistencias_casas_yireh') || '[]');
-            const encontrados = registros.filter(r => r.clave === claveIngresada);
+            db.ref('asistencias_casas').orderByChild('clave').equalTo(claveIngresada).once('value', snap => {
+                if (!snap.exists()) { alert('No se encontraron registros con esta clave.'); return; }
+                let records = [];
+                snap.forEach(c => records.push(c.val()));
+                records.sort((a,b) => b.timestamp - a.timestamp); // Más reciente primero
+                datosReporteActual = records[0];
 
-            if (encontrados.length === 0) {
-                alert('No se encontraron registros con esta clave.');
-                document.getElementById('resultado-reporte-casa').style.display = 'none';
-                return;
-            }
+                document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa;
+                document.getElementById('pl-casa-semana').textContent = datosReporteActual.semana;
+                document.getElementById('pl-casa-direccion').textContent = datosReporteActual.direccion;
+                document.getElementById('pl-casa-servidor').textContent = datosReporteActual.servidor;
+                document.getElementById('pl-casa-anfitrion').textContent = datosReporteActual.anfitrion;
+                document.getElementById('pl-total-asistentes').textContent = 'Total Asistentes: ' + datosReporteActual.asistentes.length;
 
-            datosReporteActual = encontrados[0];
-
-            document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa;
-            document.getElementById('pl-casa-semana').textContent = datosReporteActual.semana;
-            document.getElementById('pl-casa-direccion').textContent = datosReporteActual.direccion;
-            document.getElementById('pl-casa-servidor').textContent = datosReporteActual.servidor;
-            document.getElementById('pl-casa-anfitrion').textContent = datosReporteActual.anfitrion;
-            document.getElementById('pl-total-asistentes').textContent = 'Total Asistentes: ' + datosReporteActual.asistentes.length;
-
-            const tbody = document.getElementById('tabla-planilla-body');
-            tbody.innerHTML = '';
-
-            datosReporteActual.asistentes.forEach((asist, idx) => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td style="text-align: center; font-weight: 800; background: #f1f5f9;">${idx + 1}</td>
-                        <td><strong>${asist.nombre}</strong></td>
-                        <td>${asist.telefono}</td>
-                        <td style="text-align: center; color: #16a34a; font-weight: 800;">✓ Presente</td>
-                    </tr>
-                `;
+                const tbody = document.getElementById('tabla-planilla-body');
+                tbody.innerHTML = '';
+                datosReporteActual.asistentes.forEach((asist, idx) => {
+                    tbody.innerHTML += `<tr><td style="text-align: center; font-weight: 800; background: #f1f5f9;">${idx + 1}</td>
+                                        <td><strong>${asist.nombre}</strong></td><td>${asist.telefono}</td>
+                                        <td style="text-align: center; color: #16a34a; font-weight: 800;">✓ Presente</td></tr>`;
+                });
+                document.getElementById('resultado-reporte-casa').style.display = 'block';
             });
-
-            document.getElementById('resultado-reporte-casa').style.display = 'block';
         }
 
         function descargarReporteCasaExcel() {
             if (!datosReporteActual) return;
             let csvContent = '\uFEFFPLANILLA DE ASISTENCIA - CASA EVANGELÍSTICA\r\n';
-            csvContent += `Casa:, "${datosReporteActual.casa}"\r\n`;
-            csvContent += `Semana:, "${datosReporteActual.semana}"\r\n`;
-            csvContent += `Dirección:, "${datosReporteActual.direccion}"\r\n`;
-            csvContent += `Servidor:, "${datosReporteActual.servidor}"\r\n`;
-            csvContent += `Anfitrión:, "${datosReporteActual.anfitrion}"\r\n\r\n`;
-            csvContent += 'No,Nombre Completo,Teléfono,Asistencia\r\n';
-            
-            datosReporteActual.asistentes.forEach((a, i) => {
-                csvContent += `${i + 1},"${a.nombre}","${a.telefono}",Presente\r\n`;
-            });
-
+            csvContent += `Casa:, "${datosReporteActual.casa}"\r\nSemana:, "${datosReporteActual.semana}"\r\nDirección:, "${datosReporteActual.direccion}"\r\nServidor:, "${datosReporteActual.servidor}"\r\nAnfitrión:, "${datosReporteActual.anfitrion}"\r\n\r\nNo,Nombre Completo,Teléfono,Asistencia\r\n`;
+            datosReporteActual.asistentes.forEach((a, i) => { csvContent += `${i + 1},"${a.nombre}","${a.telefono}",Presente\r\n`; });
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
+            const a = document.createElement('a'); a.href = url;
             a.download = 'planilla_' + datosReporteActual.casa.toLowerCase().replace(/\s+/g, '_') + '.csv';
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
         }
 
         // ==========================================
-        // BASE DE DATOS DE OYENTES Y CONTENIDOS
+        // TEMAS CASAS, EVENTOS Y POSTS (FIREBASE)
         // ==========================================
-        function abrirModalOyentes() {
-            const lista = JSON.parse(localStorage.getItem('oyentes_registrados_yireh') || '[]');
-            const tbody = document.getElementById('tabla-oyentes-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            if (lista.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:24px; color:#64748b;">Aún no hay oyentes registrados.</td></tr>';
-            } else {
-                lista.forEach((item, index) => {
-                    tbody.innerHTML += '<tr><td><strong>' + (index + 1) + '</strong></td><td>' + item.nombre + '</td><td>' + item.correo + '</td><td>' + (item.fecha || '-') + '</td></tr>';
-                });
-            }
-            document.getElementById('modal-oyentes').style.display = 'flex';
-        }
-        function cerrarModalOyentes() { document.getElementById('modal-oyentes').style.display = 'none'; }
-
-        function descargarCSVRegistrados() {
-            const lista = JSON.parse(localStorage.getItem('oyentes_registrados_yireh') || '[]');
-            if (lista.length === 0) { alert('Aún no hay oyentes registrados.'); return; }
-            let csvContent = '\uFEFFNumero,Nombre Completo,Correo Electronico,Fecha de Registro\r\n';
-            lista.forEach((u, i) => {
-                csvContent += (i + 1) + ',"' + (u.nombre || '') + '","' + (u.correo || '') + '","' + (u.fecha || '') + '"\r\n';
-            });
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'oyentes_juda_radio.csv';
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        }
-
-        function limpiarListaOyentes() {
-            if (confirm('¿Estás seguro de borrar la lista de oyentes?')) {
-                localStorage.removeItem('oyentes_registrados_yireh');
-                abrirModalOyentes();
-                actualizarContadorRegistros();
-            }
-        }
-
-        const temasPorDefecto = [
-            { semana: 'Semana 1', titulo: 'Edificando el Altar Familiar', cita: 'Josué 24:15', resumen: 'Principios prácticos para restaurar la oración en cada hogar.', archivoNombre: '', archivoData: '' }
-        ];
         function cargarTemasMes() {
-            let temas = JSON.parse(localStorage.getItem('temas_casas_yireh'));
-            if (!temas) { temas = temasPorDefecto; localStorage.setItem('temas_casas_yireh', JSON.stringify(temas)); }
-            const contenedor = document.getElementById('lista-temas-mes');
-            if(!contenedor) return;
-            contenedor.innerHTML = '';
-            temas.forEach((t, idx) => {
-                const botonGuia = t.archivoData ? '<a href="' + t.archivoData + '" download="' + t.archivoNombre + '" class="btn-descargar-guia">📥 Descargar Guía</a>' : '';
-                contenedor.innerHTML += '<div class="tema-card"><button class="btn-borrar-item solo-admin" onclick="eliminarTema(' + idx + ')">✕</button><span class="tema-semana">' + t.semana + '</span><h4>' + t.titulo + '</h4><span class="tema-versiculo">📖 ' + t.cita + '</span><p>' + t.resumen + '</p>' + botonGuia + '</div>';
+            db.ref('temas_casas').on('value', snap => {
+                const contenedor = document.getElementById('lista-temas-mes');
+                if(!contenedor) return;
+                contenedor.innerHTML = '';
+                let temas = [];
+                if(snap.exists()) snap.forEach(c => temas.push({id: c.key, ...c.val()}));
+                else temas = [{ semana: 'Semana 1', titulo: 'Edificando el Altar Familiar', cita: 'Josué 24:15', resumen: 'Principios prácticos para restaurar la oración en cada hogar.' }];
+                
+                temas.reverse().forEach(t => {
+                    const btnDel = t.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarTema('${t.id}')">✕</button>` : '';
+                    contenedor.innerHTML += `<div class="tema-card">${btnDel}<span class="tema-semana">${t.semana}</span><h4>${t.titulo}</h4><span class="tema-versiculo">📖 ${t.cita}</span><p>${t.resumen}</p></div>`;
+                });
+                checkAdminUI();
             });
         }
         function agregarTemaMes() {
@@ -1826,37 +1681,29 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const titulo = document.getElementById('tema-titulo').value.trim();
             const cita = document.getElementById('tema-cita').value.trim();
             const resumen = document.getElementById('tema-resumen').value.trim();
-            const inputArchivo = document.getElementById('tema-archivo');
-            const guardar = (nombreArch, dataArch) => {
-                const temas = JSON.parse(localStorage.getItem('temas_casas_yireh') || '[]');
-                temas.unshift({ semana, titulo, cita, resumen, archivoNombre: nombreArch, archivoData: dataArch });
-                localStorage.setItem('temas_casas_yireh', JSON.stringify(temas));
+            if(!semana) return;
+            db.ref('temas_casas').push({ semana, titulo, cita, resumen, timestamp: Date.now() }).then(() => {
                 document.getElementById('form-nuevo-tema').style.display = 'none';
-                cargarTemasMes();
-            };
-            if (inputArchivo.files && inputArchivo.files[0]) {
-                const file = inputArchivo.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) { guardar(file.name, e.target.result); };
-                reader.readAsDataURL(file);
-            } else { guardar('', ''); }
+                document.getElementById('tema-semana').value=''; document.getElementById('tema-titulo').value='';
+                document.getElementById('tema-cita').value=''; document.getElementById('tema-resumen').value='';
+            });
         }
-        function eliminarTema(idx) {
-            const temas = JSON.parse(localStorage.getItem('temas_casas_yireh') || '[]');
-            temas.splice(idx, 1); localStorage.setItem('temas_casas_yireh', JSON.stringify(temas)); cargarTemasMes();
-        }
+        function eliminarTema(id) { if(confirm('¿Borrar tema?')) db.ref('temas_casas').child(id).remove(); }
 
-        const eventosPorDefecto = [
-            { fecha: 'Viernes', titulo: 'Gran Vigilia de Poder y Avivamiento', hora: '8:00 PM | Templo Yireh', desc: 'Una noche intensa de clamor y adoración profética.' }
-        ];
         function cargarEventos() {
-            let eventos = JSON.parse(localStorage.getItem('eventos_yireh'));
-            if (!eventos) { eventos = eventosPorDefecto; localStorage.setItem('eventos_yireh', JSON.stringify(eventos)); }
-            const cont = document.getElementById('lista-eventos');
-            if(!cont) return;
-            cont.innerHTML = '';
-            eventos.forEach((ev, idx) => {
-                cont.innerHTML += '<div class="evento-card"><button class="btn-borrar-item solo-admin" onclick="eliminarEvento(' + idx + ')">✕</button><span class="evento-fecha">📅 ' + ev.fecha + '</span><h3>' + ev.titulo + '</h3><div class="evento-meta">📍 ' + ev.hora + '</div><p>' + ev.desc + '</p></div>';
+            db.ref('eventos').on('value', snap => {
+                const cont = document.getElementById('lista-eventos');
+                if(!cont) return;
+                cont.innerHTML = '';
+                let eventos = [];
+                if(snap.exists()) snap.forEach(c => eventos.push({id: c.key, ...c.val()}));
+                else eventos = [{ fecha: 'Viernes', titulo: 'Gran Vigilia de Poder y Avivamiento', hora: '8:00 PM | Templo Yireh', desc: 'Una noche intensa de clamor y adoración profética.' }];
+                
+                eventos.reverse().forEach(ev => {
+                    const btnDel = ev.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarEvento('${ev.id}')">✕</button>` : '';
+                    cont.innerHTML += `<div class="evento-card">${btnDel}<span class="evento-fecha">📅 ${ev.fecha}</span><h3>${ev.titulo}</h3><div class="evento-meta">📍 ${ev.hora}</div><p>${ev.desc}</p></div>`;
+                });
+                checkAdminUI();
             });
         }
         function agregarEvento() {
@@ -1864,37 +1711,29 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const titulo = document.getElementById('ev-titulo').value.trim();
             const hora = document.getElementById('ev-hora').value.trim();
             const desc = document.getElementById('ev-desc').value.trim();
-            const eventos = JSON.parse(localStorage.getItem('eventos_yireh') || '[]');
-            eventos.unshift({ fecha, titulo, hora, desc });
-            localStorage.setItem('eventos_yireh', JSON.stringify(eventos));
-            document.getElementById('form-nuevo-evento').style.display = 'none'; cargarEventos();
+            if(!fecha) return;
+            db.ref('eventos').push({ fecha, titulo, hora, desc, timestamp: Date.now() }).then(() => {
+                document.getElementById('form-nuevo-evento').style.display = 'none';
+                document.getElementById('ev-fecha').value=''; document.getElementById('ev-titulo').value='';
+                document.getElementById('ev-hora').value=''; document.getElementById('ev-desc').value='';
+            });
         }
-        function eliminarEvento(idx) {
-            const eventos = JSON.parse(localStorage.getItem('eventos_yireh') || '[]');
-            eventos.splice(idx, 1); localStorage.setItem('eventos_yireh', JSON.stringify(eventos)); cargarEventos();
-        }
+        function eliminarEvento(id) { if(confirm('¿Borrar evento?')) db.ref('eventos').child(id).remove(); }
 
-        const postsPorDefecto = [
-            { titulo: 'Viernes Generación Poderosa', url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=900' }
-        ];
         function cargarPostsJuveniles() {
-            let posts = JSON.parse(localStorage.getItem('posts_jovenes_yireh'));
-            if (!posts) { posts = postsPorDefecto; localStorage.setItem('posts_jovenes_yireh', JSON.stringify(posts)); }
-            const cont = document.getElementById('lista-posts-juveniles');
-            if(!cont) return;
-            cont.innerHTML = '';
-            posts.forEach((p, idx) => {
-                cont.innerHTML += `
-                    <div class="post-card">
-                        <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10;" onclick="eliminarPostJuvenil(${idx})">✕</button>
-                        <img src="${p.url}" alt="${p.titulo}" class="post-img">
-                        <div class="post-body">
-                            <h4>${p.titulo}</h4>
-                            <p>¡Descarga este flyer para tus estados!</p>
-                            <a href="${p.url}" download="flyer_yireh.jpg" target="_blank" class="btn-descargar-post">📥 Descargar Post</a>
-                        </div>
-                    </div>
-                `;
+            db.ref('posts_jovenes').on('value', snap => {
+                const cont = document.getElementById('lista-posts-juveniles');
+                if(!cont) return;
+                cont.innerHTML = '';
+                let posts = [];
+                if(snap.exists()) snap.forEach(c => posts.push({id: c.key, ...c.val()}));
+                else posts = [{ titulo: 'Viernes Generación Poderosa', url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=900' }];
+                
+                posts.reverse().forEach(p => {
+                    const btnDel = p.id ? `<button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarPostJuvenil('${p.id}')">✕</button>` : '';
+                    cont.innerHTML += `<div class="post-card">${btnDel}<img src="${p.url}" alt="${p.titulo}" class="post-img"><div class="post-body"><h4>${p.titulo}</h4><p>¡Descarga este flyer para tus estados!</p><a href="${p.url}" download="flyer_yireh.jpg" target="_blank" class="btn-descargar-post">📥 Descargar Post</a></div></div>`;
+                });
+                checkAdminUI();
             });
         }
         function agregarPostJuvenil() {
@@ -1902,26 +1741,78 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const inputArch = document.getElementById('post-archivo');
             if (!inputArch.files || !inputArch.files[0]) return;
             comprimirYSubirImagen(inputArch.files[0], function(base64Optimizado) {
-                try {
-                    const posts = JSON.parse(localStorage.getItem('posts_jovenes_yireh') || '[]');
-                    posts.unshift({ titulo: titulo, url: base64Optimizado });
-                    localStorage.setItem('posts_jovenes_yireh', JSON.stringify(posts));
-                    document.getElementById('post-titulo').value = '';
-                    inputArch.value = '';
+                db.ref('posts_jovenes').push({ titulo: titulo, url: base64Optimizado, timestamp: Date.now() }).then(() => {
+                    document.getElementById('post-titulo').value = ''; inputArch.value = '';
                     document.getElementById('form-nuevo-post').style.display = 'none';
-                    cargarPostsJuveniles();
-                } catch (err) {
-                    alert('El almacenamiento local se ha llenado. Intenta con una imagen más ligera.');
-                }
+                });
             });
         }
-        function eliminarPostJuvenil(idx) {
-            const posts = JSON.parse(localStorage.getItem('posts_jovenes_yireh') || '[]');
-            posts.splice(idx, 1); localStorage.setItem('posts_jovenes_yireh', JSON.stringify(posts)); cargarPostsJuveniles();
-        }
+        function eliminarPostJuvenil(id) { if(confirm('¿Borrar post?')) db.ref('posts_jovenes').child(id).remove(); }
 
         // ==========================================
-        // GESTIÓN DE CHAT EN VIVO DE RADIO
+        // GALERÍA DE FOTOS (FIREBASE)
+        // ==========================================
+        const nombresAlbumes = {
+            jovenes: '🔥 Jóvenes (Generación Poderosa)', casas: '🏡 Casas Evangelísticas',
+            campamento: '🏕️ Campamento Familiar', sanidad: '✨ Servicio de Sanidad y Milagros',
+            intimidad: '🕊️ Tiempos de Intimidad y Cultos Familiares'
+        };
+
+        function inicializarGaleriaAlbums() {
+            for (let key in nombresAlbumes) {
+                db.ref('galeria/' + key).on('value', snap => {
+                    const spanCount = document.getElementById('count-' + key);
+                    if (spanCount) spanCount.textContent = snap.numChildren() + ' foto(s)';
+                });
+            }
+        }
+
+        let albumActualKey = null;
+        function abrirAlbum(key) {
+            albumActualKey = key;
+            document.getElementById('titulo-album-actual').textContent = nombresAlbumes[key];
+            document.getElementById('vista-albumes-principal').style.display = 'none';
+            document.getElementById('vista-album-detalle').style.display = 'block';
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+
+            db.ref('galeria/' + key).on('value', snap => {
+                if(albumActualKey !== key) return;
+                const contenedor = document.getElementById('lista-fotos-album');
+                contenedor.innerHTML = '';
+                let fotos = [];
+                snap.forEach(c => fotos.push({id: c.key, ...c.val()}));
+                if (fotos.length === 0) {
+                    contenedor.innerHTML = '<p style="color:#64748b; grid-column:1/-1; padding:30px; text-align:center;">No hay fotos en esta carpeta todavía.</p>';
+                } else {
+                    fotos.reverse().forEach(f => {
+                        contenedor.innerHTML += `<div class="foto-card" onclick="abrirZoomFoto('${f.url}', '${f.titulo}')">
+                            <button class="btn-borrar-item solo-admin" style="z-index:20; display:none;" onclick="event.stopPropagation(); eliminarFotoAlbum('${key}', '${f.id}')">✕</button>
+                            <img src="${f.url}" alt="${f.titulo}"><div class="foto-caption">${f.titulo}</div></div>`;
+                    });
+                }
+                checkAdminUI();
+            });
+        }
+        function cerrarAlbum() { albumActualKey = null; document.getElementById('vista-album-detalle').style.display = 'none'; document.getElementById('vista-albumes-principal').style.display = 'block'; }
+        
+        function subirFotoAlbum() {
+            const titulo = document.getElementById('foto-titulo').value.trim();
+            const albumKey = document.getElementById('foto-album-select').value;
+            const inputArch = document.getElementById('foto-archivo');
+            if (!inputArch.files || !inputArch.files[0]) return;
+
+            comprimirYSubirImagen(inputArch.files[0], function(base64) {
+                db.ref('galeria/' + albumKey).push({ titulo: titulo, url: base64, timestamp: Date.now() }).then(() => {
+                    document.getElementById('foto-titulo').value = ''; inputArch.value = '';
+                    document.getElementById('form-nueva-foto').style.display = 'none';
+                    alert('¡Foto subida con éxito a la nube!');
+                });
+            });
+        }
+        function eliminarFotoAlbum(key, id) { if(confirm('¿Borrar foto?')) db.ref('galeria/' + key).child(id).remove(); }
+
+        // ==========================================
+        // GESTIÓN DE CHAT Y OYENTES EN VIVO
         // ==========================================
         let usuarioActual = null;
 
@@ -1931,111 +1822,170 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             if (!nombre || !correo) return;
             
             usuarioActual = { nombre: nombre, correo: correo, fecha: new Date().toLocaleString() };
-            const registrados = JSON.parse(localStorage.getItem('oyentes_registrados_yireh') || '[]');
-            registrados.push(usuarioActual);
-            localStorage.setItem('oyentes_registrados_yireh', JSON.stringify(registrados));
             localStorage.setItem('usuario_activo_yireh', JSON.stringify(usuarioActual));
             
+            db.ref('oyentes').push(usuarioActual);
             mostrarChatActivo();
-            actualizarContadorRegistros();
         }
 
         function mostrarChatActivo() {
-            const regBox = document.getElementById('chat-registro');
-            const chatInt = document.getElementById('chat-interfaz');
-            const btnCam = document.getElementById('btn-cambiar');
-            const subUsr = document.getElementById('subtitulo-usuario');
-
-            if (regBox) regBox.style.display = 'none';
-            if (chatInt) chatInt.style.display = 'flex';
-            if (btnCam) btnCam.style.display = 'inline-block';
-            if (subUsr && usuarioActual) subUsr.textContent = 'Conectado como: ' + usuarioActual.nombre;
+            document.getElementById('chat-registro').style.display = 'none';
+            document.getElementById('chat-interfaz').style.display = 'flex';
+            document.getElementById('btn-cambiar').style.display = 'inline-block';
+            document.getElementById('subtitulo-usuario').textContent = 'Conectado como: ' + usuarioActual.nombre;
         }
 
         function cerrarSesionChat() {
             localStorage.removeItem('usuario_activo_yireh');
             usuarioActual = null;
-            const regBox = document.getElementById('chat-registro');
-            const chatInt = document.getElementById('chat-interfaz');
-            const btnCam = document.getElementById('btn-cambiar');
-            const subUsr = document.getElementById('subtitulo-usuario');
-
-            if (chatInt) chatInt.style.display = 'none';
-            if (regBox) regBox.style.display = 'flex';
-            if (btnCam) btnCam.style.display = 'none';
-            if (subUsr) subUsr.textContent = 'Regístrate para participar';
+            document.getElementById('chat-interfaz').style.display = 'none';
+            document.getElementById('chat-registro').style.display = 'flex';
+            document.getElementById('btn-cambiar').style.display = 'none';
+            document.getElementById('subtitulo-usuario').textContent = 'Regístrate para participar';
         }
 
-        function actualizarContadorRegistros() {
-            const registrados = JSON.parse(localStorage.getItem('oyentes_registrados_yireh') || '[]');
-            const elCont = document.getElementById('contador-usuarios');
-            if (elCont) {
-                elCont.textContent = registrados.length + ' oyente(s) registrado(s) en la comunidad';
-            }
+        function inicializarChatEnVivo() {
+            db.ref('chat').limitToLast(50).on('child_added', snap => {
+                const msg = snap.val();
+                const contenedor = document.getElementById('chat-messages');
+                const divMsg = document.createElement('div');
+                
+                const isMe = usuarioActual && msg.correo === usuarioActual.correo;
+                
+                if (msg.correo === 'admin@yireh' || msg.nombre === 'Moderador') {
+                    divMsg.className = 'msg-item msg-mod';
+                    divMsg.innerHTML = '<span class="msg-autor">Moderador</span><div class="msg-burbuja">' + msg.texto + '</div>';
+                } else {
+                    divMsg.className = isMe ? 'msg-item msg-user' : 'msg-item msg-mod';
+                    divMsg.innerHTML = '<span class="msg-autor">' + msg.nombre + '</span><div class="msg-burbuja">' + msg.texto + '</div>';
+                }
+                contenedor.appendChild(divMsg);
+                contenedor.scrollTop = contenedor.scrollHeight;
+            });
         }
 
         function enviarMensajeChat() {
             const input = document.getElementById('chat-input');
             const texto = input.value.trim();
             if (!texto || !usuarioActual) return;
-            const contenedor = document.getElementById('chat-messages');
-            const divMsg = document.createElement('div');
-            divMsg.className = 'msg-item msg-user';
-            divMsg.innerHTML = '<span class="msg-autor">' + usuarioActual.nombre + '</span><div class="msg-burbuja">' + texto + '</div>';
-            contenedor.appendChild(divMsg);
+            
+            db.ref('chat').push({
+                nombre: usuarioActual.nombre,
+                correo: usuarioActual.correo,
+                texto: texto,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
             input.value = '';
-            contenedor.scrollTop = contenedor.scrollHeight;
+        }
+
+        function actualizarContadorRegistros() {
+            db.ref('oyentes').on('value', snap => {
+                const elCont = document.getElementById('contador-usuarios');
+                if (elCont) elCont.textContent = snap.numChildren() + ' oyente(s) registrado(s) en la comunidad';
+            });
+        }
+
+        function abrirModalOyentes() {
+            db.ref('oyentes').once('value', snap => {
+                const tbody = document.getElementById('tabla-oyentes-body');
+                if (!tbody) return;
+                tbody.innerHTML = '';
+                if (!snap.exists()) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:24px; color:#64748b;">Aún no hay oyentes registrados.</td></tr>';
+                } else {
+                    let i = 1;
+                    snap.forEach(child => {
+                        let item = child.val();
+                        tbody.innerHTML += `<tr><td><strong>${i++}</strong></td><td>${item.nombre}</td><td>${item.correo}</td><td>${item.fecha || '-'}</td></tr>`;
+                    });
+                }
+                document.getElementById('modal-oyentes').style.display = 'flex';
+            });
+        }
+        function cerrarModalOyentes() { document.getElementById('modal-oyentes').style.display = 'none'; }
+        function descargarCSVRegistrados() {
+            db.ref('oyentes').once('value', snap => {
+                if (!snap.exists()) { alert('Aún no hay oyentes registrados.'); return; }
+                let csvContent = '\uFEFFNumero,Nombre Completo,Correo Electronico,Fecha de Registro\r\n';
+                let i = 1;
+                snap.forEach(child => {
+                    let u = child.val();
+                    csvContent += `${i++},"${u.nombre || ''}","${u.correo || ''}","${u.fecha || ''}"\r\n`;
+                });
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = 'oyentes_juda_radio_nube.csv';
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            });
+        }
+        function limpiarListaOyentes() {
+            if (confirm('¿Estás seguro de borrar TODOS los oyentes de la nube?')) {
+                db.ref('oyentes').remove().then(() => {
+                    abrirModalOyentes();
+                    actualizarContadorRegistros();
+                });
+            }
         }
 
         // ==========================================
-        // CONTADOR REGRESIVO PARA EL CAMPAMENTO (15 OCTUBRE 2027)
+        // ESTADÍSTICAS GLOBALES
         // ==========================================
-        function iniciarContadorCampamento() {
-            const objetivo = new Date(2027, 9, 15, 0, 0, 0).getTime();
+        function inicializarEstadisticas() {
+            const refVisitas = db.ref('estadisticas/visitas');
+            const refLikes = db.ref('estadisticas/likes');
 
-            function actualizarReloj() {
-                const ahora = new Date().getTime();
-                const diferencia = objetivo - ahora;
-
-                if (diferencia > 0) {
-                    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-                    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-                    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-                    const d = document.getElementById('cd-days');
-                    const h = document.getElementById('cd-hours');
-                    const m = document.getElementById('cd-mins');
-                    const s = document.getElementById('cd-secs');
-
-                    if (d) d.textContent = String(dias).padStart(2, '0');
-                    if (h) h.textContent = String(horas).padStart(2, '0');
-                    if (m) m.textContent = String(minutos).padStart(2, '0');
-                    if (s) s.textContent = String(segundos).padStart(2, '0');
-                }
+            if (!sessionStorage.getItem('visitado_sesion')) {
+                refVisitas.transaction(v => (v || 1420) + 1);
+                sessionStorage.setItem('visitado_sesion', 'true');
             }
 
-            actualizarReloj();
-            setInterval(actualizarReloj, 1000);
+            refVisitas.on('value', snap => {
+                const elVisitas = document.getElementById('contador-visitas');
+                if (elVisitas) elVisitas.textContent = (snap.val() || 1420).toLocaleString();
+            });
+
+            refLikes.on('value', snap => {
+                const elLikes = document.getElementById('contador-likes');
+                if (elLikes) elLikes.textContent = (snap.val() || 312).toLocaleString();
+            });
+
+            if (localStorage.getItem('usuario_dio_like') === 'true') {
+                document.getElementById('btn-like').classList.add('liked');
+                document.getElementById('heart-icon').textContent = '💖';
+            }
         }
 
-        // NAVEGACIÓN DINÁMICA DE PESTAÑAS
+        function darMeGusta() {
+            const refLikes = db.ref('estadisticas/likes');
+            if (localStorage.getItem('usuario_dio_like') === 'true') {
+                refLikes.transaction(c => (c || 312) - 1);
+                localStorage.setItem('usuario_dio_like', 'false');
+                document.getElementById('btn-like').classList.remove('liked');
+                document.getElementById('heart-icon').textContent = '❤️';
+            } else {
+                refLikes.transaction(c => (c || 312) + 1);
+                localStorage.setItem('usuario_dio_like', 'true');
+                document.getElementById('btn-like').classList.add('liked');
+                document.getElementById('heart-icon').textContent = '💖';
+                const btn = document.getElementById('btn-like');
+                btn.style.transform = 'scale(1.15)';
+                setTimeout(() => btn.style.transform = 'scale(1)', 200);
+            }
+        }
+
+        // ==========================================
+        // NAVEGACIÓN Y EXTRAS
+        // ==========================================
         function cambiarVista(idVista) {
             const vistas = document.querySelectorAll('.vista-seccion');
             vistas.forEach(v => v.classList.remove('activa'));
-
             const vistaActiva = document.getElementById(idVista);
-            if (vistaActiva) {
-                vistaActiva.classList.add('activa');
-            }
-
-            if (idVista === 'radio') {
-                generarOndasAudio();
-            }
+            if (vistaActiva) vistaActiva.classList.add('activa');
+            if (idVista === 'radio') generarOndasAudio();
 
             const navLinksContainer = document.getElementById('nav-links-container');
             const btnVolverInicio = document.getElementById('btn-volver-inicio');
-
             if (idVista === 'inicio') {
                 if (navLinksContainer) navLinksContainer.style.display = 'flex';
                 if (btnVolverInicio) btnVolverInicio.style.display = 'none';
@@ -2043,63 +1993,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 if (navLinksContainer) navLinksContainer.style.display = 'none';
                 if (btnVolverInicio) btnVolverInicio.style.display = 'inline-flex';
             }
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function inicializarEstadisticas() {
-            let visitas = localStorage.getItem('visitas_iglesia_yireh');
-            if (!visitas) { visitas = 1420; } else { visitas = parseInt(visitas); }
-            if (!sessionStorage.getItem('visitado_sesion')) {
-                visitas += 1;
-                localStorage.setItem('visitas_iglesia_yireh', visitas);
-                sessionStorage.setItem('visitado_sesion', 'true');
-            }
-            const elVisitas = document.getElementById('contador-visitas');
-            if (elVisitas) elVisitas.textContent = visitas.toLocaleString();
-
-            let likes = localStorage.getItem('likes_iglesia_yireh');
-            if (!likes) {
-                likes = 312;
-                localStorage.setItem('likes_iglesia_yireh', likes);
-            } else {
-                likes = parseInt(likes);
-            }
-            const elLikes = document.getElementById('contador-likes');
-            if (elLikes) elLikes.textContent = likes;
-
-            if (localStorage.getItem('usuario_dio_like') === 'true') {
-                const btn = document.getElementById('btn-like');
-                if (btn) btn.classList.add('liked');
-                const heart = document.getElementById('heart-icon');
-                if (heart) heart.textContent = '💖';
-            }
-        }
-
-        function darMeGusta() {
-            let likes = parseInt(localStorage.getItem('likes_iglesia_yireh') || 312);
-            const btn = document.getElementById('btn-like');
-            const heart = document.getElementById('heart-icon');
-
-            if (localStorage.getItem('usuario_dio_like') === 'true') {
-                likes -= 1;
-                localStorage.setItem('likes_iglesia_yireh', likes);
-                localStorage.setItem('usuario_dio_like', 'false');
-                if (btn) btn.classList.remove('liked');
-                if (heart) heart.textContent = '❤️';
-            } else {
-                likes += 1;
-                localStorage.setItem('likes_iglesia_yireh', likes);
-                localStorage.setItem('usuario_dio_like', 'true');
-                if (btn) btn.classList.add('liked');
-                if (heart) heart.textContent = '💖';
-                if (btn) {
-                    btn.style.transform = 'scale(1.15)';
-                    setTimeout(() => btn.style.transform = 'scale(1)', 200);
-                }
-            }
-            const elLikes = document.getElementById('contador-likes');
-            if (elLikes) elLikes.textContent = likes;
         }
 
         function generarOndasAudio() {
@@ -2115,131 +2009,28 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             }
         }
 
-        const nombresAlbumes = {
-            jovenes: '🔥 Jóvenes (Generación Poderosa)',
-            casas: '🏡 Casas Evangelísticas',
-            campamento: '🏕️ Campamento Familiar',
-            sanidad: '✨ Servicio de Sanidad y Milagros',
-            intimidad: '🕊️ Tiempos de Intimidad y Cultos Familiares'
-        };
-
-        const fotosDefectoAlbumes = {
-            jovenes: [{ titulo: 'Servicio Generación Poderosa', url: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=900' }],
-            casas: [{ titulo: 'Comunión en Casa Evangelística', url: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=900' }],
-            campamento: [{ titulo: 'Retiro Anual Campamento Familiar', url: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=900' }],
-            sanidad: [{ titulo: 'Noche de Sanidad y Milagros', url: 'https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=900' }],
-            intimidad: [{ titulo: 'Culto Familiar y Adoración', url: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=900' }]
-        };
-
-        function inicializarGaleriaAlbums() {
-            let galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh'));
-            if (!galeriaStorage) {
-                galeriaStorage = fotosDefectoAlbumes;
-                localStorage.setItem('galeria_albums_yireh', JSON.stringify(galeriaStorage));
-            }
-            for (let key in nombresAlbumes) {
-                const arr = galeriaStorage[key] || [];
-                const spanCount = document.getElementById('count-' + key);
-                if (spanCount) spanCount.textContent = arr.length + ' foto(s)';
-            }
-        }
-
-        let albumActualKey = null;
-
-        function abrirAlbum(key) {
-            albumActualKey = key;
-            const galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh') || JSON.stringify(fotosDefectoAlbumes));
-            const fotos = galeriaStorage[key] || [];
-
-            document.getElementById('titulo-album-actual').textContent = nombresAlbumes[key];
-            const contenedor = document.getElementById('lista-fotos-album');
-            contenedor.innerHTML = '';
-
-            if (fotos.length === 0) {
-                contenedor.innerHTML = '<p style="color:#64748b; grid-column:1/-1; padding:30px; text-align:center;">No hay fotos en esta carpeta todavía.</p>';
-            } else {
-                fotos.forEach((f, idx) => {
-                    contenedor.innerHTML += `
-                        <div class="foto-card" onclick="abrirZoomFoto('${f.url}', '${f.titulo}')">
-                            <button class="btn-borrar-item solo-admin" style="z-index:20;" onclick="event.stopPropagation(); eliminarFotoAlbum('${key}', ${idx})">✕</button>
-                            <img src="${f.url}" alt="${f.titulo}">
-                            <div class="foto-caption">${f.titulo}</div>
-                        </div>
-                    `;
-                });
-            }
-
-            document.getElementById('vista-albumes-principal').style.display = 'none';
-            document.getElementById('vista-album-detalle').style.display = 'block';
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        }
-
-        function cerrarAlbum() {
-            albumActualKey = null;
-            document.getElementById('vista-album-detalle').style.display = 'none';
-            document.getElementById('vista-albumes-principal').style.display = 'block';
-            inicializarGaleriaAlbums();
-        }
-
-        function subirFotoAlbum() {
-            const titulo = document.getElementById('foto-titulo').value.trim();
-            const albumKey = document.getElementById('foto-album-select').value;
-            const inputArch = document.getElementById('foto-archivo');
-            if (!inputArch.files || !inputArch.files[0]) return;
-
-            comprimirYSubirImagen(inputArch.files[0], function(base64Optimizado) {
-                try {
-                    let galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh') || JSON.stringify(fotosDefectoAlbumes));
-                    if (!galeriaStorage[albumKey]) galeriaStorage[albumKey] = [];
-                    galeriaStorage[albumKey].unshift({ titulo: titulo, url: base64Optimizado });
-                    localStorage.setItem('galeria_albums_yireh', JSON.stringify(galeriaStorage));
-
-                    document.getElementById('foto-titulo').value = '';
-                    inputArch.value = '';
-                    document.getElementById('form-nueva-foto').style.display = 'none';
-                    inicializarGaleriaAlbums();
-
-                    if (albumActualKey === albumKey) abrirAlbum(albumKey);
-                    alert('¡Foto subida con éxito!');
-                } catch (err) {
-                    alert('El almacenamiento local se ha llenado. Intenta con una imagen más ligera.');
-                }
-            });
-        }
-
-        function eliminarFotoAlbum(key, idx) {
-            const galeriaStorage = JSON.parse(localStorage.getItem('galeria_albums_yireh') || '{}');
-            if (galeriaStorage[key]) {
-                galeriaStorage[key].splice(idx, 1);
-                localStorage.setItem('galeria_albums_yireh', JSON.stringify(galeriaStorage));
-                abrirAlbum(key);
-            }
-        }
-
         // ARRANQUE GLOBAL INMEDIATO
         window.onload = function() {
             cambiarVista('inicio');
-            iniciarContadorCampamento();
+            iniciarContadorCampamento(); 
+            
+            // CARGA DE DATOS EN VIVO DESDE LA NUBE
+            cargarVideosInit();
             cargarTemasMes();
             cargarTemasNinos();
             cargarHistoriasBiblicas();
             cargarEventos();
             inicializarGaleriaAlbums();
             cargarPostsJuveniles();
-            iniciarBaseDatosVideos(function() {
-                cargarVideos('inicio');
-                cargarVideos('jovenes');
-                cargarVideos('ninos');
-                cargarVideos('casas');
-                cargarVideos('eventos');
-            });
+            
             generarOndasAudio();
             inicializarEstadisticas();
             actualizarContadorRegistros();
+            inicializarChatEnVivo();
             
             const guardado = localStorage.getItem('usuario_activo_yireh');
             if (guardado) { usuarioActual = JSON.parse(guardado); mostrarChatActivo(); }
-            if (sessionStorage.getItem('admin_activo_yireh') === 'true') { activarModoAdmin(); }
+            checkAdminUI();
         };
     </script>
 </body>
