@@ -184,6 +184,7 @@
         .badge-ninos { display: inline-block; background: #38bdf8; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 10px 26px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); }
         .ninos-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; text-transform: uppercase; margin-bottom: 20px; color: #fef08a; text-shadow: 0 6px 20px rgba(0,0,0,0.8); }
 
+        /* HERO CARD */
         .ninos-hero-card {
             background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 2px solid rgba(56, 189, 248, 0.4);
             border-radius: 32px; padding: 40px; margin-bottom: 50px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
@@ -1345,15 +1346,15 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
     </footer>
 
     <script>
-        // CONFIGURACIÓN DE FIREBASE
+        // CONFIGURACIÓN DE FIREBASE ACTUALIZADA (IGLESIAYIREHWEB)
         const firebaseConfig = {
-            apiKey: "AIzaSyDAsVcrtxuxqaB2V_5AaFEOa4MW9gn0kbY",
-            authDomain: "yirehweb-5e793.firebaseapp.com",
-            databaseURL: "https://yirehweb-5e793-default-rtdb.firebaseio.com",
-            projectId: "yirehweb-5e793",
-            storageBucket: "yirehweb-5e793.firebasestorage.app",
-            messagingSenderId: "703393817553",
-            appId: "1:703393817553:web:bd23e8728318311967b6f0"
+            apiKey: "AIzaSyB8BPnXCErWAituKIgOp3fxJM_waLbRcSs",
+            authDomain: "iglesiayirehweb.firebaseapp.com",
+            databaseURL: "https://iglesiayirehweb-default-rtdb.firebaseio.com",
+            projectId: "iglesiayirehweb",
+            storageBucket: "iglesiayirehweb.firebasestorage.app",
+            messagingSenderId: "377643854999",
+            appId: "1:377643854999:web:16e9ff01c7020ca017cdd2"
         };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
@@ -1463,7 +1464,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                                 <div class="video-body"><h4>${v.titulo}</h4></div>
                             </div>`;
                     });
-                    checkAdminUI(); // Reactiva los botones de borrar si es admin
+                    checkAdminUI();
                 });
             });
         }
@@ -1489,7 +1490,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS - FIREBASE)
+        // ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS)
         // ==========================================
         function cargarHistoriasBiblicas() {
             db.ref('historias_arbol').on('value', snap => {
@@ -1535,7 +1536,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function eliminarHistoriaBiblica(id) { if(confirm('¿Borrar historia?')) db.ref('historias_arbol').child(id).remove(); }
 
         // ==========================================
-        // TEMAS DEL MES PARA NIÑOS (FIREBASE)
+        // TEMAS DEL MES PARA NIÑOS
         // ==========================================
         function cargarTemasNinos() {
             db.ref('temas_ninos').on('value', snap => {
@@ -1578,7 +1579,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function eliminarTemaNinos(id) { if(confirm('¿Borrar tema?')) db.ref('temas_ninos').child(id).remove(); }
 
         // ==========================================
-        // GESTIÓN DE ASISTENCIA SEMANAL CASAS (FIREBASE)
+        // GESTIÓN DE ASISTENCIA SEMANAL CASAS
         // ==========================================
         function registrarAsistenciaCasa() {
             const nombreCasa = document.getElementById('asist-casa-nombre').value.trim();
@@ -1628,7 +1629,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 if (!snap.exists()) { alert('No se encontraron registros con esta clave.'); return; }
                 let records = [];
                 snap.forEach(c => records.push(c.val()));
-                records.sort((a,b) => b.timestamp - a.timestamp); // Más reciente primero
+                records.sort((a,b) => b.timestamp - a.timestamp);
                 datosReporteActual = records[0];
 
                 document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa;
@@ -1662,7 +1663,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // TEMAS CASAS, EVENTOS Y POSTS (FIREBASE)
+        // TEMAS CASAS Y EVENTOS
         // ==========================================
         function cargarTemasMes() {
             db.ref('temas_casas').on('value', snap => {
@@ -1754,7 +1755,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function eliminarPostJuvenil(id) { if(confirm('¿Borrar post?')) db.ref('posts_jovenes').child(id).remove(); }
 
         // ==========================================
-        // GALERÍA DE FOTOS (FIREBASE)
+        // GALERÍA DE FOTOS
         // ==========================================
         const nombresAlbumes = {
             jovenes: '🔥 Jóvenes (Generación Poderosa)', casas: '🏡 Casas Evangelísticas',
@@ -2016,7 +2017,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         // ARRANQUE GLOBAL INMEDIATO
         window.onload = function() {
             cambiarVista('inicio');
-            iniciarContadorCampamento(); 
             
             // CARGA DE DATOS EN VIVO DESDE LA NUBE
             cargarVideosInit();
