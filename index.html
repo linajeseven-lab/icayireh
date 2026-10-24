@@ -57,7 +57,7 @@
         .tabla-contenedor { max-height: 340px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 16px; margin-bottom: 20px; }
         .tabla-oyentes { width: 100%; border-collapse: collapse; font-size: 13.5px; }
         .tabla-oyentes th { background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; text-align: left; padding: 12px 16px; position: sticky; top: 0; }
-        .tabla-oyentes td { padding: 12px 16px; border: 1px solid #e2e8f0; color: #334155; }
+        .tabla-oyentes td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #334155; }
         .tabla-oyentes tr:nth-child(even) { background: #f8fafc; }
 
         .planilla-card { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 24px; padding: 28px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); margin-top: 15px; }
@@ -802,6 +802,7 @@
                     Un espacio mágico diseñado para que los niños conozcan el amor de Jesús a través de historias, canciones y diversión.
                 </p>
 
+                <!-- HERO CARD -->
                 <div class="ninos-hero-card">
                     <div>
                         <span style="display:inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px;">Aventura con Jesús</span>
@@ -815,6 +816,7 @@
                     </div>
                 </div>
 
+                <!-- VIDEOS INFANTILES -->
                 <div class="seccion-videos-multimedia">
                     <div class="videos-multimedia-header">
                         <h3>📺 Videos y Alabanzas Infantiles</h3>
@@ -833,6 +835,7 @@
                     <div id="lista-videos-ninos" class="videos-grid"></div>
                 </div>
 
+                <!-- TEMAS DEL MES PARA NIÑOS -->
                 <div class="temas-wrapper" style="margin-top: 40px; background: #ffffff; color: #0f172a;">
                     <div class="temas-header">
                         <div>
@@ -855,6 +858,7 @@
                     <div id="lista-temas-ninos" class="temas-grid"></div>
                 </div>
 
+                <!-- MI ÁRBOL DE LA VIDA -->
                 <div class="arbol-vida-box">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
                         <div>
@@ -1341,7 +1345,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
     </footer>
 
     <script>
-        // CONFIGURACIÓN DE FIREBASE (Conectado a tu nube en vivo)
+        // CONFIGURACIÓN DE FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyDAsVcrtxuxqaB2V_5AaFEOa4MW9gn0kbY",
             authDomain: "yirehweb-5e793.firebaseapp.com",
