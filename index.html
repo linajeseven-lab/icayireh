@@ -1435,13 +1435,14 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // YOUTUBE VIDEOS (EN VIVO FIREBASE)
+        // YOUTUBE VIDEOS (EN VIVO FIREBASE) - ACTUALIZADO PARA SHORTS
         // ==========================================
         function getYoutubeEmbed(url) {
             let videoId = '';
             if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
             else if (url.includes('youtube.com/watch')) videoId = new URLSearchParams(url.split('?')[1]).get('v');
             else if (url.includes('youtube.com/embed/')) videoId = url.split('youtube.com/embed/')[1].split('?')[0];
+            else if (url.includes('youtube.com/shorts/')) videoId = url.split('youtube.com/shorts/')[1].split('?')[0];
             return videoId ? 'https://www.youtube.com/embed/' + videoId : null;
         }
 
