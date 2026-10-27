@@ -405,7 +405,7 @@
         .input-mensaje { flex: 1; padding: 13px 20px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(30, 41, 59, 0.9); color: #ffffff; font-size: 14px; outline: none; }
         .btn-enviar { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #ffffff; border: none; padding: 0 24px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; cursor: pointer; }
 
-        /* PIE DE PÁGINA (FOOTER OSCURO RESTAURADO) */
+        /* PIE DE PÁGINA */
         .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px 30px 20px; font-size: 14px; }
         .footer strong { color: #ffffff; font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 6px; font-size: 16px; }
         
@@ -2014,9 +2014,50 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             }
         }
 
+        // ==========================================
+        // RELOJ CONTADOR DEL CAMPAMENTO
+        // ==========================================
+        function iniciarContadorCampamento() {
+            const fechaMeta = new Date('October 15, 2027 08:00:00').getTime();
+            
+            function actualizarReloj() {
+                const ahora = new Date().getTime();
+                const diferencia = fechaMeta - ahora;
+
+                const elDays = document.getElementById('cd-days');
+                const elHours = document.getElementById('cd-hours');
+                const elMins = document.getElementById('cd-mins');
+                const elSecs = document.getElementById('cd-secs');
+
+                if (!elDays || !elHours || !elMins || !elSecs) return;
+
+                if (diferencia <= 0) {
+                    elDays.textContent = '00';
+                    elHours.textContent = '00';
+                    elMins.textContent = '00';
+                    elSecs.textContent = '00';
+                    return;
+                }
+
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+                elDays.textContent = dias < 10 ? '0' + dias : dias;
+                elHours.textContent = horas < 10 ? '0' + horas : horas;
+                elMins.textContent = minutos < 10 ? '0' + minutos : minutos;
+                elSecs.textContent = segundos < 10 ? '0' + segundos : segundos;
+            }
+
+            actualizarReloj();
+            setInterval(actualizarReloj, 1000);
+        }
+
         // ARRANQUE GLOBAL INMEDIATO
         window.onload = function() {
             cambiarVista('inicio');
+            iniciarContadorCampamento();
             
             // CARGA DE DATOS EN VIVO DESDE LA NUBE
             cargarVideosInit();
