@@ -15,41 +15,19 @@
         body { font-family: 'Open Sans', sans-serif; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
         h1, h2, h3, h4, .font-title { font-family: 'Montserrat', sans-serif; }
 
-        .admin-bar {
-            display: none; background: linear-gradient(90deg, #059669, #0d9488); color: #ffffff;
-            padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700;
-            text-align: center; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px;
-            z-index: 1001; position: relative; box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-        .btn-accion-admin {
-            background: #ffffff; color: #065f46; border: none; padding: 6px 14px; border-radius: 999px;
-            font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 800; cursor: pointer;
-            text-transform: uppercase; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
+        .admin-bar { display: none; background: linear-gradient(90deg, #059669, #0d9488); color: #ffffff; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; text-align: center; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; z-index: 1001; position: relative; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+        .btn-accion-admin { background: #ffffff; color: #065f46; border: none; padding: 6px 14px; border-radius: 999px; font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
         .btn-accion-admin:hover { transform: translateY(-1px); background: #fef08a; color: #0f172a; }
-        .btn-salir-admin {
-            background: rgba(0, 0, 0, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 6px 14px; border-radius: 999px; font-size: 11px; font-family: 'Montserrat', sans-serif;
-            font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.2s ease;
-        }
+        .btn-salir-admin { background: rgba(0, 0, 0, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 6px 14px; border-radius: 999px; font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.2s ease; }
         .btn-salir-admin:hover { background: #dc2626; border-color: #dc2626; }
 
         .solo-admin { display: none !important; }
         body.modo-admin .solo-admin { display: inline-block !important; }
 
-        .modal-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-box {
-            background: #ffffff; border-radius: 28px; padding: 36px 30px; max-width: 400px; width: 100%;
-            text-align: center; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35); animation: fadeIn 0.3s ease-out;
-        }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+        .modal-box { background: #ffffff; border-radius: 28px; padding: 36px 30px; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35); animation: fadeIn 0.3s ease-out; }
         .modal-box-ancho { max-width: 820px; text-align: left; }
-        .modal-icon {
-            width: 60px; height: 60px; background: #f1f5f9; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px auto;
-        }
+        .modal-icon { width: 60px; height: 60px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px auto; }
         .modal-box h3 { font-size: 22px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
         .modal-box p { font-size: 14px; color: #64748b; margin-bottom: 22px; }
         .error-pass { color: #dc2626; font-size: 13px; font-weight: 700; margin-top: 10px; display: none; }
@@ -66,146 +44,74 @@
         .planilla-campo-info { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 12px 16px; }
         .planilla-campo-info label { display: block; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 3px; }
         .planilla-campo-info span { font-size: 15px; font-weight: 700; color: #0f172a; }
-
         .tabla-planilla { width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 14px; overflow: hidden; }
         .tabla-planilla th { background: #065f46; color: #ffffff; padding: 12px 16px; font-size: 13.5px; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .tabla-planilla td { padding: 12px 16px; border: 1px solid #e2e8f0; font-size: 14px; color: #334155; }
         .tabla-planilla tr:nth-child(even) { background: #f8fafc; }
 
-        .navbar {
-            position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; padding: 12px 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        }
+        .navbar { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; padding: 12px 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); }
         .nav-container { max-width: 1340px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
         .logo-container { cursor: pointer; display: flex; align-items: center; }
         .logo-principal { height: 46px; width: auto; filter: invert(1) brightness(0.15); transition: transform 0.3s ease; }
         .logo-principal:hover { transform: scale(1.05); }
         .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
-        .nav-btn {
-            background: transparent; border: none; font-family: 'Montserrat', sans-serif; font-size: 12.5px;
-            font-weight: 700; color: #475569; padding: 9px 14px; border-radius: 999px; cursor: pointer;
-            transition: all 0.25s ease; text-transform: uppercase; letter-spacing: 0.4px;
-        }
+        .nav-btn { background: transparent; border: none; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 700; color: #475569; padding: 9px 14px; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; text-transform: uppercase; letter-spacing: 0.4px; }
         .nav-btn:hover, .nav-btn.activo { color: #0f172a; background: #e2e8f0; }
-        .nav-btn-radio {
-            background: linear-gradient(135deg, #ef4444, #db2777, #7c3aed); color: #ffffff !important;
-            padding: 10px 20px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800;
-            font-size: 12.5px; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px;
-            box-shadow: 0 6px 20px rgba(219, 39, 119, 0.35); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.6px;
-        }
+        .nav-btn-radio { background: linear-gradient(135deg, #ef4444, #db2777, #7c3aed); color: #ffffff !important; padding: 10px 20px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12.5px; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(219, 39, 119, 0.35); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.6px; }
         .nav-btn-radio:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 25px rgba(219, 39, 119, 0.5); }
         .dot-live { width: 8px; height: 8px; background-color: #ffffff; border-radius: 50%; display: inline-block; animation: pulse 1.4s infinite; }
         @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.7; } }
 
         /* CONTROL DE VISTAS AISLADAS */
         .vista-seccion { display: none !important; }
-        #inicio.activa { display: block !important; }
-        #reuniones.activa { display: block !important; }
-        #jovenes.activa { display: block !important; }
-        #ninos.activa { display: block !important; }
-        #casas.activa { display: block !important; }
-        #eventos.activa { display: block !important; }
-        #galeria.activa { display: block !important; }
+        #inicio.activa, #reuniones.activa, #jovenes.activa, #ninos.activa, #casas.activa, #eventos.activa, #galeria.activa, #radio.activa { display: block !important; }
         #campamento.activa { display: flex !important; width: 100%; min-height: 90vh; }
-        #radio.activa { display: block !important; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* UTILIDADES GENERALES BOTONES Y FORMULARIOS */
+        .btn-primary { background: #ffffff; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; padding: 18px 42px; border-radius: 999px; border: none; cursor: pointer; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-primary:hover { transform: translateY(-4px) scale(1.03); background: #38bdf8; color: #ffffff; }
+        .btn-toggle-form { background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; transition: all 0.25s ease; }
+        .btn-toggle-form:hover { background: #16a34a; transform: translateY(-2px); }
+        .form-panel { display: none; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 24px; padding: 28px; margin-bottom: 36px; }
+        .form-panel h3 { font-size: 20px; font-weight: 800; margin-bottom: 18px; color: #0f172a; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 16px; }
+        .campo-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 14px; font-family: 'Open Sans', sans-serif; outline: none; background: #ffffff; }
+        .campo-input:focus { border-color: #16a34a; }
+        .btn-borrar-item { position: absolute; background: #fee2e2; color: #dc2626; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: 800; cursor: pointer; font-size: 12px; z-index:10; }
+        .btn-edit-item { position: absolute; background: #fef08a; color: #854d0e; border: none; width: 34px; height: 34px; border-radius: 50%; font-weight: 800; cursor: pointer; font-size: 16px; z-index:10; display:flex; align-items:center; justify-content:center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;}
+        .btn-edit-item:hover { transform: scale(1.1); }
+        
+        .tag-dia { display: inline-block; background: #dbeafe; color: #1d4ed8; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+        .badge-superior { display: inline-block; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3); color: #f8fafc; padding: 8px 20px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+
         /* INICIO */
-        .hero-inicio {
-            min-height: 82vh;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 58, 138, 0.68) 100%),
-                        url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; color: #ffffff;
-        }
+        .hero-inicio { min-height: 82vh; background: linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 58, 138, 0.68) 100%), url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; color: #ffffff; }
         .hero-box { max-width: 880px; }
-        .badge-superior {
-            display: inline-block; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3); color: #f8fafc; padding: 8px 20px; border-radius: 999px;
-            font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
-        }
         .hero-title { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 900; line-height: 1.08; margin-bottom: 24px; color: #ffffff; text-shadow: 0 6px 25px rgba(0, 0, 0, 0.65); letter-spacing: -1.5px; }
         .hero-subtitle { font-size: clamp(1.1rem, 2.2vw, 1.45rem); color: #f1f5f9; margin-bottom: 40px; line-height: 1.6; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65); max-width: 720px; margin-left: auto; margin-right: auto; }
-        .btn-primary {
-            background: #ffffff; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 800;
-            font-size: 16px; padding: 18px 42px; border-radius: 999px; border: none; cursor: pointer;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .btn-primary:hover { transform: translateY(-4px) scale(1.03); background: #38bdf8; color: #ffffff; }
-        
         .bloque-vision { padding: 90px 24px; background: #ffffff; text-align: center; }
         .vision-container { max-width: 900px; margin: 0 auto; }
         .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; text-align: left; margin-bottom: 60px; }
         .vision-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 24px; padding: 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .vision-card h3 { font-size: 22px; font-weight: 900; color: #1e3a8a; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .vision-card p { font-size: 16px; color: #475569; line-height: 1.8; margin-bottom: 16px; }
         .versiculo-box { font-style: italic; font-size: 14px; color: #0284c7; background: #e0f2fe; padding: 16px; border-radius: 12px; border-left: 4px solid #0284c7; line-height: 1.6; }
-
         .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .pilar-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 28px 20px; border-radius: 20px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: #1e3a8a; transition: all 0.3s ease; }
         .pilar-item:hover { transform: translateY(-6px); background: #1e3a8a; color: #ffffff; box-shadow: 0 15px 30px rgba(30, 58, 138, 0.2); }
+        .siembra-box { margin-top: 60px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #16a34a; border-radius: 32px; padding: 40px 30px; text-align: center; box-shadow: 0 15px 35px rgba(22, 163, 74, 0.15); }
 
-        /* REUNIONES */
-        .seccion-reuniones { min-height: 85vh; background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 50%, #ede9fe 100%); padding: 80px 24px; }
-        .encabezado-seccion { text-align: center; max-width: 750px; margin: 0 auto 60px auto; }
-        .encabezado-seccion h1 { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 900; color: #0f172a; letter-spacing: -1px; margin-bottom: 14px; }
-        .encabezado-seccion p { font-size: 18px; color: #475569; }
-        .tarjetas-reuniones { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-        .card-reunion { background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08); transition: all 0.35s ease; }
-        .card-reunion:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18); }
-        .card-img { height: 230px; background-size: cover; background-position: center; }
-        .card-body { padding: 36px; }
-        .tag-dia { display: inline-block; background: #dbeafe; color: #1d4ed8; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
-        .card-body h2 { font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 14px; }
-        .horario-badge { display: inline-block; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; }
-        .card-body p { color: #475569; line-height: 1.7; font-size: 15.5px; }
-
-        /* JÓVENES */
-        .seccion-jovenes { min-height: 88vh; background: linear-gradient(135deg, #3b0764 0%, #be185d 50%, #ea580c 100%); color: #ffffff; padding: 80px 24px; }
-        .jovenes-container { max-width: 1140px; margin: 0 auto; text-align: center; }
-        .badge-jovenes { display: inline-block; background: #facc15; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 10px 24px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; box-shadow: 0 0 30px rgba(250, 204, 21, 0.6); }
-        .jovenes-title { font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 900; line-height: 1.02; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 24px; color: #ffffff; text-shadow: 0 10px 35px rgba(0, 0, 0, 0.4); }
-        .jovenes-desc { font-size: clamp(1.15rem, 2.2vw, 1.5rem); max-width: 720px; margin: 0 auto 40px auto; color: #fce7f3; line-height: 1.6; }
-        .jovenes-horario-box { display: inline-block; background: #ffffff; color: #be185d; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; padding: 20px 45px; border-radius: 999px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); margin-bottom: 60px; }
-        .jovenes-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; text-align: left; }
-        .joven-card { background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); padding: 32px; border-radius: 24px; transition: transform 0.3s ease; }
-        .joven-card:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.22); }
-        .joven-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: #fde047; }
-
-        /* NIÑOS */
-        .seccion-ninos {
-            min-height: 90vh;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.4) 100%),
-                        url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop') center/cover no-repeat;
-            padding: 80px 24px; color: #ffffff;
-        }
-        .ninos-container { max-width: 1140px; margin: 0 auto; text-align: center; }
-        .badge-ninos { display: inline-block; background: #38bdf8; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 10px 26px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); }
-        .ninos-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; text-transform: uppercase; margin-bottom: 20px; color: #fef08a; text-shadow: 0 6px 20px rgba(0,0,0,0.8); }
-
-        /* HERO CARD */
-        .ninos-hero-card {
-            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 2px solid rgba(56, 189, 248, 0.4);
-            border-radius: 32px; padding: 40px; margin-bottom: 50px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; text-align: left;
-        }
-        .ninos-hero-card img { width: 100%; height: 260px; object-fit: cover; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); }
-
-        .arbol-vida-box {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 32px; padding: 45px 35px;
-            box-shadow: 0 20px 45px rgba(6, 78, 59, 0.3); border: 2px solid #34d399; margin-top: 50px; text-align: left;
-        }
-
+        /* VIDEOS GLOBALES (COMPARTIDO) */
         .seccion-videos-multimedia { margin-top: 40px; text-align: left; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 32px; padding: 40px 30px; }
         .videos-multimedia-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 20px; }
         .videos-multimedia-header h3 { font-size: 24px; font-weight: 900; color: #ffffff; }
         .videos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
         .video-card { background: #ffffff; color: #0f172a; border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3); position: relative; }
-        .video-player-item { width: 100%; height: 220px; object-fit: cover; background: #000000; }
+        .video-player-item { width: 100%; height: 220px; object-fit: cover; background: #000000; border-radius: 24px 24px 0 0; }
         .video-body { padding: 20px; }
         .video-body h4 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
 
+        /* POSTS (JÓVENES) */
         .posts-wrapper { margin-top: 40px; text-align: left; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 32px; padding: 40px 30px; }
         .posts-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 20px; }
         .posts-header h3 { font-size: 24px; font-weight: 900; color: #ffffff; }
@@ -218,34 +124,67 @@
         .btn-descargar-post { display: block; width: 100%; text-align: center; background: #0f172a; color: #fff; font-weight: 700; font-size: 12px; padding: 10px; border-radius: 12px; text-decoration: none; margin-top: 14px; }
         .btn-descargar-post:hover { background: #2563eb; }
 
-        /* CASAS */
+        /* REUNIONES */
+        .seccion-reuniones { min-height: 85vh; background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 50%, #ede9fe 100%); padding: 80px 24px; }
+        .encabezado-seccion { text-align: center; max-width: 750px; margin: 0 auto 60px auto; }
+        .encabezado-seccion h1 { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 900; color: #0f172a; letter-spacing: -1px; margin-bottom: 14px; }
+        .tarjetas-reuniones { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+        .card-reunion { background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08); transition: all 0.35s ease; }
+        .card-reunion:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18); }
+        .card-img { height: 230px; background-size: cover; background-position: center; }
+        .card-body { padding: 36px; }
+        .card-body h2 { font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 14px; }
+        .horario-badge { display: inline-block; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; }
+
+        /* JÓVENES */
+        .seccion-jovenes { min-height: 88vh; background: linear-gradient(135deg, #3b0764 0%, #be185d 50%, #ea580c 100%); color: #ffffff; padding: 80px 24px; }
+        .jovenes-container { max-width: 1140px; margin: 0 auto; text-align: center; }
+        .badge-jovenes { display: inline-block; background: #facc15; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 10px 24px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; box-shadow: 0 0 30px rgba(250, 204, 21, 0.6); }
+        .jovenes-title { font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 900; line-height: 1.02; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 24px; color: #ffffff; text-shadow: 0 10px 35px rgba(0, 0, 0, 0.4); }
+        .jovenes-horario-box { display: inline-block; background: #ffffff; color: #be185d; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; padding: 20px 45px; border-radius: 999px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); margin-bottom: 60px; }
+        .jovenes-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; text-align: left; }
+        .joven-card { background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); padding: 32px; border-radius: 24px; transition: transform 0.3s ease; }
+        .joven-card:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.22); }
+        .joven-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: #fde047; }
+
+        /* NIÑOS */
+        .seccion-ninos { min-height: 90vh; background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.4) 100%), url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop') center/cover no-repeat; padding: 80px 24px; color: #ffffff; }
+        .ninos-container { max-width: 1140px; margin: 0 auto; text-align: center; }
+        .badge-ninos { display: inline-block; background: #38bdf8; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 10px 26px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); }
+        .ninos-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; text-transform: uppercase; margin-bottom: 20px; color: #fef08a; text-shadow: 0 6px 20px rgba(0,0,0,0.8); }
+        .ninos-hero-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 2px solid rgba(56, 189, 248, 0.4); border-radius: 32px; padding: 40px; margin-bottom: 50px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; text-align: left; }
+        .ninos-hero-card img { width: 100%; height: 260px; object-fit: cover; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); }
+        .arbol-vida-box { background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 32px; padding: 45px 35px; box-shadow: 0 20px 45px rgba(6, 78, 59, 0.3); border: 2px solid #34d399; margin-top: 50px; text-align: left; }
+
+        /* CASAS EVANGELÍSTICAS Y TEMAS TIPO AGENDA FIJA */
         .seccion-casas { min-height: 90vh; background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%); padding: 80px 24px; }
         .casas-grid { max-width: 1140px; margin: 0 auto 80px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; align-items: center; }
         .casas-info h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 900; color: #064e3b; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
-        .casas-info p { font-size: 17px; color: #334155; line-height: 1.8; margin-bottom: 24px; }
         .btn-whatsapp { display: inline-block; background: #16a34a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; padding: 18px 36px; border-radius: 999px; text-decoration: none; box-shadow: 0 12px 30px rgba(22, 163, 74, 0.35); transition: all 0.3s ease; }
-        .btn-whatsapp:hover { background: #15803d; transform: translateY(-4px); }
         .casas-imagen { width: 100%; height: 420px; border-radius: 30px; object-fit: cover; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); }
+        
+        .temas-bulletin-board { background-color: #f8fafc; background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px); background-size: 20px 20px; border-radius: 32px; padding: 50px 36px; box-shadow: inset 0 0 20px rgba(0,0,0,0.05); border: 2px solid #cbd5e1; margin-bottom: 40px; max-width: 1140px; margin-left: auto; margin-right: auto;}
+        .bulletin-badge { background: #a855f7; color: #fff; padding: 8px 24px; border-radius: 12px; font-family: 'Montserrat', sans-serif; font-weight: 900; display: inline-block; margin-bottom: 15px; box-shadow: 4px 4px 0 rgba(0,0,0,0.2); letter-spacing: 1px; }
+        
+        /* DISEÑO DE LA AGENDA 3 COLUMNAS */
+        .casas-agenda-layout { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 24px; align-items: start; margin-top: 30px; }
+        @media(max-width: 992px) { .casas-agenda-layout { grid-template-columns: 1fr; } }
+        .agenda-col { display: flex; flex-direction: column; gap: 24px; }
+        
+        .notebook-card { background: #ffffff; border: 2px solid #94a3b8; border-radius: 8px; position: relative; padding: 35px 24px 24px 24px; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .notebook-card:hover { transform: translateY(-3px); box-shadow: 5px 8px 0px rgba(0,0,0,0.15); }
+        .notebook-spirals { position: absolute; top: -12px; left: 0; width: 100%; height: 24px; background-image: radial-gradient(circle at 14px 12px, #f8fafc 5px, transparent 6px), radial-gradient(circle at 14px 12px, #475569 7px, transparent 8px); background-size: 28px 24px; }
+        .notebook-header { background: #c084fc; color: #1e1b4b; padding: 6px 18px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; text-transform: uppercase; margin: 0 auto 16px auto; display: inline-block; border: 2px solid #1e1b4b; box-shadow: 2px 2px 0 #1e1b4b; }
+        .notebook-title { font-size: 17px; font-weight: 900; color: #3730a3; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+        .notebook-verse { font-size: 11px; font-weight: 800; margin-bottom: 12px; color: #475569; display: block; }
+        .notebook-desc { font-size: 14px; color: #334155; line-height: 1.6; }
+
+        .estructura-card { background: #e2e8f0; border: 2px solid #94a3b8; border-radius: 8px; padding: 24px; text-align: left; position: relative; box-shadow: 5px 5px 0 rgba(0,0,0,0.1); }
+        .estructura-card h4 { background: #ffffff; border: 2px solid #0f172a; padding: 8px 16px; display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; transform: rotate(-2deg); margin-bottom: 20px; box-shadow: 2px 2px 0 #0f172a; }
 
         .temas-wrapper { max-width: 1140px; margin: 0 auto; background: #ffffff; border-radius: 32px; padding: 48px 36px; box-shadow: 0 20px 50px rgba(6, 78, 59, 0.08); border: 1px solid #d1fae5; margin-bottom: 40px; }
         .temas-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; border-bottom: 2px solid #f1f5f9; padding-bottom: 24px; }
         .temas-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #064e3b; }
-        .btn-toggle-form { background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; transition: all 0.25s ease; }
-        .btn-toggle-form:hover { background: #16a34a; transform: translateY(-2px); }
-        .form-panel { display: none; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 24px; padding: 28px; margin-bottom: 36px; }
-        .form-panel h3 { font-size: 20px; font-weight: 800; margin-bottom: 18px; color: #0f172a; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 16px; }
-        .campo-input { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid #cbd5e1; font-size: 14px; font-family: 'Open Sans', sans-serif; outline: none; background: #ffffff; }
-        .campo-input:focus { border-color: #16a34a; }
-        .temas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .tema-card { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 6px solid #16a34a; border-radius: 20px; padding: 28px; transition: all 0.3s ease; position: relative; }
-        .tema-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); background: #ffffff; }
-        .tema-semana { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
-        .tema-card h4 { font-size: 22px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
-        .tema-versiculo { font-size: 13px; font-weight: 700; color: #0284c7; margin-bottom: 12px; display: block; }
-        .tema-card p { font-size: 14.5px; color: #475569; line-height: 1.6; margin-bottom: 16px; }
-        .btn-descargar-guia { display: inline-block; background: #dcfce7; color: #166534; font-weight: 700; font-size: 12px; padding: 8px 14px; border-radius: 10px; text-decoration: none; }
-        .btn-borrar-item { position: absolute; top: 16px; right: 16px; background: #fee2e2; color: #dc2626; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: 800; cursor: pointer; font-size: 12px; }
 
         /* EVENTOS */
         .seccion-eventos { min-height: 88vh; background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%); padding: 80px 24px; color: #ffffff; }
@@ -256,37 +195,20 @@
         .evento-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 26px; padding: 34px; position: relative; transition: all 0.35s ease; }
         .evento-card:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.16); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
         .evento-fecha { display: inline-block; background: #facc15; color: #0f172a; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 12px; padding: 7px 16px; border-radius: 999px; text-transform: uppercase; margin-bottom: 16px; }
-        .evento-card h3 { font-size: 25px; font-weight: 900; margin-bottom: 12px; color: #ffffff; }
-        .evento-meta { font-size: 14px; color: #cbd5e1; margin-bottom: 16px; font-weight: 600; }
-        .evento-card p { color: #e2e8f0; font-size: 15px; line-height: 1.6; }
 
         /* GALERÍA */
         .seccion-galeria { min-height: 88vh; background: #ffffff; padding: 80px 24px; }
         .galeria-container { max-width: 1200px; margin: 0 auto; }
         .galeria-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; }
-        .galeria-top h1 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 900; color: #0f172a; }
-        
         .albumes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
-        .album-card {
-            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 28px; overflow: hidden;
-            cursor: pointer; transition: all 0.35s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            display: flex; flex-direction: column;
-        }
+        .album-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 28px; overflow: hidden; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
         .album-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(30, 58, 138, 0.15); border-color: #cbd5e1; }
         .album-img-wrap { height: 220px; width: 100%; position: relative; background: #0f172a; }
         .album-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .album-badge-count { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); color: #fff; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 999px; }
         .album-info { padding: 26px; }
-        .album-info h3 { font-size: 22px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
-        .album-info p { font-size: 14.5px; color: #64748b; }
-
         .vista-album-detalle { display: none; }
-        .btn-volver-albumes {
-            background: #0f172a; color: #fff; border: none; padding: 10px 22px; border-radius: 999px;
-            font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; transition: background 0.2s;
-        }
-        .btn-volver-albumes:hover { background: #2563eb; }
+        .btn-volver-albumes { background: #0f172a; color: #fff; border: none; padding: 10px 22px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; transition: background 0.2s; }
         .galeria-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
         .foto-card { border-radius: 24px; overflow: hidden; position: relative; height: 290px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); background: #0f172a; cursor: pointer; }
         .foto-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -294,60 +216,26 @@
         .foto-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); color: #ffffff; padding: 28px 20px 18px 20px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; }
 
         /* CAMPAMENTO */
-        .seccion-campamento {
-            min-height: 90vh;
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(15, 118, 110, 0.82) 100%),
-                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-            padding: 90px 24px; color: #ffffff; display: flex; align-items: center; justify-content: center;
-        }
+        .seccion-campamento { min-height: 90vh; background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(15, 118, 110, 0.82) 100%), url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat; padding: 90px 24px; color: #ffffff; display: flex; align-items: center; justify-content: center; }
         .campamento-container { max-width: 1140px; margin: 0 auto; text-align: center; width: 100%; }
         .camp-badge { display: inline-block; background: #fde047; color: #064e3b; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; padding: 9px 24px; border-radius: 999px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
         .camp-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; text-shadow: 0 8px 30px rgba(0,0,0,0.45); }
-        .camp-desc { font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 760px; margin: 0 auto 40px auto; color: #ecfdf5; line-height: 1.7; }
         .camp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 50px; text-align: left; }
         .camp-item { background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); padding: 30px; border-radius: 24px; }
-        .camp-item h3 { font-size: 20px; font-weight: 800; color: #fde047; margin-bottom: 10px; }
-        .camp-item p { font-size: 15px; color: #f0fdf4; line-height: 1.6; }
 
         /* RADIO */
-        .seccion-radio {
-            min-height: 90vh;
-            background: linear-gradient(135deg, #090d16 0%, #17102e 50%, #290b3a 100%);
-            padding: 60px 24px 90px 24px;
-            color: #ffffff;
-        }
+        .seccion-radio { min-height: 90vh; background: linear-gradient(135deg, #090d16 0%, #17102e 50%, #290b3a 100%); padding: 60px 24px 90px 24px; color: #ffffff; }
         .radio-header { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
         .logo-radio { height: 85px; width: auto; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 10px 25px rgba(168, 85, 247, 0.5)); }
         .radio-header h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; background: linear-gradient(90deg, #38bdf8, #ec4899, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
         .radio-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 36px; align-items: stretch; }
-
-        .reproductor-card-pro {
-            background: radial-gradient(circle at top, rgba(49, 16, 82, 0.6) 0%, rgba(13, 17, 28, 0.95) 80%);
-            border: 1px solid rgba(236, 72, 153, 0.4); border-radius: 36px; padding: 40px 32px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(56, 189, 248, 0.15);
-            position: relative; overflow: hidden;
-        }
-        
-        .audio-gauge-container {
-            position: relative; width: 190px; height: 190px; background: #05070d; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(0,0,0,0.9);
-            border: 4px solid #1e293b; margin-bottom: 20px;
-        }
-        .gauge-ring {
-            position: absolute; inset: -8px; border-radius: 50%; border: 4px solid transparent;
-            border-top-color: #38bdf8; border-right-color: #ec4899; animation: spinGauge 6s linear infinite;
-        }
+        .reproductor-card-pro { background: radial-gradient(circle at top, rgba(49, 16, 82, 0.6) 0%, rgba(13, 17, 28, 0.95) 80%); border: 1px solid rgba(236, 72, 153, 0.4); border-radius: 36px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(56, 189, 248, 0.15); position: relative; overflow: hidden; }
+        .audio-gauge-container { position: relative; width: 190px; height: 190px; background: #05070d; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(0,0,0,0.9); border: 4px solid #1e293b; margin-bottom: 20px; }
+        .gauge-ring { position: absolute; inset: -8px; border-radius: 50%; border: 4px solid transparent; border-top-color: #38bdf8; border-right-color: #ec4899; animation: spinGauge 6s linear infinite; }
         @keyframes spinGauge { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .gauge-center-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 26px; color: #ffffff; letter-spacing: -1px; text-shadow: 0 0 10px rgba(56,189,248,0.8); }
         .gauge-subtext { font-size: 11px; font-weight: 700; color: #38bdf8; letter-spacing: 2px; text-transform: uppercase; }
-
-        .now-playing-panel {
-            background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 20px;
-            padding: 14px 18px; width: 100%; max-width: 340px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+        .now-playing-panel { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 20px; padding: 14px 18px; width: 100%; max-width: 340px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .album-art-box { width: 52px; height: 52px; background: #1e293b; border-radius: 12px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2); }
         .album-art-box img { width: 100%; height: 100%; object-fit: cover; }
         .song-meta-wrap { overflow: hidden; text-align: left; flex: 1; min-width: 0; }
@@ -355,24 +243,12 @@
         .song-title-marquee { font-size: 13px; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; width: 100%; display: block; }
         .song-title-marquee span { display: inline-block; animation: marqueeAnim 14s linear infinite; }
         @keyframes marqueeAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
-        .waveform-graph-box {
-            background: #030712; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 12px;
-            width: 100%; max-width: 340px; margin-bottom: 24px; height: 65px; display: flex; align-items: flex-end; justify-content: space-between; gap: 3px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-        }
+        .waveform-graph-box { background: #030712; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 12px; width: 100%; max-width: 340px; margin-bottom: 24px; height: 65px; display: flex; align-items: flex-end; justify-content: space-between; gap: 3px; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
         .wave-bar { flex: 1; background: linear-gradient(to top, #0284c7, #38bdf8, #ec4899); border-radius: 2px; animation: waveAnim 0.8s infinite alternate ease-in-out; }
         .wave-bar:nth-child(odd) { animation-duration: 0.5s; }
         .wave-bar:nth-child(even) { animation-duration: 0.9s; }
         @keyframes waveAnim { 0% { height: 15%; opacity: 0.4; } 100% { height: 95%; opacity: 1; } }
-
-        .live-badge-pro {
-            background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #f87171;
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; padding: 7px 18px;
-            border-radius: 999px; letter-spacing: 2.5px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
-        }
-
+        .live-badge-pro { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #f87171; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; padding: 7px 18px; border-radius: 999px; letter-spacing: 2.5px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
         .audio-player-pro { width: 100%; max-width: 320px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); border-radius: 999px; }
 
         /* CHAT CARD */
@@ -408,23 +284,12 @@
         /* PIE DE PÁGINA */
         .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px 30px 20px; font-size: 14px; }
         .footer strong { color: #ffffff; font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 6px; font-size: 16px; }
-        
-        .community-stats-bar {
-            max-width: 600px; margin: 20px auto 25px auto; display: flex; justify-content: center; align-items: center;
-            gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            padding: 12px 24px; border-radius: 999px;
-        }
+        .community-stats-bar { max-width: 600px; margin: 20px auto 25px auto; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 12px 24px; border-radius: 999px; }
         .stat-pill { font-size: 13px; color: #e2e8f0; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
         .stat-pill strong { display: inline; margin: 0; color: #38bdf8; font-size: 14px; }
-        .btn-like-widget {
-            background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #ffffff; border: none; padding: 6px 18px;
-            border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px;
-            cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s ease, box-shadow: 0.2s;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35);
-        }
+        .btn-like-widget { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #ffffff; border: none; padding: 6px 18px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s ease, box-shadow: 0.2s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35); }
         .btn-like-widget:hover { transform: scale(1.06); }
         .btn-like-widget.liked { background: #10b981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
-
         .btn-acceso-lideres { margin-top: 10px; background: rgba(255, 255, 255, 0.06); color: #64748b; border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 999px; font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.25s ease; }
         .btn-acceso-lideres:hover { color: #ffffff; background: rgba(255, 255, 255, 0.15); }
     </style>
@@ -438,7 +303,7 @@
         <button class="btn-salir-admin" onclick="cerrarSesionAdmin()">Salir de Admin</button>
     </div>
 
-    <!-- MODAL ZOOM FOTO GALERÍA -->
+    <!-- MODALES GLOBALES -->
     <div id="modal-zoom" class="modal-overlay" onclick="cerrarZoom()">
         <div style="position: relative; max-width: 90%; max-height: 90vh; text-align: center;" onclick="event.stopPropagation()">
             <button onclick="cerrarZoom()" style="position: absolute; top: -15px; right: -15px; background: #dc2626; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2100;">✕</button>
@@ -463,6 +328,24 @@
         </div>
     </div>
 
+    <!-- MODAL DE EDICIÓN FIJA PARA TEMAS DE CASAS -->
+    <div id="modal-editar-tema" class="modal-overlay">
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+                <h3 style="margin:0; font-size: 18px;">✏️ Editar Cuaderno de Casa</h3>
+                <button type="button" class="btn-borrar-item" style="position:static;" onclick="cerrarModalEditarTema()">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); guardarEdicionTemaFijo();">
+                <input type="hidden" id="edit-tema-num">
+                <input type="text" id="edit-tema-semana" class="campo-input" style="margin-bottom:10px;" placeholder="Semana o Fecha (Ej: TEMA OCTUBRE 01)" required>
+                <input type="text" id="edit-tema-titulo" class="campo-input" style="margin-bottom:10px;" placeholder="Título del Tema" required>
+                <input type="text" id="edit-tema-cita" class="campo-input" style="margin-bottom:10px;" placeholder="Cita Bíblica" required>
+                <textarea id="edit-tema-resumen" rows="5" class="campo-input" style="margin-bottom:16px;" placeholder="Resumen de la enseñanza..." required></textarea>
+                <button type="submit" class="btn-toggle-form" style="background:#16a34a; width:100%;">💾 Guardar Cambios en Vivo</button>
+            </form>
+        </div>
+    </div>
+
     <div id="modal-oyentes" class="modal-overlay">
         <div class="modal-box modal-box-ancho">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
@@ -470,37 +353,21 @@
                     <h3 style="margin-bottom:4px;">📋 Base de Datos de Oyentes (Judá Radio)</h3>
                     <p style="margin-bottom:0;">Personas que se han registrado para participar en el chat en vivo.</p>
                 </div>
-                <button class="btn-toggle-form" style="background:#16a34a; font-size:12px; padding:10px 18px;" onclick="descargarCSVRegistrados()">
-                    📥 Descargar en Excel (CSV)
-                </button>
+                <button class="btn-toggle-form" style="background:#16a34a; font-size:12px; padding:10px 18px;" onclick="descargarCSVRegistrados()">📥 Descargar en Excel (CSV)</button>
             </div>
-
             <div class="tabla-contenedor">
                 <table class="tabla-oyentes">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre Completo</th>
-                            <th>Correo Electrónico</th>
-                            <th>Fecha de Registro</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>#</th><th>Nombre Completo</th><th>Correo Electrónico</th><th>Fecha de Registro</th></tr></thead>
                     <tbody id="tabla-oyentes-body"></tbody>
                 </table>
             </div>
-
             <div style="display:flex; justify-content:space-between; align-items:center;">
-                <button type="button" class="btn-toggle-form" style="background:#fee2e2; color:#dc2626; font-size:12px; padding:10px 16px;" onclick="limpiarListaOyentes()">
-                    🗑️ Vaciar registros
-                </button>
-                <button type="button" class="btn-toggle-form" style="background:#0f172a; padding:10px 24px;" onclick="cerrarModalOyentes()">
-                    Cerrar ventana
-                </button>
+                <button type="button" class="btn-toggle-form" style="background:#fee2e2; color:#dc2626; font-size:12px; padding:10px 16px;" onclick="limpiarListaOyentes()">🗑️ Vaciar registros</button>
+                <button type="button" class="btn-toggle-form" style="background:#0f172a; padding:10px 24px;" onclick="cerrarModalOyentes()">Cerrar ventana</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL PARA REPORTES DE ASISTENCIA TIPO PLANILLA EXCEL -->
     <div id="modal-reporte-casa" class="modal-overlay">
         <div class="modal-box modal-box-ancho">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
@@ -508,58 +375,29 @@
                 <button type="button" class="btn-toggle-form" style="background:#e2e8f0; color:#334155; padding:6px 14px;" onclick="cerrarModalReporteCasa()">✕</button>
             </div>
             <p style="font-size: 13.5px; color: #64748b; margin-bottom: 20px;">Ingresa la clave secreta de tu Casa Evangelística para desplegar la planilla semanal de asistencia.</p>
-            
             <div style="display: flex; gap: 10px; margin-bottom: 20px;">
                 <input type="password" id="input-clave-casa" class="campo-input" placeholder="Clave de tu Casa..." style="flex: 1; margin-bottom: 0;">
                 <button type="button" class="btn-toggle-form" style="background: #16a34a; padding: 0 24px;" onclick="cargarReportePorClave()">Ver Planilla</button>
             </div>
-
             <div id="resultado-reporte-casa" style="display: none;">
                 <div class="planilla-card">
                     <h2 class="planilla-titulo">📊 Planilla de Asistencia - Casa Evangelística</h2>
-                    
                     <div class="planilla-grid-info">
-                        <div class="planilla-campo-info">
-                            <label>Nombre de la Casa</label>
-                            <span id="pl-casa-nombre">-</span>
-                        </div>
-                        <div class="planilla-campo-info">
-                            <label>Semana / Fecha</label>
-                            <span id="pl-casa-semana">-</span>
-                        </div>
-                        <div class="planilla-campo-info">
-                            <label>Dirección</label>
-                            <span id="pl-casa-direccion">-</span>
-                        </div>
-                        <div class="planilla-campo-info">
-                            <label>Servidor Encargado</label>
-                            <span id="pl-casa-servidor">-</span>
-                        </div>
-                        <div class="planilla-campo-info">
-                            <label>Anfitrión</label>
-                            <span id="pl-casa-anfitrion">-</span>
-                        </div>
+                        <div class="planilla-campo-info"><label>Nombre de la Casa</label><span id="pl-casa-nombre">-</span></div>
+                        <div class="planilla-campo-info"><label>Semana / Fecha</label><span id="pl-casa-semana">-</span></div>
+                        <div class="planilla-campo-info"><label>Dirección</label><span id="pl-casa-direccion">-</span></div>
+                        <div class="planilla-campo-info"><label>Servidor Encargado</label><span id="pl-casa-servidor">-</span></div>
+                        <div class="planilla-campo-info"><label>Anfitrión</label><span id="pl-casa-anfitrion">-</span></div>
                     </div>
-
                     <div class="tabla-contenedor">
                         <table class="tabla-planilla">
-                            <thead>
-                                <tr>
-                                    <th style="width: 70px;">No</th>
-                                    <th>Nombre Completo del Asistente</th>
-                                    <th>Teléfono de Contacto</th>
-                                    <th style="width: 120px; text-align: center;">Asistencia</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th style="width: 70px;">No</th><th>Nombre Completo del Asistente</th><th>Teléfono de Contacto</th><th style="width: 120px; text-align: center;">Asistencia</th></tr></thead>
                             <tbody id="tabla-planilla-body"></tbody>
                         </table>
                     </div>
-
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 12px;">
                         <span id="pl-total-asistentes" style="font-weight: 800; color: #064e3b; font-size: 15px;">Total Asistentes: 0</span>
-                        <button type="button" class="btn-toggle-form" style="background: #059669; font-size: 13px; padding: 12px 24px;" onclick="descargarReporteCasaExcel()">
-                            📥 Descargar Planilla en Excel (CSV)
-                        </button>
+                        <button type="button" class="btn-toggle-form" style="background: #059669; font-size: 13px; padding: 12px 24px;" onclick="descargarReporteCasaExcel()">📥 Descargar Planilla en Excel (CSV)</button>
                     </div>
                 </div>
             </div>
@@ -573,9 +411,7 @@
                 <img src="172017.png" alt="Logo ICA Yireh" class="logo-principal">
             </div>
             
-            <button id="btn-volver-inicio" class="nav-btn" style="display: none; background: #0f172a; color: #fff;" onclick="cambiarVista('inicio')">
-                🏠 Volver a Inicio
-            </button>
+            <button id="btn-volver-inicio" class="nav-btn" style="display: none; background: #0f172a; color: #fff;" onclick="cambiarVista('inicio')">🏠 Volver a Inicio</button>
 
             <div id="nav-links-container" class="nav-links">
                 <button id="btn-inicio" class="nav-btn activo" onclick="cambiarVista('inicio')">Inicio</button>
@@ -586,9 +422,7 @@
                 <button id="btn-eventos" class="nav-btn" onclick="cambiarVista('eventos')">Eventos</button>
                 <button id="btn-galeria" class="nav-btn" onclick="cambiarVista('galeria')">Galería</button>
                 <button id="btn-campamento" class="nav-btn" onclick="cambiarVista('campamento')">Campamento</button>
-                <button id="btn-radio" class="nav-btn-radio" onclick="cambiarVista('radio')">
-                    <span class="dot-live"></span> Judá Radio
-                </button>
+                <button id="btn-radio" class="nav-btn-radio" onclick="cambiarVista('radio')"><span class="dot-live"></span> Judá Radio</button>
             </div>
         </div>
     </nav>
@@ -600,57 +434,35 @@
                 <div class="hero-box">
                     <span class="badge-superior">Iglesia Casa Apostólica Yireh</span>
                     <h1 class="hero-title">Bienvenido a Casa</h1>
-                    <p class="hero-subtitle">
-                        Un lugar de comunión, fe y esperanza para toda la familia en Cali. Descubre el propósito sobrenatural que Dios tiene para tu vida.
-                    </p>
+                    <p class="hero-subtitle">Un lugar de comunión, fe y esperanza para toda la familia en Cali. Descubre el propósito sobrenatural que Dios tiene para tu vida.</p>
                     <button class="btn-primary" onclick="cambiarVista('reuniones')">Conoce Nuestros Horarios</button>
                 </div>
             </div>
-
             <div class="bloque-vision">
                 <div class="vision-container">
                     <h2 class="vision-title">Nuestra Identidad</h2>
-                    <p class="vision-text" style="margin-bottom: 40px;">
-                        Conoce el llamado y el propósito que Dios ha depositado en nuestra congregación.
-                    </p>
-                    
+                    <p class="vision-text" style="margin-bottom: 40px;">Conoce el llamado y el propósito que Dios ha depositado en nuestra congregación.</p>
                     <div class="vision-grid">
                         <div class="vision-card">
                             <h3>🌟 Visión</h3>
-                            <p>
-                                Somos una casa con el objetivo de restaurar familias que tengan un cambio radical en sus vidas. Llevarlos a desarrollarse en cada estatura hasta llegar a ser padres de padres y así poder alcanzar la estatura del varón perfecto y juntos esperar en la unidad del Espíritu la venida de Cristo.
-                            </p>
-                            <div class="versiculo-box">
-                                Isaías 30:8 “Ve pues ahora, y escribe esa visión en una tabla delante de ellos, y asiéntala en un libro para que quede hasta el postrero día, para siempre por todos los siglos.”
-                            </div>
+                            <p>Somos una casa con el objetivo de restaurar familias que tengan un cambio radical en sus vidas. Llevarlos a desarrollarse en cada estatura hasta llegar a ser padres de padres y así poder alcanzar la estatura del varón perfecto y juntos esperar en la unidad del Espíritu la venida de Cristo.</p>
+                            <div class="versiculo-box">Isaías 30:8 “Ve pues ahora, y escribe esa visión en una tabla delante de ellos, y asiéntala en un libro para que quede hasta el postrero día, para siempre por todos los siglos.”</div>
                         </div>
-
                         <div class="vision-card">
                             <h3>🎯 Misión</h3>
-                            <p>
-                                Como iglesia poder cumplir con el propósito de Dios en la tierra, levantando una generación con principios del Reino y extendiendo Su amor a cada rincón de nuestra ciudad y naciones.
-                            </p>
+                            <p>Como iglesia poder cumplir con el propósito de Dios en la tierra, levantando una generación con principios del Reino y extendiendo Su amor a cada rincón de nuestra ciudad y naciones.</p>
                         </div>
                     </div>
-
                     <h3 style="font-size: 24px; font-weight: 900; color: #0f172a; margin-top: 50px; margin-bottom: 24px;">Pilares para una vida extraordinaria</h3>
                     <div class="pilares-grid">
-                        <div class="pilar-item">Fe y Palabra</div>
-                        <div class="pilar-item">Adoración</div>
-                        <div class="pilar-item">Familia</div>
-                        <div class="pilar-item">Restauración</div>
-                        <div class="pilar-item">Liderazgo</div>
-                        <div class="pilar-item">Propósito</div>
+                        <div class="pilar-item">Fe y Palabra</div><div class="pilar-item">Adoración</div><div class="pilar-item">Familia</div>
+                        <div class="pilar-item">Restauración</div><div class="pilar-item">Liderazgo</div><div class="pilar-item">Propósito</div>
                     </div>
 
-                    <!-- SECCIÓN DE SIEMBRA - INICIO -->
-                    <div style="margin-top: 60px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #16a34a; border-radius: 32px; padding: 40px 30px; text-align: center; box-shadow: 0 15px 35px rgba(22, 163, 74, 0.15);">
+                    <div class="siembra-box">
                         <span style="display:inline-block; background: #16a34a; color: #fff; font-size: 11px; font-weight: 800; padding: 6px 16px; border-radius: 999px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px;">Semilla de Bendición</span>
                         <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #064e3b; margin-bottom: 16px;">Apoya Nuestro Ministerio</h2>
-                        <p style="font-size: 16px; color: #166534; max-width: 600px; margin: 0 auto 24px auto; line-height: 1.6; font-style: italic;">
-                            "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." - 2 Corintios 9:7
-                        </p>
-                        
+                        <p style="font-size: 16px; color: #166534; max-width: 600px; margin: 0 auto 24px auto; line-height: 1.6; font-style: italic;">"Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." - 2 Corintios 9:7</p>
                         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
                             <div style="background: #ffffff; padding: 16px 24px; border-radius: 16px; border: 1px solid #bbf7d0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 200px;">
                                 <strong style="display: block; color: #064e3b; font-size: 18px; margin-bottom: 4px;">🟣 Nequi / DaviPlata</strong>
@@ -661,13 +473,10 @@
                                 <a href="https://wa.me/573006396622?text=Hola,%20quiero%20hacer%20una%20siembra%20por%20PayPal" target="_blank" style="font-size: 16px; font-weight: 800; color: #0284c7; text-decoration: none;">Solicitar Link por WhatsApp</a>
                             </div>
                         </div>
-
-                        <a href="https://wa.me/573006396622?text=Hola,%20acabo%20de%20hacer%20una%20siembra%20para%20el%20ministerio%20Yireh" target="_blank" style="display: inline-block; background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; padding: 14px 32px; border-radius: 999px; text-decoration: none; transition: background 0.3s ease;">
-                            📲 Enviar comprobante por WhatsApp
-                        </a>
+                        <a href="https://wa.me/573006396622?text=Hola,%20acabo%20de%20hacer%20una%20siembra%20para%20el%20ministerio%20Yireh" target="_blank" style="display: inline-block; background: #0f172a; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; padding: 14px 32px; border-radius: 999px; text-decoration: none; transition: background 0.3s ease;">📲 Enviar comprobante por WhatsApp</a>
                     </div>
 
-                    <!-- SECCIÓN VIDEOS INICIO YOUTUBE -->
+                    <!-- VIDEOS INICIO -->
                     <div class="seccion-videos-multimedia" style="background:#f1f5f9; border:1px solid #cbd5e1; margin-top:60px; color:#0f172a;">
                         <div class="videos-multimedia-header" style="border-bottom-color:#cbd5e1;">
                             <h3 style="color:#0f172a;">🎥 Videos Destacados de la Iglesia</h3>
@@ -695,34 +504,25 @@
                 <h1>Nuestras Reuniones</h1>
                 <p>Acompáñanos cada semana y vive un encuentro personal con la presencia de Dios.</p>
             </div>
-
             <div class="tarjetas-reuniones">
                 <div class="card-reunion">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=1200');"></div>
                     <div class="card-body">
-                        <span class="tag-dia">Todos los Martes</span>
-                        <h2>Sanidad y Milagros</h2>
-                        <div class="horario-badge">7:00 PM - 9:00 PM</div>
+                        <span class="tag-dia">Todos los Martes</span><h2>Sanidad y Milagros</h2><div class="horario-badge">7:00 PM - 9:00 PM</div>
                         <p>Un tiempo poderoso de oración y ministración donde creemos por el poder sobrenatural de Dios obrando milagros y sanidades.</p>
                     </div>
                 </div>
-
                 <div class="card-reunion">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200');"></div>
                     <div class="card-body">
-                        <span class="tag-dia">Todos los Sábados</span>
-                        <h2>Reunión de Jóvenes (Generación Poderosa)</h2>
-                        <div class="horario-badge">6:00 PM - 8:00 PM</div>
+                        <span class="tag-dia">Todos los Sábados</span><h2>Reunión de Jóvenes (Generación Poderosa)</h2><div class="horario-badge">6:00 PM - 8:00 PM</div>
                         <p>Un espacio dinámico y radical para los jóvenes, con alabanza explosiva, amistad real y una palabra relevante.</p>
                     </div>
                 </div>
-
                 <div class="card-reunion">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?q=80&w=1200');"></div>
                     <div class="card-body">
-                        <span class="tag-dia">Todos los Domingos</span>
-                        <h2>Culto Familiar</h2>
-                        <div class="horario-badge">8:45 AM - 11:00 AM</div>
+                        <span class="tag-dia">Todos los Domingos</span><h2>Culto Familiar</h2><div class="horario-badge">8:45 AM - 11:00 AM</div>
                         <p>Ven con toda tu familia a exaltar el nombre de Jesús y recibir una palabra fresca que edificará tu casa toda la semana.</p>
                     </div>
                 </div>
@@ -734,26 +534,13 @@
             <div class="jovenes-container">
                 <span class="badge-jovenes">Jóvenes ICA Yireh</span>
                 <h1 class="jovenes-title">Generación Poderosa</h1>
-                <p class="jovenes-desc">
-                    Jóvenes radicales, llenos de pasión por el Espíritu Santo, listos para marcar la diferencia y encender su generación.
-                </p>
-                <div class="jovenes-horario-box">
-                    🔥 Todos los Sábados | 6:00 PM - 8:00 PM
-                </div>
+                <p class="jovenes-desc">Jóvenes radicales, llenos de pasión por el Espíritu Santo, listos para marcar la diferencia y encender su generación.</p>
+                <div class="jovenes-horario-box">🔥 Todos los Sábados | 6:00 PM - 8:00 PM</div>
 
                 <div class="jovenes-cards">
-                    <div class="joven-card">
-                        <h3>Adoración Explosiva</h3>
-                        <p>Expresamos nuestra gratitud y pasión por Dios con libertad, música fresca y un corazón genuino.</p>
-                    </div>
-                    <div class="joven-card">
-                        <h3>Amistad Real</h3>
-                        <p>Un espacio donde encontrarás amigos verdaderos que te impulsarán a crecer y cumplir tus sueños.</p>
-                    </div>
-                    <div class="joven-card">
-                        <h3>Palabra Relevante</h3>
-                        <p>Mensajes directos y prácticos para enfrentar los retos de hoy con la sabiduría de Dios.</p>
-                    </div>
+                    <div class="joven-card"><h3>Adoración Explosiva</h3><p>Expresamos nuestra gratitud y pasión por Dios con libertad, música fresca y un corazón genuino.</p></div>
+                    <div class="joven-card"><h3>Amistad Real</h3><p>Un espacio donde encontrarás amigos verdaderos que te impulsarán a crecer y cumplir tus sueños.</p></div>
+                    <div class="joven-card"><h3>Palabra Relevante</h3><p>Mensajes directos y prácticos para enfrentar los retos de hoy con la sabiduría de Dios.</p></div>
                 </div>
 
                 <div class="seccion-videos-multimedia">
@@ -794,30 +581,22 @@
             </div>
         </section>
 
-        <!-- GRUPO INFANTIL (NIÑOS) -->
+        <!-- NIÑOS -->
         <section id="ninos" class="vista-seccion seccion-ninos">
             <div class="ninos-container">
                 <span class="badge-ninos">🎨 Grupo Infantil ICA Yireh</span>
                 <h1 class="ninos-title">Pequeños Héroes de la Fe</h1>
-                <p style="font-size: 18px; color: #f1f5f9; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                    Un espacio mágico diseñado para que los niños conozcan el amor de Jesús a través de historias, canciones y diversión.
-                </p>
+                <p style="font-size: 18px; color: #f1f5f9; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Un espacio mágico diseñado para que los niños conozcan el amor de Jesús a través de historias, canciones y diversión.</p>
 
-                <!-- HERO CARD -->
                 <div class="ninos-hero-card">
                     <div>
                         <span style="display:inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px;">Aventura con Jesús</span>
                         <h2 style="font-size: 26px; font-weight: 900; color: #fef08a; margin-bottom: 12px;">¡Creciendo como olivos verdes en la casa de Dios!</h2>
-                        <p style="color: #cbd5e1; font-size: 15px; line-height: 1.7;">
-                            Aquí los niños descubren verdades bíblicas eternas mediante animaciones, juegos interactivos y enseñanzas mensuales adaptadas especialmente para ellos.
-                        </p>
+                        <p style="color: #cbd5e1; font-size: 15px; line-height: 1.7;">Aquí los niños descubren verdades bíblicas eternas mediante animaciones, juegos interactivos y enseñanzas mensuales adaptadas especialmente para ellos.</p>
                     </div>
-                    <div>
-                        <img src="ninos-fondo.jpg" alt="Niños Yireh">
-                    </div>
+                    <div><img src="ninos-fondo.jpg" alt="Niños Yireh"></div>
                 </div>
 
-                <!-- VIDEOS INFANTILES -->
                 <div class="seccion-videos-multimedia">
                     <div class="videos-multimedia-header">
                         <h3>📺 Videos y Alabanzas Infantiles</h3>
@@ -836,7 +615,6 @@
                     <div id="lista-videos-ninos" class="videos-grid"></div>
                 </div>
 
-                <!-- TEMAS DEL MES PARA NIÑOS -->
                 <div class="temas-wrapper" style="margin-top: 40px; background: #ffffff; color: #0f172a;">
                     <div class="temas-header">
                         <div>
@@ -859,21 +637,15 @@
                     <div id="lista-temas-ninos" class="temas-grid"></div>
                 </div>
 
-                <!-- MI ÁRBOL DE LA VIDA -->
                 <div class="arbol-vida-box">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
                         <div>
                             <span style="background: #fde047; color: #064e3b; font-size: 11px; font-weight: 900; padding: 5px 14px; border-radius: 999px; text-transform: uppercase;">Creatividad Bíblica</span>
                             <h3 style="font-size: 26px; font-weight: 900; color: #ffffff; margin-top: 6px;">🌳 Mi Árbol de la Vida</h3>
                         </div>
-                        <button type="button" class="btn-toggle-form" style="background: #fde047; color: #064e3b; font-size: 13px;" onclick="toggleElement('form-crear-historia')">
-                            ✨ Crear Nueva Historia
-                        </button>
+                        <button type="button" class="btn-toggle-form" style="background: #fde047; color: #064e3b; font-size: 13px;" onclick="toggleElement('form-crear-historia')">✨ Crear Nueva Historia</button>
                     </div>
-                    <p style="color: #d1fae5; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">
-                        ¡Un espacio donde los niños pueden crear y explorar historias bíblicas paso a paso, ilustradas con moralejas para su vida diaria!
-                    </p>
-
+                    <p style="color: #d1fae5; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">¡Un espacio donde los niños pueden crear y explorar historias bíblicas paso a paso, ilustradas con moralejas para su vida diaria!</p>
                     <div id="form-crear-historia" class="form-panel" style="background:#ffffff; color:#0f172a;">
                         <h3>Crear Historia Bíblica Interactiva</h3>
                         <form onsubmit="event.preventDefault(); guardarHistoriaBiblica();">
@@ -885,88 +657,96 @@
                             <button type="submit" class="btn-toggle-form" style="background:#047857;">Publicar en el Árbol de la Vida</button>
                         </form>
                     </div>
-
                     <div id="lista-historias-biblicas" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-top:20px;"></div>
                 </div>
             </div>
         </section>
 
-        <!-- CASAS EVANGELÍSTICAS -->
+        <!-- CASAS EVANGELÍSTICAS Y TEMAS TIPO AGENDA FIJA -->
         <section id="casas" class="vista-seccion seccion-casas">
             <div class="casas-grid">
                 <div class="casas-info">
                     <span class="tag-dia" style="background:#bbf7d0; color:#166534;">Comunidad y Alcance</span>
                     <h1>Casas Evangelísticas</h1>
-                    <p>
-                        Nuestra iglesia se extiende a los barrios de Cali. Nos reunimos en los hogares para compartir la Palabra, orar por las necesidades de cada familia y crecer juntos en comunión.
-                    </p>
+                    <p>Nuestra iglesia se extiende a los barrios de Cali. Nos reunimos en los hogares para compartir la Palabra, orar por las necesidades de cada familia y crecer juntos en comunión.</p>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <a href="https://wa.me/573006396622" target="_blank" class="btn-whatsapp">
-                            📲 Ubica tu Casa más cercana
-                        </a>
-                        <button type="button" class="btn-toggle-form" style="background: #0f172a; padding: 18px 30px;" onclick="abrirModalReporteCasa()">
-                            🔑 Consultar Planilla de Asistencia
-                        </button>
+                        <a href="https://wa.me/573006396622" target="_blank" class="btn-whatsapp">📲 Ubica tu Casa más cercana</a>
+                        <button type="button" class="btn-toggle-form" style="background: #0f172a; padding: 18px 30px;" onclick="abrirModalReporteCasa()">🔑 Consultar Planilla de Asistencia</button>
                     </div>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200" alt="Casas Evangelísticas" class="casas-imagen">
+                <div><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200" alt="Casas Evangelísticas" class="casas-imagen"></div>
+            </div>
+
+            <!-- TABLÓN DE TEMAS ESTILO AGENDA DE 3 COLUMNAS FIJAS -->
+            <div class="temas-bulletin-board">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div class="bulletin-badge">LA FAMILIA</div>
+                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; color: #1e1b4b; font-family: 'Montserrat', sans-serif;">TEMAS CASAS EVANGELÍSTICAS</h2>
+                </div>
+                
+                <div class="casas-agenda-layout">
+                    <!-- Columna 1 (Izquierda): Tema 1 y Tema 3 -->
+                    <div class="agenda-col">
+                        <div id="slot-tema-1"></div>
+                        <div id="slot-tema-3"></div>
+                    </div>
+
+                    <!-- Columna 2 (Centro): Estructura Fija -->
+                    <div class="agenda-col">
+                        <div class="estructura-card">
+                            <div style="text-align:center;"><h4>ESTRUCTURA CASAS EV.</h4></div>
+                            <p style="font-weight:900; font-size:14px; margin-bottom:12px; text-align:center;">EL TIEMPO DE CASA EV. ES DE 1 HORA:</p>
+                            <ul style="list-style: none; color: #334155; font-weight: 700; font-size: 13.5px; line-height: 1.8;">
+                                <li>📌 ORACIÓN INICIAL - 2min</li>
+                                <li>📌 ALABANZA Y ADORACIÓN - 10min</li>
+                                <li>📌 MENSAJE - 20min</li>
+                                <li>📌 MINISTRACIÓN Y ORACIÓN - 15min</li>
+                                <li>📌 ANUNCIOS - 3min</li>
+                                <li>📌 REFRIGERIO - 10min</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3 (Derecha): Tema 2 y Tema 4 -->
+                    <div class="agenda-col">
+                        <div id="slot-tema-2"></div>
+                        <div id="slot-tema-4"></div>
+                    </div>
                 </div>
             </div>
 
+            <!-- REGISTRO DE ASISTENCIA -->
             <div class="temas-wrapper" style="border: 2px solid #16a34a; background: #f0fdf4;">
                 <div class="temas-header" style="border-bottom-color: #bbf7d0;">
                     <div>
                         <span class="tag-dia" style="background: #16a34a; color: #fff; margin-bottom: 6px;">Control de Asistencia</span>
                         <h2>📋 Registrar Asistencia Semanal</h2>
                     </div>
-                    <button class="btn-toggle-form" style="background: #16a34a;" onclick="toggleElement('form-asistencia-casa')">
-                        📝 Abrir Formulario de Registro
-                    </button>
+                    <button class="btn-toggle-form" style="background: #16a34a;" onclick="toggleElement('form-asistencia-casa')">📝 Abrir Formulario de Registro</button>
                 </div>
-
                 <div id="form-asistencia-casa" class="form-panel" style="background: #ffffff;">
                     <h3>Reporte Semanal de Asistencia (Se guardará en la Nube)</h3>
                     <form onsubmit="event.preventDefault(); registrarAsistenciaCasa();">
                         <div class="form-grid">
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre de la Casa Evangelística:</label>
-                                <input type="text" id="asist-casa-nombre" class="campo-input" placeholder="Ej: Casa Betel - Barrio San Fernando" required>
-                            </div>
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Clave Secreta de Acceso (Servidor):</label>
-                                <input type="password" id="asist-casa-clave" class="campo-input" placeholder="Clave para ver tus reportes..." required>
-                            </div>
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Dirección de la Casa:</label>
-                                <input type="text" id="asist-direccion" class="campo-input" placeholder="Calle / Carrera / Barrio" required>
-                            </div>
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Servidor Encargado:</label>
-                                <input type="text" id="asist-servidor" class="campo-input" placeholder="Nombre del servidor..." required>
-                            </div>
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre del Anfitrión:</label>
-                                <input type="text" id="asist-anfitrion" class="campo-input" placeholder="Dueño de casa..." required>
-                            </div>
-                            <div>
-                                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Semana o Fecha del Reporte:</label>
-                                <input type="text" id="asist-semana" class="campo-input" placeholder="Ej: Semana del 18 al 24 de Octubre" required>
-                            </div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre de la Casa Evangelística:</label><input type="text" id="asist-casa-nombre" class="campo-input" placeholder="Ej: Casa Betel - Barrio San Fernando" required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Clave Secreta de Acceso (Servidor):</label><input type="password" id="asist-casa-clave" class="campo-input" placeholder="Clave para ver tus reportes..." required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Dirección de la Casa:</label><input type="text" id="asist-direccion" class="campo-input" placeholder="Calle / Carrera / Barrio" required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Servidor Encargado:</label><input type="text" id="asist-servidor" class="campo-input" placeholder="Nombre del servidor..." required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre del Anfitrión:</label><input type="text" id="asist-anfitrion" class="campo-input" placeholder="Dueño de casa..." required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Semana o Fecha del Reporte:</label><input type="text" id="asist-semana" class="campo-input" placeholder="Ej: Semana del 18 al 24 de Octubre" required></div>
                         </div>
-
                         <div style="margin-bottom: 16px;">
                             <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombres Completos y Teléfonos de los Asistentes (Escribe uno por línea):</label>
                             <textarea id="asist-nombres" rows="5" class="campo-input" placeholder="Ej:
 Juan Pérez - 3101234567
 María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         </div>
-
                         <button type="submit" class="btn-toggle-form" style="background: #16a34a; width: 100%; padding: 15px;">Enviar y Guardar Planilla de Asistencia</button>
                     </form>
                 </div>
             </div>
 
+            <!-- MULTIMEDIA CASAS -->
             <div class="temas-wrapper">
                 <div class="temas-header">
                     <div>
@@ -986,29 +766,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     </form>
                 </div>
                 <div id="lista-videos-casas" class="videos-grid"></div>
-            </div>
-
-            <div class="temas-wrapper">
-                <div class="temas-header">
-                    <div>
-                        <span class="tag-dia" style="background:#dcfce7; color:#166534; margin-bottom:6px;">Enseñanza Mensual</span>
-                        <h2>📚 Temas del Mes para Casas</h2>
-                    </div>
-                    <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-nuevo-tema')">➕ Subir Nuevo Tema</button>
-                </div>
-                <div id="form-nuevo-tema" class="form-panel">
-                    <h3>Publicar Nuevo Tema o Guía de Estudio</h3>
-                    <form onsubmit="event.preventDefault(); agregarTemaMes();">
-                        <div class="form-grid">
-                            <input type="text" id="tema-semana" class="campo-input" placeholder="Semana o Fecha" required>
-                            <input type="text" id="tema-titulo" class="campo-input" placeholder="Título del Tema" required>
-                            <input type="text" id="tema-cita" class="campo-input" placeholder="Cita Bíblica" required>
-                        </div>
-                        <textarea id="tema-resumen" rows="3" class="campo-input" style="margin-bottom:16px;" placeholder="Resumen..." required></textarea>
-                        <button type="submit" class="btn-toggle-form" style="background:#16a34a;">Guardar Tema en Vivo</button>
-                    </form>
-                </div>
-                <div id="lista-temas-mes" class="temas-grid"></div>
             </div>
         </section>
 
@@ -1052,20 +809,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     </div>
                     <div id="lista-videos-eventos" class="videos-grid"></div>
                 </div>
-
                 <div id="lista-eventos" class="eventos-grid"></div>
             </div>
         </section>
 
-        <!-- GALERÍA DE EVENTOS CON CARPETAS -->
+        <!-- GALERÍA -->
         <section id="galeria" class="vista-seccion seccion-galeria">
             <div class="galeria-container">
                 <div id="vista-albumes-principal">
                     <div class="galeria-top">
-                        <div>
-                            <span class="tag-dia">Archivo Fotográfico</span>
-                            <h1>Galería de Eventos y Cultos</h1>
-                        </div>
+                        <div><span class="tag-dia">Archivo Fotográfico</span><h1>Galería de Eventos y Cultos</h1></div>
                         <button class="btn-toggle-form solo-admin" onclick="toggleElement('form-nueva-foto')">📸 Subir Foto a un Álbum</button>
                     </div>
 
@@ -1088,63 +841,13 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                     </div>
 
                     <div class="albumes-grid">
-                        <div class="album-card" onclick="abrirAlbum('jovenes')">
-                            <div class="album-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=900" alt="Jóvenes">
-                                <span class="album-badge-count" id="count-jovenes">0 fotos</span>
-                            </div>
-                            <div class="album-info">
-                                <h3>🔥 Jóvenes (Generación Poderosa)</h3>
-                                <p>Fotografías de nuestros servicios juveniles, alabanza y comunión.</p>
-                            </div>
-                        </div>
-
-                        <div class="album-card" onclick="abrirAlbum('casas')">
-                            <div class="album-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=900" alt="Casas Evangelísticas">
-                                <span class="album-badge-count" id="count-casas">0 fotos</span>
-                            </div>
-                            <div class="album-info">
-                                <h3>🏡 Casas Evangelísticas</h3>
-                                <p>Reuniones en los hogares, compañerismo y crecimiento familiar.</p>
-                            </div>
-                        </div>
-
-                        <div class="album-card" onclick="abrirAlbum('campamento')">
-                            <div class="album-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=900" alt="Campamento">
-                                <span class="album-badge-count" id="count-campamento">0 fotos</span>
-                            </div>
-                            <div class="album-info">
-                                <h3>🏕️ Campamento Familiar</h3>
-                                <p>Retiros espirituales, fogatas, recreación y unión en la naturaleza.</p>
-                            </div>
-                        </div>
-
-                        <div class="album-card" onclick="abrirAlbum('sanidad')">
-                            <div class="album-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=900" alt="Sanidad">
-                                <span class="album-badge-count" id="count-sanidad">0 fotos</span>
-                            </div>
-                            <div class="album-info">
-                                <h3>✨ Servicio de Sanidad y Milagros</h3>
-                                <p>Cultos de fe sobrenatural, liberación y milagros del Señor.</p>
-                            </div>
-                        </div>
-
-                        <div class="album-card" onclick="abrirAlbum('intimidad')">
-                            <div class="album-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=900" alt="Intimidad">
-                                <span class="album-badge-count" id="count-intimidad">0 fotos</span>
-                            </div>
-                            <div class="album-info">
-                                <h3>🕊️ Tiempos de Intimidad y Cultos Familiares</h3>
-                                <p>Domingos de adoración profunda, palabra y comunión familiar.</p>
-                            </div>
-                        </div>
+                        <div class="album-card" onclick="abrirAlbum('jovenes')"><div class="album-img-wrap"><img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=900" alt="Jóvenes"><span class="album-badge-count" id="count-jovenes">0 fotos</span></div><div class="album-info"><h3>🔥 Jóvenes (Generación Poderosa)</h3><p>Fotografías de nuestros servicios juveniles, alabanza y comunión.</p></div></div>
+                        <div class="album-card" onclick="abrirAlbum('casas')"><div class="album-img-wrap"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=900" alt="Casas"><span class="album-badge-count" id="count-casas">0 fotos</span></div><div class="album-info"><h3>🏡 Casas Evangelísticas</h3><p>Reuniones en los hogares, compañerismo y crecimiento familiar.</p></div></div>
+                        <div class="album-card" onclick="abrirAlbum('campamento')"><div class="album-img-wrap"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=900" alt="Campamento"><span class="album-badge-count" id="count-campamento">0 fotos</span></div><div class="album-info"><h3>🏕️ Campamento Familiar</h3><p>Retiros espirituales, fogatas, recreación y unión en la naturaleza.</p></div></div>
+                        <div class="album-card" onclick="abrirAlbum('sanidad')"><div class="album-img-wrap"><img src="https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=900" alt="Sanidad"><span class="album-badge-count" id="count-sanidad">0 fotos</span></div><div class="album-info"><h3>✨ Servicio de Sanidad y Milagros</h3><p>Cultos de fe sobrenatural, liberación y milagros del Señor.</p></div></div>
+                        <div class="album-card" onclick="abrirAlbum('intimidad')"><div class="album-img-wrap"><img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=900" alt="Intimidad"><span class="album-badge-count" id="count-intimidad">0 fotos</span></div><div class="album-info"><h3>🕊️ Tiempos de Intimidad y Cultos Familiares</h3><p>Domingos de adoración profunda, palabra y comunión familiar.</p></div></div>
                     </div>
                 </div>
-
                 <div id="vista-album-detalle" class="vista-album-detalle">
                     <button class="btn-volver-albumes" onclick="cerrarAlbum()">← Volver a todas las carpetas</button>
                     <h1 id="titulo-album-actual" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #0f172a; margin-bottom: 30px;">Álbum</h1>
@@ -1158,56 +861,28 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             <div class="campamento-container">
                 <span class="camp-badge">🏕️ Próximo Retiro: 15 de Octubre, 2027</span>
                 <h1 class="camp-title">Campamento Familiar Marcados חֲתוּמִים</h1>
-
                 <div style="background: rgba(0,0,0,0.5); border-left: 5px solid #fde047; padding: 20px 26px; border-radius: 16px; max-width: 780px; margin: 0 auto 35px auto; text-align: left; backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
                     <p style="font-size: 16px; color: #fef08a; font-style: italic; margin-bottom: 10px; line-height: 1.6;">"De ahora en adelante, que nadie me cause problemas con esas cosas. Pues yo llevo, en mi cuerpo, cicatrices que muestran que pertenezco a Jesús."</p>
                     <span style="font-size: 12.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 1.5px;">Gálatas 6:17 (NTV)</span>
                 </div>
-
-                <p class="camp-desc">
-                    Cuatro días inolvidables desconectados de la rutina para conectarnos con la presencia de Dios, fortalecer la unión familiar y disfrutar de la naturaleza, fogatas y recreación.
-                </p>
+                <p class="camp-desc">Cuatro días inolvidables desconectados de la rutina para conectarnos con la presencia de Dios, fortalecer la unión familiar y disfrutar de la naturaleza, fogatas y recreación.</p>
 
                 <div style="margin: 30px 0 45px 0;">
                     <h3 style="font-size: 17px; text-transform: uppercase; letter-spacing: 2px; color: #fde047; margin-bottom: 20px; font-weight: 900;">⏱️ Faltan exactamente:</h3>
                     <div style="display: inline-flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;">
-                            <span id="cd-days" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span>
-                            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Días</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;">
-                            <span id="cd-hours" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span>
-                            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Horas</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;">
-                            <span id="cd-mins" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span>
-                            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Minutos</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;">
-                            <span id="cd-secs" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span>
-                            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Segundos</span>
-                        </div>
+                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;"><span id="cd-days" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span><span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Días</span></div>
+                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;"><span id="cd-hours" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span><span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Horas</span></div>
+                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;"><span id="cd-mins" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span><span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Minutos</span></div>
+                        <div style="background: rgba(0,0,0,0.75); border: 2px solid rgba(253,224,71,0.6); padding: 22px 26px; border-radius: 24px; min-width: 120px;"><span id="cd-secs" style="font-size: 50px; font-weight: 900; color: #fde047; display: block; line-height: 1;">00</span><span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #ecfdf5; margin-top: 8px; display: block; font-weight: 800;">Segundos</span></div>
                     </div>
                 </div>
 
                 <div class="camp-grid">
-                    <div class="camp-item">
-                        <h3>🔥 Noches de Fogata y Adoración</h3>
-                        <p>Tiempos especiales bajo las estrellas buscando el fuego del Espíritu Santo y ministración familiar.</p>
-                    </div>
-                    <div class="camp-item">
-                        <h3>🏊 Recreación y Piscina</h3>
-                        <p>Juegos, dinámicas por equipos, zonas verdes y espacios diseñados para niños, jóvenes y adultos.</p>
-                    </div>
-                    <div class="camp-item">
-                        <h3>🍽️ Alimentación y Estadía</h3>
-                        <p>Incluye hospedaje completo, alimentación durante todo el retiro y materiales para los talleres.</p>
-                    </div>
+                    <div class="camp-item"><h3>🔥 Noches de Fogata y Adoración</h3><p>Tiempos especiales bajo las estrellas buscando el fuego del Espíritu Santo y ministración familiar.</p></div>
+                    <div class="camp-item"><h3>🏊 Recreación y Piscina</h3><p>Juegos, dinámicas por equipos, zonas verdes y espacios diseñados para niños, jóvenes y adultos.</p></div>
+                    <div class="camp-item"><h3>🍽️ Alimentación y Estadía</h3><p>Incluye hospedaje completo, alimentación durante todo el retiro y materiales para los talleres.</p></div>
                 </div>
-
-                <a href="https://wa.me/573167062561?text=Hola,%20quiero%20información%20para%20inscribir%20a%20mi%20familia%20al%20Campamento%20Familiar%20Marcados" target="_blank" class="btn-primary" style="background:#fde047; color:#064e3b; text-decoration:none; display:inline-block;">
-                    📲 Separar Cupo para mi Familia por WhatsApp (316 7062561)
-                </a>
+                <a href="https://wa.me/573167062561?text=Hola,%20quiero%20información%20para%20inscribir%20a%20mi%20familia%20al%20Campamento%20Familiar%20Marcados" target="_blank" class="btn-primary" style="background:#fde047; color:#064e3b; text-decoration:none; display:inline-block;">📲 Separar Cupo para mi Familia por WhatsApp (316 7062561)</a>
             </div>
         </section>
 
@@ -1218,65 +893,37 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 <h1>Judá Radio Streaming</h1>
                 <p style="color:#cbd5e1;">Conectando tu fe las 24 horas del día con alabanza y palabra de vida.</p>
             </div>
-
-            <!-- SECCIÓN DE SIEMBRA - RADIO -->
+            
             <div style="max-width: 600px; margin: 0 auto 40px auto; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(236, 72, 153, 0.4); padding: 24px 30px; border-radius: 24px; text-align: center; backdrop-filter: blur(10px);">
                 <h3 style="font-size: 20px; font-weight: 900; color: #fdf2f8; margin-bottom: 10px;">📻 Apoya a Judá Radio</h3>
                 <p style="font-size: 14px; color: #e2e8f0; margin-bottom: 20px; line-height: 1.5;">Tu ofrenda nos ayuda a mantener los servidores activos para transmitir alabanza y palabra de vida las 24 horas del día.</p>
-                
                 <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
-                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                        <span style="display: block; color: #f472b6; font-size: 11px; font-weight: 800; text-transform: uppercase;">Nequi / DaviPlata</span>
-                        <strong style="font-size: 18px; color: #fff;">300 639 6622</strong>
-                    </div>
-                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                        <span style="display: block; color: #38bdf8; font-size: 11px; font-weight: 800; text-transform: uppercase;">PayPal</span>
-                        <strong style="font-size: 14px; color: #fff;">Donaciones Internacionales</strong>
-                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);"><span style="display: block; color: #f472b6; font-size: 11px; font-weight: 800; text-transform: uppercase;">Nequi / DaviPlata</span><strong style="font-size: 18px; color: #fff;">300 639 6622</strong></div>
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);"><span style="display: block; color: #38bdf8; font-size: 11px; font-weight: 800; text-transform: uppercase;">PayPal</span><strong style="font-size: 14px; color: #fff;">Donaciones Internacionales</strong></div>
                 </div>
-                
-                <a href="https://wa.me/573006396622?text=Hola,%20quiero%20apoyar%20la%20señal%20de%20Judá%20Radio%20con%20una%20siembra" target="_blank" style="display: inline-block; background: #ec4899; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 10px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);">
-                    🤝 Sembrar en la Radio
-                </a>
+                <a href="https://wa.me/573006396622?text=Hola,%20quiero%20apoyar%20la%20señal%20de%20Judá%20Radio%20con%20una%20siembra" target="_blank" style="display: inline-block; background: #ec4899; color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 10px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);">🤝 Sembrar en la Radio</a>
             </div>
 
-            <!-- BOTÓN DE DESCARGA DE LA APP DE LA RADIO -->
             <div style="max-width: 600px; margin: 0 auto 40px auto; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); padding: 20px 28px; border-radius: 24px; text-align: center; backdrop-filter: blur(10px);">
                 <h3 style="font-size: 18px; font-weight: 900; color: #f0abfc; margin-bottom: 8px;">📱 ¡Lleva Judá Radio en tu Celular!</h3>
                 <p style="font-size: 13.5px; color: #e2e8f0; margin-bottom: 16px;">Descarga nuestra aplicación móvil oficial para escuchar la señal en vivo desde tu dispositivo Android.</p>
-                <a href="https://drive.google.com/uc?export=download&id=17sGVsxvuhvTs4Hk3GEAlSKM3CDExQpim" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; padding: 12px 30px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);">
-                    📥 Descargar App de la Radio
-                </a>
+                <a href="https://drive.google.com/uc?export=download&id=17sGVsxvuhvTs4Hk3GEAlSKM3CDExQpim" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; padding: 12px 30px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);">📥 Descargar App de la Radio</a>
             </div>
 
             <div class="radio-grid">
                 <div class="reproductor-card-pro">
                     <div class="studio-glow"></div>
                     <div class="reproductor-content-z">
-                        <div class="live-badge-pro">
-                            <span class="dot-live" style="background:#ef4444;"></span> SEÑAL EN DIRECTO
-                        </div>
-
-                        <div class="audio-gauge-container">
-                            <div class="gauge-ring"></div>
-                            <span class="gauge-center-text">HD</span>
-                            <span class="gauge-subtext">Judá Radio</span>
-                        </div>
-
+                        <div class="live-badge-pro"><span class="dot-live" style="background:#ef4444;"></span> SEÑAL EN DIRECTO</div>
+                        <div class="audio-gauge-container"><div class="gauge-ring"></div><span class="gauge-center-text">HD</span><span class="gauge-subtext">Judá Radio</span></div>
                         <div class="now-playing-panel">
-                            <div class="album-art-box">
-                                <img src="124031.png" alt="Carátula" id="img-caratula">
-                            </div>
+                            <div class="album-art-box"><img src="124031.png" alt="Carátula" id="img-caratula"></div>
                             <div class="song-meta-wrap">
                                 <span class="song-label-on">Al Aire Ahora</span>
-                                <div class="song-title-marquee">
-                                    <span id="txt-cancion">Judá Radio HD • Transmitiendo Alabanza y Palabra Viva desde Cali, Colombia</span>
-                                </div>
+                                <div class="song-title-marquee"><span id="txt-cancion">Judá Radio HD • Transmitiendo Alabanza y Palabra Viva desde Cali, Colombia</span></div>
                             </div>
                         </div>
-
                         <div class="waveform-graph-box" id="waveform-box"></div>
-
                         <audio controls preload="none" class="audio-player-pro" src="https://radio25.virtualtronics.com/proxy/radiojuda?mp=/stream;"></audio>
                     </div>
                 </div>
@@ -1297,7 +944,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">💬</div>
                         <h4>¡Únete al Chat!</h4>
                         <p>Ingresa tus datos para enviar saludos y peticiones en vivo.</p>
-                        
                         <form onsubmit="event.preventDefault(); registrarUsuarioChat();" class="form-registro" autocomplete="on">
                             <input type="text" id="reg-nombre" name="name" autocomplete="name" class="input-moderno" placeholder="Tu Nombre o Apodo" required>
                             <input type="email" id="reg-correo" name="email" autocomplete="email" class="input-moderno" placeholder="Tu Correo Electrónico" required>
@@ -1308,14 +954,8 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
 
                     <div id="chat-interfaz" class="chat-conversacion" style="display:none; flex-direction:column; height:100%;">
                         <div id="chat-messages" class="mensajes-lista" style="flex: 1; padding: 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; max-height: 350px;">
-                            <div class="msg-item msg-mod">
-                                <span class="msg-autor">Moderador</span>
-                                <div class="msg-burbuja">
-                                    ¡Dios te bendiga! Bienvenido a la sintonía. ¿Desde qué barrio o ciudad nos escuchas hoy? 🙏
-                                </div>
-                            </div>
+                            <div class="msg-item msg-mod"><span class="msg-autor">Moderador</span><div class="msg-burbuja">¡Dios te bendiga! Bienvenido a la sintonía. ¿Desde qué barrio o ciudad nos escuchas hoy? 🙏</div></div>
                         </div>
-
                         <div class="chat-barra-inferior">
                             <form onsubmit="event.preventDefault(); enviarMensajeChat();" style="display:flex; gap:10px; width:100%;">
                                 <input id="chat-input" type="text" name="mensaje" placeholder="Escribe tu mensaje..." autocomplete="off" class="input-mensaje">
@@ -1330,23 +970,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
 
     <footer class="footer">
         <div class="community-stats-bar">
-            <div class="stat-pill">
-                👁️ Visitantes: <strong id="contador-visitas">0</strong>
-            </div>
-            <div>
-                <button id="btn-like" class="btn-like-widget" onclick="darMeGusta()">
-                    <span id="heart-icon">❤️</span> Me gusta (<span id="contador-likes">0</span>)
-                </button>
-            </div>
+            <div class="stat-pill">👁️ Visitantes: <strong id="contador-visitas">0</strong></div>
+            <div><button id="btn-like" class="btn-like-widget" onclick="darMeGusta()"><span id="heart-icon">❤️</span> Me gusta (<span id="contador-likes">0</span>)</button></div>
         </div>
-
         <strong>&copy; 2026 Iglesia Casa Apostólica Yireh</strong>
         <p>Cali, Colombia | WhatsApp: 300 639 6622</p>
         <button id="btn-acceso-lideres" class="btn-acceso-lideres" onclick="abrirModalAdmin()">🔒 Acceso Líderes</button>
     </footer>
 
     <script>
-        // CONFIGURACIÓN DE FIREBASE ACTUALIZADA (IGLESIAYIREHWEB)
+        // CONFIGURACIÓN DE FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyB8BPnXCErWAituKIgOp3fxJM_waLbRcSs",
             authDomain: "iglesiayirehweb.firebaseapp.com",
@@ -1361,6 +994,9 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
 
         const CLAVE_ADMIN_YIREH = 'yireh2026';
 
+        // ==========================================
+        // FUNCIONES ADMIN GLOBALES
+        // ==========================================
         function checkAdminUI() {
             if (sessionStorage.getItem('admin_activo_yireh') === 'true') {
                 document.body.classList.add('modo-admin');
@@ -1373,28 +1009,20 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             }
         }
 
-        function abrirModalAdmin() {
-            document.getElementById('modal-admin').style.display = 'flex';
-            document.getElementById('error-pass').style.display = 'none';
-            document.getElementById('input-pass-admin').value = '';
-            document.getElementById('input-pass-admin').focus();
-        }
+        function abrirModalAdmin() { document.getElementById('modal-admin').style.display = 'flex'; document.getElementById('error-pass').style.display = 'none'; document.getElementById('input-pass-admin').value = ''; document.getElementById('input-pass-admin').focus(); }
         function cerrarModalAdmin() { document.getElementById('modal-admin').style.display = 'none'; }
         
         function verificarPasswordAdmin() {
             const pass = document.getElementById('input-pass-admin').value.trim();
             if (pass === CLAVE_ADMIN_YIREH) {
-                sessionStorage.setItem('admin_activo_yireh', 'true');
-                checkAdminUI();
-                cerrarModalAdmin();
+                sessionStorage.setItem('admin_activo_yireh', 'true'); checkAdminUI(); cerrarModalAdmin();
             } else {
                 document.getElementById('error-pass').style.display = 'block';
             }
         }
         
         function cerrarSesionAdmin() {
-            sessionStorage.removeItem('admin_activo_yireh');
-            checkAdminUI();
+            sessionStorage.removeItem('admin_activo_yireh'); checkAdminUI();
             document.querySelectorAll('.form-panel').forEach(f => f.style.display = 'none');
         }
 
@@ -1404,14 +1032,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
         }
 
-        // ==========================================
-        // FUNCIONES DE ZOOM / AMPLIAR FOTOS EN GALERÍA
-        // ==========================================
-        function abrirZoomFoto(url, caption) {
-            document.getElementById('img-zoom-dest').src = url;
-            document.getElementById('txt-zoom-caption').textContent = caption;
-            document.getElementById('modal-zoom').style.display = 'flex';
-        }
+        function abrirZoomFoto(url, caption) { document.getElementById('img-zoom-dest').src = url; document.getElementById('txt-zoom-caption').textContent = caption; document.getElementById('modal-zoom').style.display = 'flex'; }
         function cerrarZoom() { document.getElementById('modal-zoom').style.display = 'none'; }
 
         function comprimirYSubirImagen(file, callback) {
@@ -1419,14 +1040,9 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             reader.onload = function (event) {
                 const img = new Image();
                 img.onload = function () {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width, height = img.height;
-                    const maxDim = 1200;
-                    if (width > height && width > maxDim) { height *= maxDim / width; width = maxDim; } 
-                    else if (height > maxDim) { width *= maxDim / height; height = maxDim; }
-                    canvas.width = width; canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
+                    const canvas = document.createElement('canvas'); let width = img.width, height = img.height; const maxDim = 1200;
+                    if (width > height && width > maxDim) { height *= maxDim / width; width = maxDim; } else if (height > maxDim) { width *= maxDim / height; height = maxDim; }
+                    canvas.width = width; canvas.height = height; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, width, height);
                     callback(canvas.toDataURL('image/jpeg', 0.75));
                 };
                 img.src = event.target.result;
@@ -1435,15 +1051,26 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // YOUTUBE VIDEOS (EN VIVO FIREBASE) - ACTUALIZADO PARA SHORTS
+        // VIDEOS YOUTUBE (FUNCIÓN ORIGINAL RESTAURADA)
         // ==========================================
         function getYoutubeEmbed(url) {
             let videoId = '';
-            if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
-            else if (url.includes('youtube.com/watch')) videoId = new URLSearchParams(url.split('?')[1]).get('v');
-            else if (url.includes('youtube.com/embed/')) videoId = url.split('youtube.com/embed/')[1].split('?')[0];
-            else if (url.includes('youtube.com/shorts/')) videoId = url.split('youtube.com/shorts/')[1].split('?')[0];
-            return videoId ? 'https://www.youtube.com/embed/' + videoId : null;
+            if (!url) return null;
+            
+            if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            } else if (url.includes('youtube.com/watch')) {
+                videoId = new URLSearchParams(url.split('?')[1]).get('v');
+            } else if (url.includes('youtube.com/embed/')) {
+                videoId = url.split('youtube.com/embed/')[1].split('?')[0];
+            } else if (url.includes('youtube.com/shorts/')) {
+                videoId = url.split('youtube.com/shorts/')[1].split('?')[0];
+            }
+            
+            if (videoId && videoId.length === 11) {
+                return 'https://www.youtube.com/embed/' + videoId;
+            }
+            return null;
         }
 
         function cargarVideosInit() {
@@ -1458,10 +1085,19 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                         snap.forEach(child => { datos.push({id: child.key, ...child.val()}); });
                     }
                     datos.reverse().forEach(v => {
+                        let iframeHtml = '';
+                        
+                        if (v.url && !v.url.includes('null')) {
+                            // Hemos agregado permisos extra (allow) para saltar restricciones
+                            iframeHtml = `<iframe src="${v.url}" class="video-player-item" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        } else {
+                            iframeHtml = `<div class="video-player-item" style="display:flex;align-items:center;justify-content:center;color:#ef4444;font-weight:bold;text-align:center;padding:20px;background:#1e293b;">⚠️ Enlace Roto.<br>Por favor, elimina esta tarjeta y vuelve a agregar el video correctamente.</div>`;
+                        }
+                        
                         cont.innerHTML += `
                             <div class="video-card">
                                 <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarVideo('${sec}', '${v.id}')">✕</button>
-                                <iframe src="${v.url}" class="video-player-item" frameborder="0" allowfullscreen></iframe>
+                                ${iframeHtml}
                                 <div class="video-body"><h4>${v.titulo}</h4></div>
                             </div>`;
                     });
@@ -1474,21 +1110,23 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const titulo = document.getElementById('vid-titulo-' + seccion).value.trim();
             const urlInput = document.getElementById('vid-url-' + seccion).value.trim();
             if(!titulo || !urlInput) return;
+            
             const embedUrl = getYoutubeEmbed(urlInput);
-            if(!embedUrl) { alert('Por favor pega un enlace válido de YouTube.'); return; }
+            if(!embedUrl) { 
+                alert('El enlace de YouTube es inválido. Asegúrate de copiar el enlace completo desde YouTube.'); 
+                return; 
+            }
 
             db.ref('videos/' + seccion).push({ titulo: titulo, url: embedUrl, timestamp: firebase.database.ServerValue.TIMESTAMP })
             .then(() => {
                 document.getElementById('vid-titulo-' + seccion).value = '';
                 document.getElementById('vid-url-' + seccion).value = '';
                 document.getElementById('form-video-' + seccion).style.display = 'none';
-                alert('¡Video de YouTube publicado en vivo!');
+                alert('¡Video publicado correctamente en vivo!');
             });
         }
 
-        function eliminarVideo(sec, id) {
-            if(confirm('¿Eliminar este video?')) db.ref('videos/' + sec).child(id).remove();
-        }
+        function eliminarVideo(sec, id) { if(confirm('¿Seguro que deseas eliminar este video?')) db.ref('videos/' + sec).child(id).remove(); }
 
         // ==========================================
         // ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS)
@@ -1496,58 +1134,37 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function cargarHistoriasBiblicas() {
             db.ref('historias_arbol').on('value', snap => {
                 const cont = document.getElementById('lista-historias-biblicas');
-                if(!cont) return;
-                cont.innerHTML = '';
+                if(!cont) return; cont.innerHTML = '';
                 let historias = [];
-                if(snap.exists()){
-                    snap.forEach(child => { historias.push({id: child.key, ...child.val()}); });
-                } else {
-                    historias = [{ titulo: 'El Arca de Noé', personaje: 'Noé y los animalitos', contenido: 'Dios le pidió a Noé construir un gran arca para salvar a su familia y a los animales de la gran lluvia. ¡Dios siempre cumple sus promesas de cuidado!' }];
-                }
+                if(snap.exists()){ snap.forEach(child => { historias.push({id: child.key, ...child.val()}); }); } 
+                else { historias = [{ titulo: 'El Arca de Noé', personaje: 'Noé y los animalitos', contenido: 'Dios le pidió a Noé construir un gran arca para salvar a su familia y a los animales de la gran lluvia. ¡Dios siempre cumple sus promesas de cuidado!' }]; }
                 historias.reverse().forEach(h => {
                     const btnDelete = h.id ? `<button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; display:none;" onclick="eliminarHistoriaBiblica('${h.id}')">✕</button>` : '';
-                    cont.innerHTML += `
-                        <div style="background: rgba(255,255,255,0.95); color: #0f172a; border-radius: 20px; padding: 22px; text-align: left; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                            ${btnDelete}
-                            <span style="font-size: 11px; font-weight: 800; color: #047857; text-transform: uppercase;">🌱 Historia Bíblica</span>
-                            <h4 style="font-size: 20px; font-weight: 900; margin: 6px 0 4px 0; color: #064e3b;">${h.titulo}</h4>
-                            <span style="font-size: 12.5px; font-weight: 700; color: #0284c7; display: block; margin-bottom: 10px;">👤 Personaje: ${h.personaje}</span>
-                            <p style="font-size: 14px; color: #334155; line-height: 1.6;">${h.contenido}</p>
-                        </div>`;
+                    cont.innerHTML += `<div style="background: rgba(255,255,255,0.95); color: #0f172a; border-radius: 20px; padding: 22px; text-align: left; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">${btnDelete}<span style="font-size: 11px; font-weight: 800; color: #047857; text-transform: uppercase;">🌱 Historia Bíblica</span><h4 style="font-size: 20px; font-weight: 900; margin: 6px 0 4px 0; color: #064e3b;">${h.titulo}</h4><span style="font-size: 12.5px; font-weight: 700; color: #0284c7; display: block; margin-bottom: 10px;">👤 Personaje: ${h.personaje}</span><p style="font-size: 14px; color: #334155; line-height: 1.6;">${h.contenido}</p></div>`;
                 });
                 checkAdminUI();
             });
         }
-
         function guardarHistoriaBiblica() {
-            const titulo = document.getElementById('hist-titulo').value.trim();
-            const personaje = document.getElementById('hist-personaje').value.trim();
-            const contenido = document.getElementById('hist-contenido').value.trim();
+            const titulo = document.getElementById('hist-titulo').value.trim(); const personaje = document.getElementById('hist-personaje').value.trim(); const contenido = document.getElementById('hist-contenido').value.trim();
             if (!titulo || !personaje || !contenido) return;
-
-            db.ref('historias_arbol').push({ titulo, personaje, contenido, timestamp: firebase.database.ServerValue.TIMESTAMP })
-            .then(() => {
-                document.getElementById('hist-titulo').value = '';
-                document.getElementById('hist-personaje').value = '';
-                document.getElementById('hist-contenido').value = '';
-                document.getElementById('form-crear-historia').style.display = 'none';
-                alert('¡Historia publicada en vivo en el Árbol de la Vida!');
+            db.ref('historias_arbol').push({ titulo, personaje, contenido, timestamp: firebase.database.ServerValue.TIMESTAMP }).then(() => {
+                document.getElementById('hist-titulo').value = ''; document.getElementById('hist-personaje').value = ''; document.getElementById('hist-contenido').value = '';
+                document.getElementById('form-crear-historia').style.display = 'none'; alert('¡Historia publicada en vivo en el Árbol de la Vida!');
             });
         }
         function eliminarHistoriaBiblica(id) { if(confirm('¿Borrar historia?')) db.ref('historias_arbol').child(id).remove(); }
 
         // ==========================================
-        // TEMAS DEL MES PARA NIÑOS
+        // TEMAS INFANTILES
         // ==========================================
         function cargarTemasNinos() {
             db.ref('temas_ninos').on('value', snap => {
                 const cont = document.getElementById('lista-temas-ninos');
-                if(!cont) return;
-                cont.innerHTML = '';
+                if(!cont) return; cont.innerHTML = '';
                 let temas = [];
                 if(snap.exists()) snap.forEach(child => { temas.push({id: child.key, ...child.val()}); });
                 else temas = [{ mes: 'Octubre - Héroes de la Fe', versiculo: 'Josué 1:9', desc: 'Aprendiendo que Dios es nuestro escudo y fortaleza en todo momento.' }];
-                
                 temas.reverse().forEach(t => {
                     const btnDelete = t.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarTemaNinos('${t.id}')">✕</button>` : '';
                     cont.innerHTML += `
@@ -1562,149 +1179,137 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 checkAdminUI();
             });
         }
-
         function agregarTemaNinos() {
-            const mes = document.getElementById('temas-ninos-mes').value.trim();
-            const versiculo = document.getElementById('temas-ninos-versiculo').value.trim();
-            const desc = document.getElementById('temas-ninos-desc').value.trim();
+            const mes = document.getElementById('temas-ninos-mes').value.trim(); const versiculo = document.getElementById('temas-ninos-versiculo').value.trim(); const desc = document.getElementById('temas-ninos-desc').value.trim();
             if (!mes || !versiculo || !desc) return;
-
-            db.ref('temas_ninos').push({ mes, versiculo, desc, timestamp: firebase.database.ServerValue.TIMESTAMP })
-            .then(() => {
-                document.getElementById('temas-ninos-mes').value = '';
-                document.getElementById('temas-ninos-versiculo').value = '';
-                document.getElementById('temas-ninos-desc').value = '';
+            db.ref('temas_ninos').push({ mes, versiculo, desc, timestamp: firebase.database.ServerValue.TIMESTAMP }).then(() => {
+                document.getElementById('temas-ninos-mes').value = ''; document.getElementById('temas-ninos-versiculo').value = ''; document.getElementById('temas-ninos-desc').value = '';
                 document.getElementById('form-nuevo-tema-ninos').style.display = 'none';
             });
         }
         function eliminarTemaNinos(id) { if(confirm('¿Borrar tema?')) db.ref('temas_ninos').child(id).remove(); }
 
         // ==========================================
-        // GESTIÓN DE ASISTENCIA SEMANAL CASAS
+        // ASISTENCIA CASAS
         // ==========================================
         function registrarAsistenciaCasa() {
-            const nombreCasa = document.getElementById('asist-casa-nombre').value.trim();
-            const claveCasa = document.getElementById('asist-casa-clave').value.trim();
-            const direccion = document.getElementById('asist-direccion').value.trim();
-            const servidor = document.getElementById('asist-servidor').value.trim();
-            const anfitrion = document.getElementById('asist-anfitrion').value.trim();
-            const semana = document.getElementById('asist-semana').value.trim();
-            const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
-
-            if (!nombreCasa || !claveCasa || !servidor || !semana || !nombresAsistentes) {
-                alert('Por favor completa todos los campos obligatorios.'); return;
-            }
-
-            const asistentesArray = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0).map(linea => {
-                let partes = linea.split('-');
-                return { nombre: partes[0] ? partes[0].trim() : linea, telefono: partes[1] ? partes[1].trim() : 'Sin teléfono' };
-            });
-
+            const nombreCasa = document.getElementById('asist-casa-nombre').value.trim(); const claveCasa = document.getElementById('asist-casa-clave').value.trim(); const direccion = document.getElementById('asist-direccion').value.trim(); const servidor = document.getElementById('asist-servidor').value.trim(); const anfitrion = document.getElementById('asist-anfitrion').value.trim(); const semana = document.getElementById('asist-semana').value.trim(); const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
+            if (!nombreCasa || !claveCasa || !servidor || !semana || !nombresAsistentes) return alert('Completa los campos obligatorios.');
+            const asistentesArray = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0).map(linea => { let partes = linea.split('-'); return { nombre: partes[0] ? partes[0].trim() : linea, telefono: partes[1] ? partes[1].trim() : 'Sin teléfono' }; });
             db.ref('asistencias_casas').push({
-                casa: nombreCasa, clave: claveCasa, direccion: direccion, servidor: servidor,
-                anfitrion: anfitrion, semana: semana, asistentes: asistentesArray,
-                fechaRegistro: new Date().toLocaleDateString(), timestamp: Date.now()
+                casa: nombreCasa, clave: claveCasa, direccion: direccion, servidor: servidor, anfitrion: anfitrion, semana: semana, asistentes: asistentesArray, fechaRegistro: new Date().toLocaleDateString(), timestamp: Date.now()
             }).then(() => {
-                alert('¡Planilla registrada con éxito en la NUBE!');
-                document.getElementById('form-asistencia-casa').style.display = 'none';
-                document.getElementById('asist-casa-nombre').value = ''; document.getElementById('asist-casa-clave').value = '';
-                document.getElementById('asist-direccion').value = ''; document.getElementById('asist-servidor').value = '';
-                document.getElementById('asist-anfitrion').value = ''; document.getElementById('asist-semana').value = '';
-                document.getElementById('asist-nombres').value = '';
+                alert('¡Planilla registrada con éxito en la NUBE!'); document.getElementById('form-asistencia-casa').style.display = 'none';
+                document.getElementById('asist-casa-nombre').value = ''; document.getElementById('asist-casa-clave').value = ''; document.getElementById('asist-direccion').value = ''; document.getElementById('asist-servidor').value = ''; document.getElementById('asist-anfitrion').value = ''; document.getElementById('asist-semana').value = ''; document.getElementById('asist-nombres').value = '';
             });
         }
-
-        function abrirModalReporteCasa() {
-            document.getElementById('modal-reporte-casa').style.display = 'flex';
-            document.getElementById('resultado-reporte-casa').style.display = 'none';
-            document.getElementById('input-clave-casa').value = ''; document.getElementById('input-clave-casa').focus();
-        }
+        function abrirModalReporteCasa() { document.getElementById('modal-reporte-casa').style.display = 'flex'; document.getElementById('resultado-reporte-casa').style.display = 'none'; document.getElementById('input-clave-casa').value = ''; document.getElementById('input-clave-casa').focus(); }
         function cerrarModalReporteCasa() { document.getElementById('modal-reporte-casa').style.display = 'none'; }
-
         let datosReporteActual = null;
         function cargarReportePorClave() {
             const claveIngresada = document.getElementById('input-clave-casa').value.trim();
             if (!claveIngresada) return;
-
             db.ref('asistencias_casas').orderByChild('clave').equalTo(claveIngresada).once('value', snap => {
                 if (!snap.exists()) { alert('No se encontraron registros con esta clave.'); return; }
-                let records = [];
-                snap.forEach(c => records.push(c.val()));
-                records.sort((a,b) => b.timestamp - a.timestamp);
+                let records = []; snap.forEach(c => records.push(c.val())); records.sort((a,b) => b.timestamp - a.timestamp);
                 datosReporteActual = records[0];
-
-                document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa;
-                document.getElementById('pl-casa-semana').textContent = datosReporteActual.semana;
-                document.getElementById('pl-casa-direccion').textContent = datosReporteActual.direccion;
-                document.getElementById('pl-casa-servidor').textContent = datosReporteActual.servidor;
-                document.getElementById('pl-casa-anfitrion').textContent = datosReporteActual.anfitrion;
-                document.getElementById('pl-total-asistentes').textContent = 'Total Asistentes: ' + datosReporteActual.asistentes.length;
-
-                const tbody = document.getElementById('tabla-planilla-body');
-                tbody.innerHTML = '';
+                document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa; document.getElementById('pl-casa-semana').textContent = datosReporteActual.semana; document.getElementById('pl-casa-direccion').textContent = datosReporteActual.direccion; document.getElementById('pl-casa-servidor').textContent = datosReporteActual.servidor; document.getElementById('pl-casa-anfitrion').textContent = datosReporteActual.anfitrion; document.getElementById('pl-total-asistentes').textContent = 'Total Asistentes: ' + datosReporteActual.asistentes.length;
+                const tbody = document.getElementById('tabla-planilla-body'); tbody.innerHTML = '';
                 datosReporteActual.asistentes.forEach((asist, idx) => {
-                    tbody.innerHTML += `<tr><td style="text-align: center; font-weight: 800; background: #f1f5f9;">${idx + 1}</td>
-                                        <td><strong>${asist.nombre}</strong></td><td>${asist.telefono}</td>
-                                        <td style="text-align: center; color: #16a34a; font-weight: 800;">✓ Presente</td></tr>`;
+                    tbody.innerHTML += `<tr><td style="text-align: center; font-weight: 800; background: #f1f5f9;">${idx + 1}</td><td><strong>${asist.nombre}</strong></td><td>${asist.telefono}</td><td style="text-align: center; color: #16a34a; font-weight: 800;">✓ Presente</td></tr>`;
                 });
                 document.getElementById('resultado-reporte-casa').style.display = 'block';
             });
         }
-
         function descargarReporteCasaExcel() {
             if (!datosReporteActual) return;
             let csvContent = '\uFEFFPLANILLA DE ASISTENCIA - CASA EVANGELÍSTICA\r\n';
             csvContent += `Casa:, "${datosReporteActual.casa}"\r\nSemana:, "${datosReporteActual.semana}"\r\nDirección:, "${datosReporteActual.direccion}"\r\nServidor:, "${datosReporteActual.servidor}"\r\nAnfitrión:, "${datosReporteActual.anfitrion}"\r\n\r\nNo,Nombre Completo,Teléfono,Asistencia\r\n`;
             datosReporteActual.asistentes.forEach((a, i) => { csvContent += `${i + 1},"${a.nombre}","${a.telefono}",Presente\r\n`; });
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url;
-            a.download = 'planilla_' + datosReporteActual.casa.toLowerCase().replace(/\s+/g, '_') + '.csv';
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'planilla_' + datosReporteActual.casa.toLowerCase().replace(/\s+/g, '_') + '.csv';
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
         }
 
         // ==========================================
-        // TEMAS CASAS Y EVENTOS
+        // TEMAS CASAS - DISEÑO TIPO AGENDA (FIJO 4 ESPACIOS)
         // ==========================================
-        function cargarTemasMes() {
-            db.ref('temas_casas').on('value', snap => {
-                const contenedor = document.getElementById('lista-temas-mes');
-                if(!contenedor) return;
-                contenedor.innerHTML = '';
-                let temas = [];
-                if(snap.exists()) snap.forEach(c => temas.push({id: c.key, ...c.val()}));
-                else temas = [{ semana: 'Semana 1', titulo: 'Edificando el Altar Familiar', cita: 'Josué 24:15', resumen: 'Principios prácticos para restaurar la oración en cada hogar.' }];
-                
-                temas.reverse().forEach(t => {
-                    const btnDel = t.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarTema('${t.id}')">✕</button>` : '';
-                    contenedor.innerHTML += `<div class="tema-card">${btnDel}<span class="tema-semana">${t.semana}</span><h4>${t.titulo}</h4><span class="tema-versiculo">📖 ${t.cita}</span><p>${t.resumen}</p></div>`;
-                });
-                checkAdminUI();
-            });
-        }
-        function agregarTemaMes() {
-            const semana = document.getElementById('tema-semana').value.trim();
-            const titulo = document.getElementById('tema-titulo').value.trim();
-            const cita = document.getElementById('tema-cita').value.trim();
-            const resumen = document.getElementById('tema-resumen').value.trim();
-            if(!semana) return;
-            db.ref('temas_casas').push({ semana, titulo, cita, resumen, timestamp: Date.now() }).then(() => {
-                document.getElementById('form-nuevo-tema').style.display = 'none';
-                document.getElementById('tema-semana').value=''; document.getElementById('tema-titulo').value='';
-                document.getElementById('tema-cita').value=''; document.getElementById('tema-resumen').value='';
-            });
-        }
-        function eliminarTema(id) { if(confirm('¿Borrar tema?')) db.ref('temas_casas').child(id).remove(); }
+        
+        const defaultTemas = {
+            tema1: { semana: "TEMA 1", titulo: "FE QUE TRANSFORMA HOGARES", cita: "MARCOS 2:1-12", resumen: "La palabra nos muestra la importancia de compartir nuestra fe con aquellos cercanos a nosotros." },
+            tema2: { semana: "TEMA 2", titulo: "SALVAVIDAS EN EL HOGAR", cita: "1 CORINTIOS 13:7", resumen: "Cuando conocemos el amor de Cristo, podemos reflejarlo en nuestro hogar." },
+            tema3: { semana: "TEMA 3", titulo: "DE LA DIVISIÓN A LA UNIDAD", cita: "SANTIAGO 1:19", resumen: "Aprendemos cómo superar los conflictos familiares y establecer acuerdos." },
+            tema4: { semana: "TEMA 4", titulo: "SANANDO EL CORAZÓN", cita: "MALAQUÍAS 4:6", resumen: "Dios desde el principio nos ha mostrado su deseo de restaurar corazones." }
+        };
 
+        function cargarTemasCasasFijos() {
+            db.ref('temas_fijos_casas').on('value', snap => {
+                let data = snap.val() || {};
+                
+                for(let i=1; i<=4; i++) {
+                    let key = 'tema'+i;
+                    let t = data[key] || defaultTemas[key];
+                    
+                    let btnEdit = `<button class="btn-edit-item solo-admin" style="display:none; right:15px; top:35px; background:#fef08a; color:#854d0e; width:34px; height:34px; font-size:16px; border-radius:50%;" onclick="abrirEditarTemaFijo(${i})">✏️</button>`;
+                    
+                    document.getElementById('slot-tema-'+i).innerHTML = `
+                        <div class="notebook-card">
+                            <div class="notebook-spirals"></div>
+                            ${btnEdit}
+                            <div style="text-align:center;"><div class="notebook-header">${t.semana}</div></div>
+                            <div class="notebook-title">${t.titulo}</div>
+                            <span class="notebook-verse">📖 ${t.cita}</span>
+                            <div class="notebook-desc">${t.resumen}</div>
+                        </div>
+                    `;
+                }
+                checkAdminUI(); 
+            });
+        }
+        
+        function abrirEditarTemaFijo(num) {
+            db.ref('temas_fijos_casas/tema'+num).once('value', snap => {
+                let t = snap.val() || defaultTemas['tema'+num];
+                
+                document.getElementById('edit-tema-num').value = num;
+                document.getElementById('edit-tema-semana').value = t.semana || '';
+                document.getElementById('edit-tema-titulo').value = t.titulo || '';
+                document.getElementById('edit-tema-cita').value = t.cita || '';
+                document.getElementById('edit-tema-resumen').value = t.resumen || '';
+                
+                document.getElementById('modal-editar-tema').style.display = 'flex';
+            });
+        }
+
+        function cerrarModalEditarTema() { document.getElementById('modal-editar-tema').style.display = 'none'; }
+
+        function guardarEdicionTemaFijo() {
+            const num = document.getElementById('edit-tema-num').value;
+            const semana = document.getElementById('edit-tema-semana').value.trim();
+            const titulo = document.getElementById('edit-tema-titulo').value.trim();
+            const cita = document.getElementById('edit-tema-cita').value.trim();
+            const resumen = document.getElementById('edit-tema-resumen').value.trim();
+            
+            if (!num || !semana || !titulo) return;
+            
+            db.ref('temas_fijos_casas/tema'+num).update({
+                semana: semana, titulo: titulo, cita: cita, resumen: resumen, fechaEdicion: Date.now()
+            }).then(() => {
+                cerrarModalEditarTema();
+                alert('¡El cuaderno se ha actualizado correctamente en vivo!');
+            });
+        }
+
+        // ==========================================
+        // AGENDA EVENTOS Y POSTS JUVENILES
+        // ==========================================
         function cargarEventos() {
             db.ref('eventos').on('value', snap => {
                 const cont = document.getElementById('lista-eventos');
-                if(!cont) return;
-                cont.innerHTML = '';
+                if(!cont) return; cont.innerHTML = '';
                 let eventos = [];
                 if(snap.exists()) snap.forEach(c => eventos.push({id: c.key, ...c.val()}));
                 else eventos = [{ fecha: 'Viernes', titulo: 'Gran Vigilia de Poder y Avivamiento', hora: '8:00 PM | Templo Yireh', desc: 'Una noche intensa de clamor y adoración profética.' }];
-                
                 eventos.reverse().forEach(ev => {
                     const btnDel = ev.id ? `<button class="btn-borrar-item solo-admin" style="display:none;" onclick="eliminarEvento('${ev.id}')">✕</button>` : '';
                     cont.innerHTML += `<div class="evento-card">${btnDel}<span class="evento-fecha">📅 ${ev.fecha}</span><h3>${ev.titulo}</h3><div class="evento-meta">📍 ${ev.hora}</div><p>${ev.desc}</p></div>`;
@@ -1713,15 +1318,11 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             });
         }
         function agregarEvento() {
-            const fecha = document.getElementById('ev-fecha').value.trim();
-            const titulo = document.getElementById('ev-titulo').value.trim();
-            const hora = document.getElementById('ev-hora').value.trim();
-            const desc = document.getElementById('ev-desc').value.trim();
+            const fecha = document.getElementById('ev-fecha').value.trim(); const titulo = document.getElementById('ev-titulo').value.trim(); const hora = document.getElementById('ev-hora').value.trim(); const desc = document.getElementById('ev-desc').value.trim();
             if(!fecha) return;
             db.ref('eventos').push({ fecha, titulo, hora, desc, timestamp: Date.now() }).then(() => {
                 document.getElementById('form-nuevo-evento').style.display = 'none';
-                document.getElementById('ev-fecha').value=''; document.getElementById('ev-titulo').value='';
-                document.getElementById('ev-hora').value=''; document.getElementById('ev-desc').value='';
+                document.getElementById('ev-fecha').value=''; document.getElementById('ev-titulo').value=''; document.getElementById('ev-hora').value=''; document.getElementById('ev-desc').value='';
             });
         }
         function eliminarEvento(id) { if(confirm('¿Borrar evento?')) db.ref('eventos').child(id).remove(); }
@@ -1729,12 +1330,10 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function cargarPostsJuveniles() {
             db.ref('posts_jovenes').on('value', snap => {
                 const cont = document.getElementById('lista-posts-juveniles');
-                if(!cont) return;
-                cont.innerHTML = '';
+                if(!cont) return; cont.innerHTML = '';
                 let posts = [];
                 if(snap.exists()) snap.forEach(c => posts.push({id: c.key, ...c.val()}));
                 else posts = [{ titulo: 'Viernes Generación Poderosa', url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=900' }];
-                
                 posts.reverse().forEach(p => {
                     const btnDel = p.id ? `<button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarPostJuvenil('${p.id}')">✕</button>` : '';
                     cont.innerHTML += `<div class="post-card">${btnDel}<img src="${p.url}" alt="${p.titulo}" class="post-img"><div class="post-body"><h4>${p.titulo}</h4><p>¡Descarga este flyer para tus estados!</p><a href="${p.url}" download="flyer_yireh.jpg" target="_blank" class="btn-descargar-post">📥 Descargar Post</a></div></div>`;
@@ -1743,27 +1342,24 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             });
         }
         function agregarPostJuvenil() {
-            const titulo = document.getElementById('post-titulo').value.trim();
-            const inputArch = document.getElementById('post-archivo');
+            const titulo = document.getElementById('post-titulo').value.trim(); const inputArch = document.getElementById('post-archivo');
             if (!inputArch.files || !inputArch.files[0]) return;
             comprimirYSubirImagen(inputArch.files[0], function(base64Optimizado) {
                 db.ref('posts_jovenes').push({ titulo: titulo, url: base64Optimizado, timestamp: Date.now() }).then(() => {
-                    document.getElementById('post-titulo').value = ''; inputArch.value = '';
-                    document.getElementById('form-nuevo-post').style.display = 'none';
+                    document.getElementById('post-titulo').value = ''; inputArch.value = ''; document.getElementById('form-nuevo-post').style.display = 'none';
                 });
             });
         }
         function eliminarPostJuvenil(id) { if(confirm('¿Borrar post?')) db.ref('posts_jovenes').child(id).remove(); }
 
         // ==========================================
-        // GALERÍA DE FOTOS
+        // GALERÍA FOTOGRÁFICA
         // ==========================================
         const nombresAlbumes = {
             jovenes: '🔥 Jóvenes (Generación Poderosa)', casas: '🏡 Casas Evangelísticas',
             campamento: '🏕️ Campamento Familiar', sanidad: '✨ Servicio de Sanidad y Milagros',
             intimidad: '🕊️ Tiempos de Intimidad y Cultos Familiares'
         };
-
         function inicializarGaleriaAlbums() {
             for (let key in nombresAlbumes) {
                 db.ref('galeria/' + key).on('value', snap => {
@@ -1772,7 +1368,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 });
             }
         }
-
         let albumActualKey = null;
         function abrirAlbum(key) {
             albumActualKey = key;
@@ -1785,8 +1380,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 if(albumActualKey !== key) return;
                 const contenedor = document.getElementById('lista-fotos-album');
                 contenedor.innerHTML = '';
-                let fotos = [];
-                snap.forEach(c => fotos.push({id: c.key, ...c.val()}));
+                let fotos = []; snap.forEach(c => fotos.push({id: c.key, ...c.val()}));
                 if (fotos.length === 0) {
                     contenedor.innerHTML = '<p style="color:#64748b; grid-column:1/-1; padding:30px; text-align:center;">No hay fotos en esta carpeta todavía.</p>';
                 } else {
@@ -1800,17 +1394,12 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             });
         }
         function cerrarAlbum() { albumActualKey = null; document.getElementById('vista-album-detalle').style.display = 'none'; document.getElementById('vista-albumes-principal').style.display = 'block'; }
-        
         function subirFotoAlbum() {
-            const titulo = document.getElementById('foto-titulo').value.trim();
-            const albumKey = document.getElementById('foto-album-select').value;
-            const inputArch = document.getElementById('foto-archivo');
+            const titulo = document.getElementById('foto-titulo').value.trim(); const albumKey = document.getElementById('foto-album-select').value; const inputArch = document.getElementById('foto-archivo');
             if (!inputArch.files || !inputArch.files[0]) return;
-
             comprimirYSubirImagen(inputArch.files[0], function(base64) {
                 db.ref('galeria/' + albumKey).push({ titulo: titulo, url: base64, timestamp: Date.now() }).then(() => {
-                    document.getElementById('foto-titulo').value = ''; inputArch.value = '';
-                    document.getElementById('form-nueva-foto').style.display = 'none';
+                    document.getElementById('foto-titulo').value = ''; inputArch.value = ''; document.getElementById('form-nueva-foto').style.display = 'none';
                     alert('¡Foto subida con éxito a la nube!');
                 });
             });
@@ -1818,93 +1407,53 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function eliminarFotoAlbum(key, id) { if(confirm('¿Borrar foto?')) db.ref('galeria/' + key).child(id).remove(); }
 
         // ==========================================
-        // GESTIÓN DE CHAT Y OYENTES EN VIVO
+        // CHAT DE RADIO Y OYENTES
         // ==========================================
         let usuarioActual = null;
-
         function registrarUsuarioChat() {
-            const nombre = document.getElementById('reg-nombre').value.trim();
-            const correo = document.getElementById('reg-correo').value.trim();
+            const nombre = document.getElementById('reg-nombre').value.trim(); const correo = document.getElementById('reg-correo').value.trim();
             if (!nombre || !correo) return;
-            
             usuarioActual = { nombre: nombre, correo: correo, fecha: new Date().toLocaleString() };
             localStorage.setItem('usuario_activo_yireh', JSON.stringify(usuarioActual));
-            
             db.ref('oyentes').push(usuarioActual);
             mostrarChatActivo();
         }
-
         function mostrarChatActivo() {
-            document.getElementById('chat-registro').style.display = 'none';
-            document.getElementById('chat-interfaz').style.display = 'flex';
-            document.getElementById('btn-cambiar').style.display = 'inline-block';
-            document.getElementById('subtitulo-usuario').textContent = 'Conectado como: ' + usuarioActual.nombre;
+            document.getElementById('chat-registro').style.display = 'none'; document.getElementById('chat-interfaz').style.display = 'flex';
+            document.getElementById('btn-cambiar').style.display = 'inline-block'; document.getElementById('subtitulo-usuario').textContent = 'Conectado como: ' + usuarioActual.nombre;
         }
-
         function cerrarSesionChat() {
-            localStorage.removeItem('usuario_activo_yireh');
-            usuarioActual = null;
-            document.getElementById('chat-interfaz').style.display = 'none';
-            document.getElementById('chat-registro').style.display = 'flex';
-            document.getElementById('btn-cambiar').style.display = 'none';
-            document.getElementById('subtitulo-usuario').textContent = 'Regístrate para participar';
+            localStorage.removeItem('usuario_activo_yireh'); usuarioActual = null;
+            document.getElementById('chat-interfaz').style.display = 'none'; document.getElementById('chat-registro').style.display = 'flex';
+            document.getElementById('btn-cambiar').style.display = 'none'; document.getElementById('subtitulo-usuario').textContent = 'Regístrate para participar';
         }
-
         function inicializarChatEnVivo() {
             db.ref('chat').limitToLast(50).on('child_added', snap => {
-                const msg = snap.val();
-                const contenedor = document.getElementById('chat-messages');
-                const divMsg = document.createElement('div');
-                
+                const msg = snap.val(); const contenedor = document.getElementById('chat-messages'); const divMsg = document.createElement('div');
                 const isMe = usuarioActual && msg.correo === usuarioActual.correo;
-                
                 if (msg.correo === 'admin@yireh' || msg.nombre === 'Moderador') {
-                    divMsg.className = 'msg-item msg-mod';
-                    divMsg.innerHTML = '<span class="msg-autor">Moderador</span><div class="msg-burbuja">' + msg.texto + '</div>';
+                    divMsg.className = 'msg-item msg-mod'; divMsg.innerHTML = '<span class="msg-autor">Moderador</span><div class="msg-burbuja">' + msg.texto + '</div>';
                 } else {
-                    divMsg.className = isMe ? 'msg-item msg-user' : 'msg-item msg-mod';
-                    divMsg.innerHTML = '<span class="msg-autor">' + msg.nombre + '</span><div class="msg-burbuja">' + msg.texto + '</div>';
+                    divMsg.className = isMe ? 'msg-item msg-user' : 'msg-item msg-mod'; divMsg.innerHTML = '<span class="msg-autor">' + msg.nombre + '</span><div class="msg-burbuja">' + msg.texto + '</div>';
                 }
-                contenedor.appendChild(divMsg);
-                contenedor.scrollTop = contenedor.scrollHeight;
+                contenedor.appendChild(divMsg); contenedor.scrollTop = contenedor.scrollHeight;
             });
         }
-
         function enviarMensajeChat() {
-            const input = document.getElementById('chat-input');
-            const texto = input.value.trim();
+            const input = document.getElementById('chat-input'); const texto = input.value.trim();
             if (!texto || !usuarioActual) return;
-            
-            db.ref('chat').push({
-                nombre: usuarioActual.nombre,
-                correo: usuarioActual.correo,
-                texto: texto,
-                timestamp: firebase.database.ServerValue.TIMESTAMP
-            });
+            db.ref('chat').push({ nombre: usuarioActual.nombre, correo: usuarioActual.correo, texto: texto, timestamp: firebase.database.ServerValue.TIMESTAMP });
             input.value = '';
         }
-
         function actualizarContadorRegistros() {
-            db.ref('oyentes').on('value', snap => {
-                const elCont = document.getElementById('contador-usuarios');
-                if (elCont) elCont.textContent = snap.numChildren() + ' oyente(s) registrado(s) en la comunidad';
-            });
+            db.ref('oyentes').on('value', snap => { const elCont = document.getElementById('contador-usuarios'); if (elCont) elCont.textContent = snap.numChildren() + ' oyente(s) registrado(s) en la comunidad'; });
         }
 
         function abrirModalOyentes() {
             db.ref('oyentes').once('value', snap => {
-                const tbody = document.getElementById('tabla-oyentes-body');
-                if (!tbody) return;
-                tbody.innerHTML = '';
-                if (!snap.exists()) {
-                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:24px; color:#64748b;">Aún no hay oyentes registrados.</td></tr>';
-                } else {
-                    let i = 1;
-                    snap.forEach(child => {
-                        let item = child.val();
-                        tbody.innerHTML += `<tr><td><strong>${i++}</strong></td><td>${item.nombre}</td><td>${item.correo}</td><td>${item.fecha || '-'}</td></tr>`;
-                    });
-                }
+                const tbody = document.getElementById('tabla-oyentes-body'); if (!tbody) return; tbody.innerHTML = '';
+                if (!snap.exists()) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:24px; color:#64748b;">Aún no hay oyentes registrados.</td></tr>'; } 
+                else { let i = 1; snap.forEach(child => { let item = child.val(); tbody.innerHTML += `<tr><td><strong>${i++}</strong></td><td>${item.nombre}</td><td>${item.correo}</td><td>${item.fecha || '-'}</td></tr>`; }); }
                 document.getElementById('modal-oyentes').style.display = 'flex';
             });
         }
@@ -1912,157 +1461,73 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function descargarCSVRegistrados() {
             db.ref('oyentes').once('value', snap => {
                 if (!snap.exists()) { alert('Aún no hay oyentes registrados.'); return; }
-                let csvContent = '\uFEFFNumero,Nombre Completo,Correo Electronico,Fecha de Registro\r\n';
-                let i = 1;
-                snap.forEach(child => {
-                    let u = child.val();
-                    csvContent += `${i++},"${u.nombre || ''}","${u.correo || ''}","${u.fecha || ''}"\r\n`;
-                });
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url; a.download = 'oyentes_juda_radio_nube.csv';
-                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                let csvContent = '\uFEFFNumero,Nombre Completo,Correo Electronico,Fecha de Registro\r\n'; let i = 1;
+                snap.forEach(child => { let u = child.val(); csvContent += `${i++},"${u.nombre || ''}","${u.correo || ''}","${u.fecha || ''}"\r\n`; });
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = 'oyentes_juda_radio_nube.csv'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
             });
         }
-        function limpiarListaOyentes() {
-            if (confirm('¿Estás seguro de borrar TODOS los oyentes de la nube?')) {
-                db.ref('oyentes').remove().then(() => {
-                    abrirModalOyentes();
-                    actualizarContadorRegistros();
-                });
-            }
-        }
+        function limpiarListaOyentes() { if (confirm('¿Estás seguro de borrar TODOS los oyentes de la nube?')) { db.ref('oyentes').remove().then(() => { abrirModalOyentes(); actualizarContadorRegistros(); }); } }
 
         // ==========================================
-        // ESTADÍSTICAS GLOBALES
+        // ESTADÍSTICAS
         // ==========================================
         function inicializarEstadisticas() {
-            const refVisitas = db.ref('estadisticas/visitas');
-            const refLikes = db.ref('estadisticas/likes');
-
-            if (!sessionStorage.getItem('visitado_sesion')) {
-                refVisitas.transaction(v => (v || 1420) + 1);
-                sessionStorage.setItem('visitado_sesion', 'true');
-            }
-
-            refVisitas.on('value', snap => {
-                const elVisitas = document.getElementById('contador-visitas');
-                if (elVisitas) elVisitas.textContent = (snap.val() || 1420).toLocaleString();
-            });
-
-            refLikes.on('value', snap => {
-                const elLikes = document.getElementById('contador-likes');
-                if (elLikes) elLikes.textContent = (snap.val() || 312).toLocaleString();
-            });
-
-            if (localStorage.getItem('usuario_dio_like') === 'true') {
-                document.getElementById('btn-like').classList.add('liked');
-                document.getElementById('heart-icon').textContent = '💖';
-            }
+            const refVisitas = db.ref('estadisticas/visitas'); const refLikes = db.ref('estadisticas/likes');
+            if (!sessionStorage.getItem('visitado_sesion')) { refVisitas.transaction(v => (v || 1420) + 1); sessionStorage.setItem('visitado_sesion', 'true'); }
+            refVisitas.on('value', snap => { const elVisitas = document.getElementById('contador-visitas'); if (elVisitas) elVisitas.textContent = (snap.val() || 1420).toLocaleString(); });
+            refLikes.on('value', snap => { const elLikes = document.getElementById('contador-likes'); if (elLikes) elLikes.textContent = (snap.val() || 312).toLocaleString(); });
+            if (localStorage.getItem('usuario_dio_like') === 'true') { document.getElementById('btn-like').classList.add('liked'); document.getElementById('heart-icon').textContent = '💖'; }
         }
-
         function darMeGusta() {
             const refLikes = db.ref('estadisticas/likes');
             if (localStorage.getItem('usuario_dio_like') === 'true') {
-                refLikes.transaction(c => (c || 312) - 1);
-                localStorage.setItem('usuario_dio_like', 'false');
-                document.getElementById('btn-like').classList.remove('liked');
-                document.getElementById('heart-icon').textContent = '❤️';
+                refLikes.transaction(c => (c || 312) - 1); localStorage.setItem('usuario_dio_like', 'false'); document.getElementById('btn-like').classList.remove('liked'); document.getElementById('heart-icon').textContent = '❤️';
             } else {
-                refLikes.transaction(c => (c || 312) + 1);
-                localStorage.setItem('usuario_dio_like', 'true');
-                document.getElementById('btn-like').classList.add('liked');
-                document.getElementById('heart-icon').textContent = '💖';
-                const btn = document.getElementById('btn-like');
-                btn.style.transform = 'scale(1.15)';
-                setTimeout(() => btn.style.transform = 'scale(1)', 200);
+                refLikes.transaction(c => (c || 312) + 1); localStorage.setItem('usuario_dio_like', 'true'); document.getElementById('btn-like').classList.add('liked'); document.getElementById('heart-icon').textContent = '💖';
+                const btn = document.getElementById('btn-like'); btn.style.transform = 'scale(1.15)'; setTimeout(() => btn.style.transform = 'scale(1)', 200);
             }
         }
 
         // ==========================================
-        // NAVEGACIÓN Y EXTRAS
+        // NAVEGACIÓN Y RELOJ
         // ==========================================
         function cambiarVista(idVista) {
-            const vistas = document.querySelectorAll('.vista-seccion');
-            vistas.forEach(v => v.classList.remove('activa'));
+            document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
             const vistaActiva = document.getElementById(idVista);
             if (vistaActiva) vistaActiva.classList.add('activa');
             if (idVista === 'radio') generarOndasAudio();
-
-            const navLinksContainer = document.getElementById('nav-links-container');
-            const btnVolverInicio = document.getElementById('btn-volver-inicio');
-            if (idVista === 'inicio') {
-                if (navLinksContainer) navLinksContainer.style.display = 'flex';
-                if (btnVolverInicio) btnVolverInicio.style.display = 'none';
-            } else {
-                if (navLinksContainer) navLinksContainer.style.display = 'none';
-                if (btnVolverInicio) btnVolverInicio.style.display = 'inline-flex';
-            }
+            const navLinksContainer = document.getElementById('nav-links-container'); const btnVolverInicio = document.getElementById('btn-volver-inicio');
+            if (idVista === 'inicio') { if (navLinksContainer) navLinksContainer.style.display = 'flex'; if (btnVolverInicio) btnVolverInicio.style.display = 'none'; } 
+            else { if (navLinksContainer) navLinksContainer.style.display = 'none'; if (btnVolverInicio) btnVolverInicio.style.display = 'inline-flex'; }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function generarOndasAudio() {
-            const box = document.getElementById('waveform-box');
-            if (!box) return;
-            box.innerHTML = '';
-            for (let i = 0; i < 28; i++) {
-                const bar = document.createElement('div');
-                bar.className = 'wave-bar';
-                bar.style.height = (Math.floor(Math.random() * 70) + 20) + '%';
-                bar.style.animationDelay = (i * 0.05) + 's';
-                box.appendChild(bar);
-            }
+            const box = document.getElementById('waveform-box'); if (!box) return; box.innerHTML = '';
+            for (let i = 0; i < 28; i++) { const bar = document.createElement('div'); bar.className = 'wave-bar'; bar.style.height = (Math.floor(Math.random() * 70) + 20) + '%'; bar.style.animationDelay = (i * 0.05) + 's'; box.appendChild(bar); }
         }
-
-        // ==========================================
-        // RELOJ CONTADOR DEL CAMPAMENTO
-        // ==========================================
         function iniciarContadorCampamento() {
             const fechaMeta = new Date('October 15, 2027 08:00:00').getTime();
-            
             function actualizarReloj() {
-                const ahora = new Date().getTime();
-                const diferencia = fechaMeta - ahora;
-
-                const elDays = document.getElementById('cd-days');
-                const elHours = document.getElementById('cd-hours');
-                const elMins = document.getElementById('cd-mins');
-                const elSecs = document.getElementById('cd-secs');
-
+                const ahora = new Date().getTime(); const diferencia = fechaMeta - ahora;
+                const elDays = document.getElementById('cd-days'); const elHours = document.getElementById('cd-hours'); const elMins = document.getElementById('cd-mins'); const elSecs = document.getElementById('cd-secs');
                 if (!elDays || !elHours || !elMins || !elSecs) return;
-
-                if (diferencia <= 0) {
-                    elDays.textContent = '00';
-                    elHours.textContent = '00';
-                    elMins.textContent = '00';
-                    elSecs.textContent = '00';
-                    return;
-                }
-
-                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-                elDays.textContent = dias < 10 ? '0' + dias : dias;
-                elHours.textContent = horas < 10 ? '0' + horas : horas;
-                elMins.textContent = minutos < 10 ? '0' + minutos : minutos;
-                elSecs.textContent = segundos < 10 ? '0' + segundos : segundos;
+                if (diferencia <= 0) { elDays.textContent = '00'; elHours.textContent = '00'; elMins.textContent = '00'; elSecs.textContent = '00'; return; }
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24)); const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60)); const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+                elDays.textContent = dias < 10 ? '0' + dias : dias; elHours.textContent = horas < 10 ? '0' + horas : horas; elMins.textContent = minutos < 10 ? '0' + minutos : minutos; elSecs.textContent = segundos < 10 ? '0' + segundos : segundos;
             }
-
-            actualizarReloj();
-            setInterval(actualizarReloj, 1000);
+            actualizarReloj(); setInterval(actualizarReloj, 1000);
         }
 
+        // ==========================================
         // ARRANQUE GLOBAL INMEDIATO
+        // ==========================================
         window.onload = function() {
             cambiarVista('inicio');
             iniciarContadorCampamento();
             
-            // CARGA DE DATOS EN VIVO DESDE LA NUBE
             cargarVideosInit();
-            cargarTemasMes();
+            cargarTemasCasasFijos(); // LAS 4 LIBRETAS FIJAS INICIADAS
             cargarTemasNinos();
             cargarHistoriasBiblicas();
             cargarEventos();
