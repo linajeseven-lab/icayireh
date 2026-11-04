@@ -333,6 +333,23 @@
         </div>
     </div>
 
+    <!-- MODAL DE EDICIÓN DEL TÍTULO GENERAL DE CASAS -->
+    <div id="modal-editar-titulo-casas" class="modal-overlay">
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+                <h3 style="margin:0; font-size: 18px;">✏️ Editar Título General</h3>
+                <button type="button" class="btn-borrar-item" style="position:static;" onclick="cerrarModalEditarTituloCasas()">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); guardarEdicionTituloCasas();">
+                <label style="display:block; text-align:left; font-size:12px; font-weight:700; color:#475569; margin-bottom:4px;">Etiqueta Superior (Botón morado):</label>
+                <input type="text" id="edit-titulo-badge" class="campo-input" style="margin-bottom:12px;" placeholder="Ej: LA FAMILIA" required>
+                <label style="display:block; text-align:left; font-size:12px; font-weight:700; color:#475569; margin-bottom:4px;">Título Principal:</label>
+                <input type="text" id="edit-titulo-principal" class="campo-input" style="margin-bottom:16px;" placeholder="Ej: TEMAS CASAS EVANGELÍSTICAS" required>
+                <button type="submit" class="btn-toggle-form" style="background:#16a34a; width:100%;">💾 Guardar Título en Vivo</button>
+            </form>
+        </div>
+    </div>
+
     <!-- MODAL DE EDICIÓN FIJA PARA TEMAS DE CASAS -->
     <div id="modal-editar-tema" class="modal-overlay">
         <div class="modal-box">
@@ -373,11 +390,9 @@
         </div>
     </div>
 
-    <!-- MODAL DE REPORTE CON BOTÓN CERRAR FLOTANTE (ARREGLADO) -->
+    <!-- MODAL DE REPORTE CON BOTÓN CERRAR FLOTANTE -->
     <div id="modal-reporte-casa" class="modal-overlay">
-        <!-- BOTÓN FLOTANTE SIEMPRE VISIBLE -->
         <button type="button" class="btn-cerrar-modal-flotante" onclick="cerrarModalReporteCasa()">✕</button>
-        
         <div class="modal-box modal-box-ancho">
             <div style="margin-bottom:16px;">
                 <h3 style="margin-bottom:0;">🔑 Consulta de Planilla de Asistencia</h3>
@@ -687,9 +702,16 @@
 
             <!-- TABLÓN DE TEMAS ESTILO AGENDA DE 3 COLUMNAS FIJAS -->
             <div class="temas-bulletin-board">
+                
+                <!-- TÍTULO EDITABLE DE LAS CASAS -->
                 <div style="text-align: center; margin-bottom: 20px;">
-                    <div class="bulletin-badge">LA FAMILIA</div>
-                    <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; color: #1e1b4b; font-family: 'Montserrat', sans-serif;">TEMAS CASAS EVANGELÍSTICAS</h2>
+                    <div id="casas-titulo-badge" class="bulletin-badge">LA FAMILIA</div>
+                    <div>
+                        <h2 id="casas-titulo-principal" style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; color: #1e1b4b; font-family: 'Montserrat', sans-serif; display: inline-block; vertical-align: middle;">TEMAS CASAS EVANGELÍSTICAS</h2>
+                        <span class="solo-admin" style="display:none; vertical-align: middle; margin-left: 10px;">
+                            <button type="button" class="btn-edit-item" style="position: static; background:#fef08a; color:#854d0e; width:34px; height:34px; font-size:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;" onclick="abrirEditarTituloCasas()">✏️</button>
+                        </span>
+                    </div>
                 </div>
                 
                 <div class="casas-agenda-layout">
@@ -723,7 +745,7 @@
                 </div>
             </div>
 
-            <!-- REGISTRO DE ASISTENCIA (ARREGLADO DIVISIÓN DE NOMBRES Y TELÉFONOS) -->
+            <!-- REGISTRO DE ASISTENCIA -->
             <div class="temas-wrapper" style="border: 2px solid #16a34a; background: #f0fdf4;">
                 <div class="temas-header" style="border-bottom-color: #bbf7d0;">
                     <div>
@@ -1059,25 +1081,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // VIDEOS YOUTUBE (FUNCIÓN ORIGINAL RESTAURADA + AUTOPLAY)
+        // VIDEOS YOUTUBE
         // ==========================================
         function getYoutubeEmbed(url) {
             let videoId = '';
             if (!url) return null;
-            
-            if (url.includes('youtu.be/')) {
-                videoId = url.split('youtu.be/')[1].split('?')[0];
-            } else if (url.includes('youtube.com/watch')) {
-                videoId = new URLSearchParams(url.split('?')[1]).get('v');
-            } else if (url.includes('youtube.com/embed/')) {
-                videoId = url.split('youtube.com/embed/')[1].split('?')[0];
-            } else if (url.includes('youtube.com/shorts/')) {
-                videoId = url.split('youtube.com/shorts/')[1].split('?')[0];
-            }
-            
-            if (videoId && videoId.length === 11) {
-                return 'https://www.youtube.com/embed/' + videoId;
-            }
+            if (url.includes('youtu.be/')) { videoId = url.split('youtu.be/')[1].split('?')[0]; } 
+            else if (url.includes('youtube.com/watch')) { videoId = new URLSearchParams(url.split('?')[1]).get('v'); } 
+            else if (url.includes('youtube.com/embed/')) { videoId = url.split('youtube.com/embed/')[1].split('?')[0]; } 
+            else if (url.includes('youtube.com/shorts/')) { videoId = url.split('youtube.com/shorts/')[1].split('?')[0]; }
+            if (videoId && videoId.length === 11) { return 'https://www.youtube.com/embed/' + videoId; }
             return null;
         }
 
@@ -1086,28 +1099,17 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             secciones.forEach(sec => {
                 db.ref('videos/' + sec).on('value', snap => {
                     const cont = document.getElementById('lista-videos-' + sec);
-                    if(!cont) return;
-                    cont.innerHTML = '';
+                    if(!cont) return; cont.innerHTML = '';
                     let datos = [];
-                    if(snap.exists()) {
-                        snap.forEach(child => { datos.push({id: child.key, ...child.val()}); });
-                    }
+                    if(snap.exists()) { snap.forEach(child => { datos.push({id: child.key, ...child.val()}); }); }
                     datos.reverse().forEach(v => {
                         let iframeHtml = '';
-                        
                         if (v.url && !v.url.includes('null')) {
-                            // Hemos agregado permisos extra (allow) para saltar restricciones de YouTube
                             iframeHtml = `<iframe src="${v.url}" class="video-player-item" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                         } else {
                             iframeHtml = `<div class="video-player-item" style="display:flex;align-items:center;justify-content:center;color:#ef4444;font-weight:bold;text-align:center;padding:20px;background:#1e293b;">⚠️ Enlace Roto.<br>Por favor, elimina esta tarjeta y vuelve a agregar el video correctamente.</div>`;
                         }
-                        
-                        cont.innerHTML += `
-                            <div class="video-card">
-                                <button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarVideo('${sec}', '${v.id}')">✕</button>
-                                ${iframeHtml}
-                                <div class="video-body"><h4>${v.titulo}</h4></div>
-                            </div>`;
+                        cont.innerHTML += `<div class="video-card"><button class="btn-borrar-item solo-admin" style="position:absolute; top:14px; right:14px; z-index:10; display:none;" onclick="eliminarVideo('${sec}', '${v.id}')">✕</button>${iframeHtml}<div class="video-body"><h4>${v.titulo}</h4></div></div>`;
                     });
                     checkAdminUI();
                 });
@@ -1115,21 +1117,12 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         function agregarVideo(seccion) {
-            const titulo = document.getElementById('vid-titulo-' + seccion).value.trim();
-            const urlInput = document.getElementById('vid-url-' + seccion).value.trim();
+            const titulo = document.getElementById('vid-titulo-' + seccion).value.trim(); const urlInput = document.getElementById('vid-url-' + seccion).value.trim();
             if(!titulo || !urlInput) return;
-            
             const embedUrl = getYoutubeEmbed(urlInput);
-            if(!embedUrl) { 
-                alert('El enlace de YouTube es inválido. Asegúrate de copiar el enlace completo desde YouTube.'); 
-                return; 
-            }
-
-            db.ref('videos/' + seccion).push({ titulo: titulo, url: embedUrl, timestamp: firebase.database.ServerValue.TIMESTAMP })
-            .then(() => {
-                document.getElementById('vid-titulo-' + seccion).value = '';
-                document.getElementById('vid-url-' + seccion).value = '';
-                document.getElementById('form-video-' + seccion).style.display = 'none';
+            if(!embedUrl) { alert('El enlace de YouTube es inválido. Asegúrate de copiar el enlace completo desde YouTube.'); return; }
+            db.ref('videos/' + seccion).push({ titulo: titulo, url: embedUrl, timestamp: firebase.database.ServerValue.TIMESTAMP }).then(() => {
+                document.getElementById('vid-titulo-' + seccion).value = ''; document.getElementById('vid-url-' + seccion).value = ''; document.getElementById('form-video-' + seccion).style.display = 'none';
                 alert('¡Video publicado correctamente en vivo!');
             });
         }
@@ -1204,22 +1197,15 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             const nombreCasa = document.getElementById('asist-casa-nombre').value.trim(); const claveCasa = document.getElementById('asist-casa-clave').value.trim(); const direccion = document.getElementById('asist-direccion').value.trim(); const servidor = document.getElementById('asist-servidor').value.trim(); const anfitrion = document.getElementById('asist-anfitrion').value.trim(); const semana = document.getElementById('asist-semana').value.trim(); const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
             if (!nombreCasa || !claveCasa || !servidor || !semana || !nombresAsistentes) return alert('Completa los campos obligatorios.');
             
-            // Lógica inteligente para separar nombres de teléfonos
             const asistentesArray = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0).map(linea => { 
-                // Buscamos si la línea termina con una secuencia de números (al menos 7 dígitos, con o sin espacios)
                 const matchTelefono = linea.match(/[\s-]*(\+?[\d\s]{7,})$/);
                 let nombreLimpio = linea;
                 let telefonoLimpio = 'Sin teléfono';
-
                 if (matchTelefono) {
                     telefonoLimpio = matchTelefono[1].trim();
                     nombreLimpio = linea.replace(matchTelefono[0], '').trim();
-                    // Limpiamos cualquier guión que haya quedado al final del nombre
-                    if (nombreLimpio.endsWith('-')) {
-                        nombreLimpio = nombreLimpio.slice(0, -1).trim();
-                    }
+                    if (nombreLimpio.endsWith('-')) { nombreLimpio = nombreLimpio.slice(0, -1).trim(); }
                 }
-                
                 return { nombre: nombreLimpio, telefono: telefonoLimpio }; 
             });
 
@@ -1259,8 +1245,34 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         }
 
         // ==========================================
-        // TEMAS CASAS - DISEÑO TIPO AGENDA (FIJO 4 ESPACIOS)
+        // TEMAS CASAS - DISEÑO TIPO AGENDA (TÍTULO Y CUADERNOS EDITABLES)
         // ==========================================
+        
+        function abrirEditarTituloCasas() {
+            db.ref('temas_fijos_casas/tituloGeneral').once('value', snap => {
+                let t = snap.val() || { badge: 'LA FAMILIA', principal: 'TEMAS CASAS EVANGELÍSTICAS' };
+                document.getElementById('edit-titulo-badge').value = t.badge;
+                document.getElementById('edit-titulo-principal').value = t.principal;
+                document.getElementById('modal-editar-titulo-casas').style.display = 'flex';
+            });
+        }
+
+        function cerrarModalEditarTituloCasas() {
+            document.getElementById('modal-editar-titulo-casas').style.display = 'none';
+        }
+
+        function guardarEdicionTituloCasas() {
+            const badge = document.getElementById('edit-titulo-badge').value.trim();
+            const principal = document.getElementById('edit-titulo-principal').value.trim();
+            if(!badge || !principal) return;
+            
+            db.ref('temas_fijos_casas/tituloGeneral').update({
+                badge: badge, principal: principal, fechaEdicion: Date.now()
+            }).then(() => {
+                cerrarModalEditarTituloCasas();
+                alert('¡El título general se ha actualizado correctamente!');
+            });
+        }
         
         const defaultTemas = {
             tema1: { semana: "TEMA 1", titulo: "FE QUE TRANSFORMA HOGARES", cita: "MARCOS 2:1-12", resumen: "La palabra nos muestra la importancia de compartir nuestra fe con aquellos cercanos a nosotros." },
@@ -1273,6 +1285,12 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             db.ref('temas_fijos_casas').on('value', snap => {
                 let data = snap.val() || {};
                 
+                // Cargar Título Dinámico
+                let tituloData = data['tituloGeneral'] || { badge: 'LA FAMILIA', principal: 'TEMAS CASAS EVANGELÍSTICAS' };
+                document.getElementById('casas-titulo-badge').textContent = tituloData.badge;
+                document.getElementById('casas-titulo-principal').textContent = tituloData.principal;
+
+                // Cargar Cuadernos
                 for(let i=1; i<=4; i++) {
                     let key = 'tema'+i;
                     let t = data[key] || defaultTemas[key];
@@ -1554,7 +1572,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             iniciarContadorCampamento();
             
             cargarVideosInit();
-            cargarTemasCasasFijos(); // LAS 4 LIBRETAS FIJAS INICIADAS
+            cargarTemasCasasFijos(); // LAS 4 LIBRETAS Y EL TÍTULO
             cargarTemasNinos();
             cargarHistoriasBiblicas();
             cargarEventos();
