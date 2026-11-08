@@ -22,7 +22,7 @@
         .btn-salir-admin:hover { background: #dc2626; border-color: #dc2626; }
 
         .solo-admin { display: none !important; }
-        body.modo-admin .solo-admin { display: inline-block !important; }
+        body.modo-admin .solo-admin { display: inline-flex !important; }
 
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
         
@@ -69,7 +69,7 @@
 
         /* CONTROL DE VISTAS AISLADAS */
         .vista-seccion { display: none !important; }
-        #inicio.activa, #reuniones.activa, #jovenes.activa, #ninos.activa, #casas.activa, #eventos.activa, #galeria.activa, #radio.activa { display: block !important; }
+        #inicio.activa, #reuniones.activa, #jovenes.activa, #ninos.activa, #casas.activa, #eventos.activa, #galeria.activa, #radio.activa, #escuelas.activa { display: block !important; }
         #campamento.activa { display: flex !important; width: 100%; min-height: 90vh; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -134,13 +134,16 @@
         .encabezado-seccion { text-align: center; max-width: 750px; margin: 0 auto 60px auto; }
         .encabezado-seccion h1 { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 900; color: #0f172a; letter-spacing: -1px; margin-bottom: 14px; }
         .tarjetas-reuniones { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-        .card-reunion { background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08); transition: all 0.35s ease; }
+        .card-reunion { background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08); transition: all 0.35s ease; position: relative; }
         .card-reunion:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18); }
-        .card-img { height: 230px; background-size: cover; background-position: center; }
+        .card-img { height: 230px; background-size: cover; background-position: center; transition: background-image 0.3s ease; }
         .card-body { padding: 36px; }
         .card-body h2 { font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 14px; }
         .horario-badge { display: inline-block; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 12px; margin-bottom: 20px; }
 
+        /* ESCUELAS */
+        .seccion-escuelas { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); display:flex; align-items:center; justify-content:center; }
+        
         /* JÓVENES */
         .seccion-jovenes { min-height: 88vh; background: linear-gradient(135deg, #3b0764 0%, #be185d 50%, #ea580c 100%); color: #ffffff; padding: 80px 24px; }
         .jovenes-container { max-width: 1140px; margin: 0 auto; text-align: center; }
@@ -303,6 +306,7 @@
 
     <div id="admin-bar" class="admin-bar">
         <span>🔓 MODO LÍDER ACTIVO</span>
+        <button class="btn-accion-admin" onclick="abrirModalClavesCasas()">🔑 Claves de Casas</button>
         <button class="btn-accion-admin" onclick="abrirModalOyentes()">📋 Ver Oyentes Registrados</button>
         <button class="btn-accion-admin" onclick="descargarCSVRegistrados()">📥 Descargar Excel (CSV)</button>
         <button class="btn-salir-admin" onclick="cerrarSesionAdmin()">Salir de Admin</button>
@@ -314,6 +318,23 @@
             <button onclick="cerrarZoom()" style="position: absolute; top: -15px; right: -15px; background: #dc2626; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2100;">✕</button>
             <img id="img-zoom-dest" src="" style="max-width: 100%; max-height: 80vh; border-radius: 16px; object-fit: contain; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
             <p id="txt-zoom-caption" style="color: #fff; font-weight: 700; margin-top: 14px; font-size: 16px; font-family: 'Montserrat', sans-serif;"></p>
+        </div>
+    </div>
+
+    <!-- MODAL CLAVES CASAS EVANGELÍSTICAS -->
+    <div id="modal-claves-casas" class="modal-overlay">
+        <div class="modal-box modal-box-ancho">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                <h3 style="margin-bottom:0;">🔑 Claves de Casas Evangelísticas</h3>
+                <button class="btn-toggle-form" style="background:#e2e8f0; color:#334155; padding:6px 14px;" onclick="document.getElementById('modal-claves-casas').style.display='none'">✕</button>
+            </div>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Lista de las casas registradas y sus contraseñas asignadas. Si un servidor olvida la clave, aquí puedes recuperarla.</p>
+            <div class="tabla-contenedor">
+                <table class="tabla-oyentes">
+                    <thead><tr><th>Nombre de la Casa</th><th>Clave Asignada</th></tr></thead>
+                    <tbody id="tabla-claves-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -364,6 +385,22 @@
                 <input type="text" id="edit-tema-cita" class="campo-input" style="margin-bottom:10px;" placeholder="Cita Bíblica" required>
                 <textarea id="edit-tema-resumen" rows="5" class="campo-input" style="margin-bottom:16px;" placeholder="Resumen de la enseñanza..." required></textarea>
                 <button type="submit" class="btn-toggle-form" style="background:#16a34a; width:100%;">💾 Guardar Cambios en Vivo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL SUBIR POST DE REUNIÓN -->
+    <div id="modal-upload-reunion" class="modal-overlay">
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+                <h3 style="margin:0; font-size: 18px;">📸 Subir Post de Reunión</h3>
+                <button class="btn-toggle-form" style="background:#e2e8f0; color:#334155; padding:6px 14px;" onclick="document.getElementById('modal-upload-reunion').style.display='none'">✕</button>
+            </div>
+            <form onsubmit="event.preventDefault(); guardarPostReunion();">
+                <input type="hidden" id="upload-reunion-dia">
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 15px; text-align: left;">Sube el flyer o imagen correspondiente a esta reunión.</p>
+                <input type="file" id="upload-reunion-file" accept="image/*" class="campo-input" required style="margin-bottom:16px;">
+                <button type="submit" class="btn-toggle-form" style="background:#2563eb; width:100%;">Subir Post en Vivo</button>
             </form>
         </div>
     </div>
@@ -439,6 +476,7 @@
             <div id="nav-links-container" class="nav-links">
                 <button id="btn-inicio" class="nav-btn activo" onclick="cambiarVista('inicio')">Inicio</button>
                 <button id="btn-reuniones" class="nav-btn" onclick="cambiarVista('reuniones')">Reuniones</button>
+                <button id="btn-escuelas" class="nav-btn" onclick="cambiarVista('escuelas')">Escuelas</button>
                 <button id="btn-jovenes" class="nav-btn" onclick="cambiarVista('jovenes')">Jóvenes ICA Yireh</button>
                 <button id="btn-ninos" class="nav-btn" onclick="cambiarVista('ninos')" style="color: #0284c7; font-weight: 900;">🧒 Grupo Infantil ICA Yireh</button>
                 <button id="btn-casas" class="nav-btn" onclick="cambiarVista('casas')">Casas</button>
@@ -521,6 +559,15 @@
             </div>
         </section>
 
+        <!-- ESCUELAS (NUEVA PESTAÑA) -->
+        <section id="escuelas" class="vista-seccion seccion-reuniones" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); min-height: 85vh; display:flex; align-items:center; justify-content:center;">
+            <div style="text-align:center; max-width:600px; background:#fff; padding:50px; border-radius:32px; box-shadow: 0 20px 45px rgba(0,0,0,0.1); border: 2px solid #fbbf24;">
+                <span style="font-size: 60px; display:block; margin-bottom:20px;">🚧</span>
+                <h1 style="font-size:32px; font-weight:900; color:#b45309; margin-bottom:16px; font-family:'Montserrat', sans-serif;">ESCUELAS EN DESARROLLO</h1>
+                <p style="font-size:16px; color:#475569; line-height:1.6;">Estamos preparando esta nueva área de formación. Muy pronto encontrarás aquí todos los recursos y materiales para tu crecimiento espiritual.</p>
+            </div>
+        </section>
+
         <!-- REUNIONES -->
         <section id="reuniones" class="vista-seccion seccion-reuniones">
             <div class="encabezado-seccion">
@@ -528,22 +575,28 @@
                 <p>Acompáñanos cada semana y vive un encuentro personal con la presencia de Dios.</p>
             </div>
             <div class="tarjetas-reuniones">
-                <div class="card-reunion">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=1200');"></div>
+                <!-- REUNIÓN MARTES -->
+                <div class="card-reunion" style="position:relative;">
+                    <button class="btn-edit-item solo-admin" style="display:none; right:15px; top:15px;" onclick="abrirModalUploadReunion('martes')">📸</button>
+                    <div id="img-reunion-martes" class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544427920-c49ccf08c146?q=80&w=1200');"></div>
                     <div class="card-body">
                         <span class="tag-dia">Todos los Martes</span><h2>Sanidad y Milagros</h2><div class="horario-badge">7:00 PM - 9:00 PM</div>
                         <p>Un tiempo poderoso de oración y ministración donde creemos por el poder sobrenatural de Dios obrando milagros y sanidades.</p>
                     </div>
                 </div>
-                <div class="card-reunion">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200');"></div>
+                <!-- REUNIÓN SÁBADO -->
+                <div class="card-reunion" style="position:relative;">
+                    <button class="btn-edit-item solo-admin" style="display:none; right:15px; top:15px;" onclick="abrirModalUploadReunion('sabado')">📸</button>
+                    <div id="img-reunion-sabado" class="card-img" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200');"></div>
                     <div class="card-body">
                         <span class="tag-dia">Todos los Sábados</span><h2>Reunión de Jóvenes (Generación Poderosa)</h2><div class="horario-badge">6:00 PM - 8:00 PM</div>
                         <p>Un espacio dinámico y radical para los jóvenes, con alabanza explosiva, amistad real y una palabra relevante.</p>
                     </div>
                 </div>
-                <div class="card-reunion">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?q=80&w=1200');"></div>
+                <!-- REUNIÓN DOMINGO -->
+                <div class="card-reunion" style="position:relative;">
+                    <button class="btn-edit-item solo-admin" style="display:none; right:15px; top:15px;" onclick="abrirModalUploadReunion('domingo')">📸</button>
+                    <div id="img-reunion-domingo" class="card-img" style="background-image: url('https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?q=80&w=1200');"></div>
                     <div class="card-body">
                         <span class="tag-dia">Todos los Domingos</span><h2>Culto Familiar</h2><div class="horario-badge">8:45 AM - 11:00 AM</div>
                         <p>Ven con toda tu familia a exaltar el nombre de Jesús y recibir una palabra fresca que edificará tu casa toda la semana.</p>
@@ -745,7 +798,7 @@
                 </div>
             </div>
 
-            <!-- REGISTRO DE ASISTENCIA -->
+            <!-- REGISTRO DE ASISTENCIA (CLAVES BLINDADAS) -->
             <div class="temas-wrapper" style="border: 2px solid #16a34a; background: #f0fdf4;">
                 <div class="temas-header" style="border-bottom-color: #bbf7d0;">
                     <div>
@@ -759,7 +812,7 @@
                     <form onsubmit="event.preventDefault(); registrarAsistenciaCasa();">
                         <div class="form-grid">
                             <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre de la Casa Evangelística:</label><input type="text" id="asist-casa-nombre" class="campo-input" placeholder="Ej: Casa Betel - Barrio San Fernando" required></div>
-                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Clave Secreta de Acceso (Servidor):</label><input type="password" id="asist-casa-clave" class="campo-input" placeholder="Clave para ver tus reportes..." required></div>
+                            <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Clave de Seguridad Asignada:</label><input type="password" id="asist-casa-clave" class="campo-input" placeholder="Tu clave única de reporte..." required></div>
                             <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Dirección de la Casa:</label><input type="text" id="asist-direccion" class="campo-input" placeholder="Calle / Carrera / Barrio" required></div>
                             <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Servidor Encargado:</label><input type="text" id="asist-servidor" class="campo-input" placeholder="Nombre del servidor..." required></div>
                             <div><label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Nombre del Anfitrión:</label><input type="text" id="asist-anfitrion" class="campo-input" placeholder="Dueño de casa..." required></div>
@@ -1126,8 +1179,38 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 alert('¡Video publicado correctamente en vivo!');
             });
         }
-
         function eliminarVideo(sec, id) { if(confirm('¿Seguro que deseas eliminar este video?')) db.ref('videos/' + sec).child(id).remove(); }
+
+        // ==========================================
+        // POSTS PARA REUNIONES
+        // ==========================================
+        function abrirModalUploadReunion(dia) {
+            document.getElementById('upload-reunion-dia').value = dia;
+            document.getElementById('modal-upload-reunion').style.display = 'flex';
+        }
+
+        function guardarPostReunion() {
+            const dia = document.getElementById('upload-reunion-dia').value;
+            const file = document.getElementById('upload-reunion-file').files[0];
+            if(!file) return;
+            comprimirYSubirImagen(file, function(base64) {
+                db.ref('reuniones_posts/' + dia).set({ url: base64 }).then(() => {
+                    document.getElementById('modal-upload-reunion').style.display = 'none';
+                    alert('¡Post de reunión actualizado con éxito!');
+                });
+            });
+        }
+
+        function cargarPostsReuniones() {
+            db.ref('reuniones_posts').on('value', snap => {
+                if(snap.exists()) {
+                    const data = snap.val();
+                    if(data.martes && data.martes.url) document.getElementById('img-reunion-martes').style.backgroundImage = `url('${data.martes.url}')`;
+                    if(data.sabado && data.sabado.url) document.getElementById('img-reunion-sabado').style.backgroundImage = `url('${data.sabado.url}')`;
+                    if(data.domingo && data.domingo.url) document.getElementById('img-reunion-domingo').style.backgroundImage = `url('${data.domingo.url}')`;
+                }
+            });
+        }
 
         // ==========================================
         // ÁRBOL DE LA VIDA (HISTORIAS BÍBLICAS)
@@ -1191,12 +1274,59 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function eliminarTemaNinos(id) { if(confirm('¿Borrar tema?')) db.ref('temas_ninos').child(id).remove(); }
 
         // ==========================================
-        // ASISTENCIA CASAS (SEPARACIÓN DE NOMBRES Y TELÉFONOS MEJORADA)
+        // GESTIÓN DE CLAVES Y ASISTENCIA CASAS
         // ==========================================
+        function abrirModalClavesCasas() {
+            db.ref('casas_claves').once('value', snap => {
+                const tbody = document.getElementById('tabla-claves-body');
+                tbody.innerHTML = '';
+                if(!snap.exists()) {
+                    tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">No hay casas registradas aún.</td></tr>';
+                } else {
+                    snap.forEach(child => {
+                        const val = child.val();
+                        tbody.innerHTML += `<tr><td><strong>${val.nombre}</strong></td><td style="color:#dc2626; font-weight:bold;">${val.clave}</td></tr>`;
+                    });
+                }
+                document.getElementById('modal-claves-casas').style.display = 'flex';
+            });
+        }
+
         function registrarAsistenciaCasa() {
-            const nombreCasa = document.getElementById('asist-casa-nombre').value.trim(); const claveCasa = document.getElementById('asist-casa-clave').value.trim(); const direccion = document.getElementById('asist-direccion').value.trim(); const servidor = document.getElementById('asist-servidor').value.trim(); const anfitrion = document.getElementById('asist-anfitrion').value.trim(); const semana = document.getElementById('asist-semana').value.trim(); const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
+            const nombreCasa = document.getElementById('asist-casa-nombre').value.trim(); 
+            const claveCasa = document.getElementById('asist-casa-clave').value.trim(); 
+            const direccion = document.getElementById('asist-direccion').value.trim(); 
+            const servidor = document.getElementById('asist-servidor').value.trim(); 
+            const anfitrion = document.getElementById('asist-anfitrion').value.trim(); 
+            const semana = document.getElementById('asist-semana').value.trim(); 
+            const nombresAsistentes = document.getElementById('asist-nombres').value.trim();
+            
             if (!nombreCasa || !claveCasa || !servidor || !semana || !nombresAsistentes) return alert('Completa los campos obligatorios.');
             
+            const idCasa = nombreCasa.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+            db.ref('casas_claves/' + idCasa).once('value', snap => {
+                if (snap.exists()) {
+                    const claveGuardada = snap.val().clave;
+                    if (claveGuardada !== claveCasa) {
+                        alert(`❌ CLAVE INCORRECTA para la casa "${nombreCasa}".\nLa clave ingresada no coincide con la registrada inicialmente.\nSi la olvidaste, el Administrador puede buscarla en el panel de Líderes.`);
+                        return;
+                    }
+                    guardarReporteFinal(nombreCasa, claveCasa, direccion, servidor, anfitrion, semana, nombresAsistentes);
+                } else {
+                    if(confirm(`Atención: Estás a punto de registrar la nueva casa "${nombreCasa}" con una clave permanente.\nAsegúrate de guardar bien esta clave para futuros reportes.\n¿Deseas continuar?`)) {
+                        db.ref('casas_claves/' + idCasa).set({
+                            nombre: nombreCasa,
+                            clave: claveCasa
+                        }).then(() => {
+                            guardarReporteFinal(nombreCasa, claveCasa, direccion, servidor, anfitrion, semana, nombresAsistentes);
+                        });
+                    }
+                }
+            });
+        }
+
+        function guardarReporteFinal(nombreCasa, claveCasa, direccion, servidor, anfitrion, semana, nombresAsistentes) {
             const asistentesArray = nombresAsistentes.split('\n').map(l => l.trim()).filter(l => l.length > 0).map(linea => { 
                 const matchTelefono = linea.match(/[\s-]*(\+?[\d\s]{7,})$/);
                 let nombreLimpio = linea;
@@ -1216,14 +1346,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 document.getElementById('asist-casa-nombre').value = ''; document.getElementById('asist-casa-clave').value = ''; document.getElementById('asist-direccion').value = ''; document.getElementById('asist-servidor').value = ''; document.getElementById('asist-anfitrion').value = ''; document.getElementById('asist-semana').value = ''; document.getElementById('asist-nombres').value = '';
             });
         }
+
         function abrirModalReporteCasa() { document.getElementById('modal-reporte-casa').style.display = 'flex'; document.getElementById('resultado-reporte-casa').style.display = 'none'; document.getElementById('input-clave-casa').value = ''; document.getElementById('input-clave-casa').focus(); }
         function cerrarModalReporteCasa() { document.getElementById('modal-reporte-casa').style.display = 'none'; }
+        
         let datosReporteActual = null;
         function cargarReportePorClave() {
             const claveIngresada = document.getElementById('input-clave-casa').value.trim();
             if (!claveIngresada) return;
             db.ref('asistencias_casas').orderByChild('clave').equalTo(claveIngresada).once('value', snap => {
-                if (!snap.exists()) { alert('No se encontraron registros con esta clave.'); return; }
+                if (!snap.exists()) { alert('No se encontraron reportes asociados a esta clave secreta.'); return; }
                 let records = []; snap.forEach(c => records.push(c.val())); records.sort((a,b) => b.timestamp - a.timestamp);
                 datosReporteActual = records[0];
                 document.getElementById('pl-casa-nombre').textContent = datosReporteActual.casa; document.getElementById('pl-casa-semana').textContent = datosReporteActual.semana; document.getElementById('pl-casa-direccion').textContent = datosReporteActual.direccion; document.getElementById('pl-casa-servidor').textContent = datosReporteActual.servidor; document.getElementById('pl-casa-anfitrion').textContent = datosReporteActual.anfitrion; document.getElementById('pl-total-asistentes').textContent = 'Total Asistentes: ' + datosReporteActual.asistentes.length;
@@ -1247,7 +1379,6 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         // ==========================================
         // TEMAS CASAS - DISEÑO TIPO AGENDA (TÍTULO Y CUADERNOS EDITABLES)
         // ==========================================
-        
         function abrirEditarTituloCasas() {
             db.ref('temas_fijos_casas/tituloGeneral').once('value', snap => {
                 let t = snap.val() || { badge: 'LA FAMILIA', principal: 'TEMAS CASAS EVANGELÍSTICAS' };
@@ -1256,21 +1387,12 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
                 document.getElementById('modal-editar-titulo-casas').style.display = 'flex';
             });
         }
-
-        function cerrarModalEditarTituloCasas() {
-            document.getElementById('modal-editar-titulo-casas').style.display = 'none';
-        }
-
+        function cerrarModalEditarTituloCasas() { document.getElementById('modal-editar-titulo-casas').style.display = 'none'; }
         function guardarEdicionTituloCasas() {
-            const badge = document.getElementById('edit-titulo-badge').value.trim();
-            const principal = document.getElementById('edit-titulo-principal').value.trim();
+            const badge = document.getElementById('edit-titulo-badge').value.trim(); const principal = document.getElementById('edit-titulo-principal').value.trim();
             if(!badge || !principal) return;
-            
-            db.ref('temas_fijos_casas/tituloGeneral').update({
-                badge: badge, principal: principal, fechaEdicion: Date.now()
-            }).then(() => {
-                cerrarModalEditarTituloCasas();
-                alert('¡El título general se ha actualizado correctamente!');
+            db.ref('temas_fijos_casas/tituloGeneral').update({ badge: badge, principal: principal, fechaEdicion: Date.now() }).then(() => {
+                cerrarModalEditarTituloCasas(); alert('¡El título general se ha actualizado correctamente!');
             });
         }
         
@@ -1284,17 +1406,13 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function cargarTemasCasasFijos() {
             db.ref('temas_fijos_casas').on('value', snap => {
                 let data = snap.val() || {};
-                
-                // Cargar Título Dinámico
                 let tituloData = data['tituloGeneral'] || { badge: 'LA FAMILIA', principal: 'TEMAS CASAS EVANGELÍSTICAS' };
                 document.getElementById('casas-titulo-badge').textContent = tituloData.badge;
                 document.getElementById('casas-titulo-principal').textContent = tituloData.principal;
 
-                // Cargar Cuadernos
                 for(let i=1; i<=4; i++) {
                     let key = 'tema'+i;
                     let t = data[key] || defaultTemas[key];
-                    
                     let btnEdit = `<button class="btn-edit-item solo-admin" style="display:none; right:15px; top:35px; background:#fef08a; color:#854d0e; width:34px; height:34px; font-size:16px; border-radius:50%;" onclick="abrirEditarTemaFijo(${i})">✏️</button>`;
                     
                     document.getElementById('slot-tema-'+i).innerHTML = `
@@ -1315,33 +1433,16 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
         function abrirEditarTemaFijo(num) {
             db.ref('temas_fijos_casas/tema'+num).once('value', snap => {
                 let t = snap.val() || defaultTemas['tema'+num];
-                
-                document.getElementById('edit-tema-num').value = num;
-                document.getElementById('edit-tema-semana').value = t.semana || '';
-                document.getElementById('edit-tema-titulo').value = t.titulo || '';
-                document.getElementById('edit-tema-cita').value = t.cita || '';
-                document.getElementById('edit-tema-resumen').value = t.resumen || '';
-                
+                document.getElementById('edit-tema-num').value = num; document.getElementById('edit-tema-semana').value = t.semana || ''; document.getElementById('edit-tema-titulo').value = t.titulo || ''; document.getElementById('edit-tema-cita').value = t.cita || ''; document.getElementById('edit-tema-resumen').value = t.resumen || '';
                 document.getElementById('modal-editar-tema').style.display = 'flex';
             });
         }
-
         function cerrarModalEditarTema() { document.getElementById('modal-editar-tema').style.display = 'none'; }
-
         function guardarEdicionTemaFijo() {
-            const num = document.getElementById('edit-tema-num').value;
-            const semana = document.getElementById('edit-tema-semana').value.trim();
-            const titulo = document.getElementById('edit-tema-titulo').value.trim();
-            const cita = document.getElementById('edit-tema-cita').value.trim();
-            const resumen = document.getElementById('edit-tema-resumen').value.trim();
-            
+            const num = document.getElementById('edit-tema-num').value; const semana = document.getElementById('edit-tema-semana').value.trim(); const titulo = document.getElementById('edit-tema-titulo').value.trim(); const cita = document.getElementById('edit-tema-cita').value.trim(); const resumen = document.getElementById('edit-tema-resumen').value.trim();
             if (!num || !semana || !titulo) return;
-            
-            db.ref('temas_fijos_casas/tema'+num).update({
-                semana: semana, titulo: titulo, cita: cita, resumen: resumen, fechaEdicion: Date.now()
-            }).then(() => {
-                cerrarModalEditarTema();
-                alert('¡El cuaderno se ha actualizado correctamente en vivo!');
+            db.ref('temas_fijos_casas/tema'+num).update({ semana: semana, titulo: titulo, cita: cita, resumen: resumen, fechaEdicion: Date.now() }).then(() => {
+                cerrarModalEditarTema(); alert('¡El cuaderno se ha actualizado correctamente en vivo!');
             });
         }
 
@@ -1573,6 +1674,7 @@ María Gómez - 3209876543" required style="font-family: monospace;"></textarea>
             
             cargarVideosInit();
             cargarTemasCasasFijos(); // LAS 4 LIBRETAS Y EL TÍTULO
+            cargarPostsReuniones(); // POSTS DE REUNIONES ACTIVADOS
             cargarTemasNinos();
             cargarHistoriasBiblicas();
             cargarEventos();
